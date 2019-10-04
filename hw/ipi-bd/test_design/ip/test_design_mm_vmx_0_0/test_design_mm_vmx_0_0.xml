@@ -568,6 +568,113 @@
     </spirit:memoryMap>
   </spirit:memoryMaps>
   <spirit:model>
+    <spirit:views>
+      <spirit:view>
+        <spirit:name>xilinx_verilogsynthesis</spirit:name>
+        <spirit:displayName>Verilog Synthesis</spirit:displayName>
+        <spirit:envIdentifier>verilogSource:vivado.xilinx.com:synthesis</spirit:envIdentifier>
+        <spirit:language>verilog</spirit:language>
+        <spirit:modelName>mm_vmx_v1_0</spirit:modelName>
+        <spirit:fileSetRef>
+          <spirit:localName>xilinx_verilogsynthesis_view_fileset</spirit:localName>
+        </spirit:fileSetRef>
+        <spirit:parameters>
+          <spirit:parameter>
+            <spirit:name>GENtimestamp</spirit:name>
+            <spirit:value>Fri Oct 04 03:20:25 UTC 2019</spirit:value>
+          </spirit:parameter>
+          <spirit:parameter>
+            <spirit:name>outputProductCRC</spirit:name>
+            <spirit:value>9:baf6445f</spirit:value>
+          </spirit:parameter>
+        </spirit:parameters>
+      </spirit:view>
+      <spirit:view>
+        <spirit:name>xilinx_synthesisconstraints</spirit:name>
+        <spirit:displayName>Synthesis Constraints</spirit:displayName>
+        <spirit:envIdentifier>:vivado.xilinx.com:synthesis.constraints</spirit:envIdentifier>
+        <spirit:parameters>
+          <spirit:parameter>
+            <spirit:name>outputProductCRC</spirit:name>
+            <spirit:value>9:baf6445f</spirit:value>
+          </spirit:parameter>
+        </spirit:parameters>
+      </spirit:view>
+      <spirit:view>
+        <spirit:name>xilinx_verilogsynthesiswrapper</spirit:name>
+        <spirit:displayName>Verilog Synthesis Wrapper</spirit:displayName>
+        <spirit:envIdentifier>verilogSource:vivado.xilinx.com:synthesis.wrapper</spirit:envIdentifier>
+        <spirit:language>verilog</spirit:language>
+        <spirit:modelName>test_design_mm_vmx_0_0</spirit:modelName>
+        <spirit:fileSetRef>
+          <spirit:localName>xilinx_verilogsynthesiswrapper_view_fileset</spirit:localName>
+        </spirit:fileSetRef>
+        <spirit:parameters>
+          <spirit:parameter>
+            <spirit:name>GENtimestamp</spirit:name>
+            <spirit:value>Fri Oct 04 03:20:25 UTC 2019</spirit:value>
+          </spirit:parameter>
+          <spirit:parameter>
+            <spirit:name>outputProductCRC</spirit:name>
+            <spirit:value>9:baf6445f</spirit:value>
+          </spirit:parameter>
+        </spirit:parameters>
+      </spirit:view>
+      <spirit:view>
+        <spirit:name>xilinx_verilogbehavioralsimulation</spirit:name>
+        <spirit:displayName>Verilog Simulation</spirit:displayName>
+        <spirit:envIdentifier>verilogSource:vivado.xilinx.com:simulation</spirit:envIdentifier>
+        <spirit:language>verilog</spirit:language>
+        <spirit:modelName>mm_vmx_v1_0</spirit:modelName>
+        <spirit:fileSetRef>
+          <spirit:localName>xilinx_verilogbehavioralsimulation_view_fileset</spirit:localName>
+        </spirit:fileSetRef>
+        <spirit:parameters>
+          <spirit:parameter>
+            <spirit:name>GENtimestamp</spirit:name>
+            <spirit:value>Fri Oct 04 03:20:25 UTC 2019</spirit:value>
+          </spirit:parameter>
+          <spirit:parameter>
+            <spirit:name>outputProductCRC</spirit:name>
+            <spirit:value>9:9ebaf8e2</spirit:value>
+          </spirit:parameter>
+        </spirit:parameters>
+      </spirit:view>
+      <spirit:view>
+        <spirit:name>xilinx_verilogsimulationwrapper</spirit:name>
+        <spirit:displayName>Verilog Simulation Wrapper</spirit:displayName>
+        <spirit:envIdentifier>verilogSource:vivado.xilinx.com:simulation.wrapper</spirit:envIdentifier>
+        <spirit:language>verilog</spirit:language>
+        <spirit:modelName>test_design_mm_vmx_0_0</spirit:modelName>
+        <spirit:fileSetRef>
+          <spirit:localName>xilinx_verilogsimulationwrapper_view_fileset</spirit:localName>
+        </spirit:fileSetRef>
+        <spirit:parameters>
+          <spirit:parameter>
+            <spirit:name>GENtimestamp</spirit:name>
+            <spirit:value>Fri Oct 04 03:20:25 UTC 2019</spirit:value>
+          </spirit:parameter>
+          <spirit:parameter>
+            <spirit:name>outputProductCRC</spirit:name>
+            <spirit:value>9:9ebaf8e2</spirit:value>
+          </spirit:parameter>
+        </spirit:parameters>
+      </spirit:view>
+      <spirit:view>
+        <spirit:name>xilinx_externalfiles</spirit:name>
+        <spirit:displayName>External Files</spirit:displayName>
+        <spirit:envIdentifier>:vivado.xilinx.com:external.files</spirit:envIdentifier>
+        <spirit:fileSetRef>
+          <spirit:localName>xilinx_externalfiles_view_fileset</spirit:localName>
+        </spirit:fileSetRef>
+        <spirit:parameters>
+          <spirit:parameter>
+            <spirit:name>outputProductCRC</spirit:name>
+            <spirit:value>9:baf6445f</spirit:value>
+          </spirit:parameter>
+        </spirit:parameters>
+      </spirit:view>
+    </spirit:views>
     <spirit:ports>
       <spirit:port>
         <spirit:name>s_axi_awaddr</spirit:name>
@@ -580,7 +687,8 @@
           <spirit:wireTypeDefs>
             <spirit:wireTypeDef>
               <spirit:typeName>wire</spirit:typeName>
-              <spirit:viewNameRef>dummy_view</spirit:viewNameRef>
+              <spirit:viewNameRef>xilinx_verilogsynthesis</spirit:viewNameRef>
+              <spirit:viewNameRef>xilinx_verilogbehavioralsimulation</spirit:viewNameRef>
             </spirit:wireTypeDef>
           </spirit:wireTypeDefs>
         </spirit:wire>
@@ -596,7 +704,8 @@
           <spirit:wireTypeDefs>
             <spirit:wireTypeDef>
               <spirit:typeName>wire</spirit:typeName>
-              <spirit:viewNameRef>dummy_view</spirit:viewNameRef>
+              <spirit:viewNameRef>xilinx_verilogsynthesis</spirit:viewNameRef>
+              <spirit:viewNameRef>xilinx_verilogbehavioralsimulation</spirit:viewNameRef>
             </spirit:wireTypeDef>
           </spirit:wireTypeDefs>
         </spirit:wire>
@@ -608,7 +717,8 @@
           <spirit:wireTypeDefs>
             <spirit:wireTypeDef>
               <spirit:typeName>wire</spirit:typeName>
-              <spirit:viewNameRef>dummy_view</spirit:viewNameRef>
+              <spirit:viewNameRef>xilinx_verilogsynthesis</spirit:viewNameRef>
+              <spirit:viewNameRef>xilinx_verilogbehavioralsimulation</spirit:viewNameRef>
             </spirit:wireTypeDef>
           </spirit:wireTypeDefs>
         </spirit:wire>
@@ -620,7 +730,8 @@
           <spirit:wireTypeDefs>
             <spirit:wireTypeDef>
               <spirit:typeName>wire</spirit:typeName>
-              <spirit:viewNameRef>dummy_view</spirit:viewNameRef>
+              <spirit:viewNameRef>xilinx_verilogsynthesis</spirit:viewNameRef>
+              <spirit:viewNameRef>xilinx_verilogbehavioralsimulation</spirit:viewNameRef>
             </spirit:wireTypeDef>
           </spirit:wireTypeDefs>
         </spirit:wire>
@@ -636,7 +747,8 @@
           <spirit:wireTypeDefs>
             <spirit:wireTypeDef>
               <spirit:typeName>wire</spirit:typeName>
-              <spirit:viewNameRef>dummy_view</spirit:viewNameRef>
+              <spirit:viewNameRef>xilinx_verilogsynthesis</spirit:viewNameRef>
+              <spirit:viewNameRef>xilinx_verilogbehavioralsimulation</spirit:viewNameRef>
             </spirit:wireTypeDef>
           </spirit:wireTypeDefs>
         </spirit:wire>
@@ -652,7 +764,8 @@
           <spirit:wireTypeDefs>
             <spirit:wireTypeDef>
               <spirit:typeName>wire</spirit:typeName>
-              <spirit:viewNameRef>dummy_view</spirit:viewNameRef>
+              <spirit:viewNameRef>xilinx_verilogsynthesis</spirit:viewNameRef>
+              <spirit:viewNameRef>xilinx_verilogbehavioralsimulation</spirit:viewNameRef>
             </spirit:wireTypeDef>
           </spirit:wireTypeDefs>
         </spirit:wire>
@@ -664,7 +777,8 @@
           <spirit:wireTypeDefs>
             <spirit:wireTypeDef>
               <spirit:typeName>wire</spirit:typeName>
-              <spirit:viewNameRef>dummy_view</spirit:viewNameRef>
+              <spirit:viewNameRef>xilinx_verilogsynthesis</spirit:viewNameRef>
+              <spirit:viewNameRef>xilinx_verilogbehavioralsimulation</spirit:viewNameRef>
             </spirit:wireTypeDef>
           </spirit:wireTypeDefs>
         </spirit:wire>
@@ -676,7 +790,8 @@
           <spirit:wireTypeDefs>
             <spirit:wireTypeDef>
               <spirit:typeName>wire</spirit:typeName>
-              <spirit:viewNameRef>dummy_view</spirit:viewNameRef>
+              <spirit:viewNameRef>xilinx_verilogsynthesis</spirit:viewNameRef>
+              <spirit:viewNameRef>xilinx_verilogbehavioralsimulation</spirit:viewNameRef>
             </spirit:wireTypeDef>
           </spirit:wireTypeDefs>
         </spirit:wire>
@@ -692,7 +807,8 @@
           <spirit:wireTypeDefs>
             <spirit:wireTypeDef>
               <spirit:typeName>wire</spirit:typeName>
-              <spirit:viewNameRef>dummy_view</spirit:viewNameRef>
+              <spirit:viewNameRef>xilinx_verilogsynthesis</spirit:viewNameRef>
+              <spirit:viewNameRef>xilinx_verilogbehavioralsimulation</spirit:viewNameRef>
             </spirit:wireTypeDef>
           </spirit:wireTypeDefs>
         </spirit:wire>
@@ -704,7 +820,8 @@
           <spirit:wireTypeDefs>
             <spirit:wireTypeDef>
               <spirit:typeName>wire</spirit:typeName>
-              <spirit:viewNameRef>dummy_view</spirit:viewNameRef>
+              <spirit:viewNameRef>xilinx_verilogsynthesis</spirit:viewNameRef>
+              <spirit:viewNameRef>xilinx_verilogbehavioralsimulation</spirit:viewNameRef>
             </spirit:wireTypeDef>
           </spirit:wireTypeDefs>
         </spirit:wire>
@@ -716,7 +833,8 @@
           <spirit:wireTypeDefs>
             <spirit:wireTypeDef>
               <spirit:typeName>wire</spirit:typeName>
-              <spirit:viewNameRef>dummy_view</spirit:viewNameRef>
+              <spirit:viewNameRef>xilinx_verilogsynthesis</spirit:viewNameRef>
+              <spirit:viewNameRef>xilinx_verilogbehavioralsimulation</spirit:viewNameRef>
             </spirit:wireTypeDef>
           </spirit:wireTypeDefs>
         </spirit:wire>
@@ -732,7 +850,8 @@
           <spirit:wireTypeDefs>
             <spirit:wireTypeDef>
               <spirit:typeName>wire</spirit:typeName>
-              <spirit:viewNameRef>dummy_view</spirit:viewNameRef>
+              <spirit:viewNameRef>xilinx_verilogsynthesis</spirit:viewNameRef>
+              <spirit:viewNameRef>xilinx_verilogbehavioralsimulation</spirit:viewNameRef>
             </spirit:wireTypeDef>
           </spirit:wireTypeDefs>
         </spirit:wire>
@@ -748,7 +867,8 @@
           <spirit:wireTypeDefs>
             <spirit:wireTypeDef>
               <spirit:typeName>wire</spirit:typeName>
-              <spirit:viewNameRef>dummy_view</spirit:viewNameRef>
+              <spirit:viewNameRef>xilinx_verilogsynthesis</spirit:viewNameRef>
+              <spirit:viewNameRef>xilinx_verilogbehavioralsimulation</spirit:viewNameRef>
             </spirit:wireTypeDef>
           </spirit:wireTypeDefs>
         </spirit:wire>
@@ -760,7 +880,8 @@
           <spirit:wireTypeDefs>
             <spirit:wireTypeDef>
               <spirit:typeName>wire</spirit:typeName>
-              <spirit:viewNameRef>dummy_view</spirit:viewNameRef>
+              <spirit:viewNameRef>xilinx_verilogsynthesis</spirit:viewNameRef>
+              <spirit:viewNameRef>xilinx_verilogbehavioralsimulation</spirit:viewNameRef>
             </spirit:wireTypeDef>
           </spirit:wireTypeDefs>
         </spirit:wire>
@@ -772,7 +893,8 @@
           <spirit:wireTypeDefs>
             <spirit:wireTypeDef>
               <spirit:typeName>wire</spirit:typeName>
-              <spirit:viewNameRef>dummy_view</spirit:viewNameRef>
+              <spirit:viewNameRef>xilinx_verilogsynthesis</spirit:viewNameRef>
+              <spirit:viewNameRef>xilinx_verilogbehavioralsimulation</spirit:viewNameRef>
             </spirit:wireTypeDef>
           </spirit:wireTypeDefs>
         </spirit:wire>
@@ -788,7 +910,8 @@
           <spirit:wireTypeDefs>
             <spirit:wireTypeDef>
               <spirit:typeName>wire</spirit:typeName>
-              <spirit:viewNameRef>dummy_view</spirit:viewNameRef>
+              <spirit:viewNameRef>xilinx_verilogsynthesis</spirit:viewNameRef>
+              <spirit:viewNameRef>xilinx_verilogbehavioralsimulation</spirit:viewNameRef>
             </spirit:wireTypeDef>
           </spirit:wireTypeDefs>
         </spirit:wire>
@@ -804,7 +927,8 @@
           <spirit:wireTypeDefs>
             <spirit:wireTypeDef>
               <spirit:typeName>wire</spirit:typeName>
-              <spirit:viewNameRef>dummy_view</spirit:viewNameRef>
+              <spirit:viewNameRef>xilinx_verilogsynthesis</spirit:viewNameRef>
+              <spirit:viewNameRef>xilinx_verilogbehavioralsimulation</spirit:viewNameRef>
             </spirit:wireTypeDef>
           </spirit:wireTypeDefs>
         </spirit:wire>
@@ -816,7 +940,8 @@
           <spirit:wireTypeDefs>
             <spirit:wireTypeDef>
               <spirit:typeName>wire</spirit:typeName>
-              <spirit:viewNameRef>dummy_view</spirit:viewNameRef>
+              <spirit:viewNameRef>xilinx_verilogsynthesis</spirit:viewNameRef>
+              <spirit:viewNameRef>xilinx_verilogbehavioralsimulation</spirit:viewNameRef>
             </spirit:wireTypeDef>
           </spirit:wireTypeDefs>
         </spirit:wire>
@@ -828,7 +953,8 @@
           <spirit:wireTypeDefs>
             <spirit:wireTypeDef>
               <spirit:typeName>wire</spirit:typeName>
-              <spirit:viewNameRef>dummy_view</spirit:viewNameRef>
+              <spirit:viewNameRef>xilinx_verilogsynthesis</spirit:viewNameRef>
+              <spirit:viewNameRef>xilinx_verilogbehavioralsimulation</spirit:viewNameRef>
             </spirit:wireTypeDef>
           </spirit:wireTypeDefs>
         </spirit:wire>
@@ -840,7 +966,8 @@
           <spirit:wireTypeDefs>
             <spirit:wireTypeDef>
               <spirit:typeName>wire</spirit:typeName>
-              <spirit:viewNameRef>dummy_view</spirit:viewNameRef>
+              <spirit:viewNameRef>xilinx_verilogsynthesis</spirit:viewNameRef>
+              <spirit:viewNameRef>xilinx_verilogbehavioralsimulation</spirit:viewNameRef>
             </spirit:wireTypeDef>
           </spirit:wireTypeDefs>
         </spirit:wire>
@@ -852,7 +979,8 @@
           <spirit:wireTypeDefs>
             <spirit:wireTypeDef>
               <spirit:typeName>wire</spirit:typeName>
-              <spirit:viewNameRef>dummy_view</spirit:viewNameRef>
+              <spirit:viewNameRef>xilinx_verilogsynthesis</spirit:viewNameRef>
+              <spirit:viewNameRef>xilinx_verilogbehavioralsimulation</spirit:viewNameRef>
             </spirit:wireTypeDef>
           </spirit:wireTypeDefs>
         </spirit:wire>
@@ -884,6 +1012,82 @@
       <spirit:enumeration spirit:text="false">0</spirit:enumeration>
     </spirit:choice>
   </spirit:choices>
+  <spirit:fileSets>
+    <spirit:fileSet>
+      <spirit:name>xilinx_verilogsynthesis_view_fileset</spirit:name>
+      <spirit:file>
+        <spirit:name>../../ipshared/51bb/hdl/mm_vmx_v1_0_S_AXI.v</spirit:name>
+        <spirit:fileType>verilogSource</spirit:fileType>
+      </spirit:file>
+      <spirit:file>
+        <spirit:name>../../ipshared/51bb/hdl/mm_vmx_v1_0.v</spirit:name>
+        <spirit:fileType>verilogSource</spirit:fileType>
+      </spirit:file>
+    </spirit:fileSet>
+    <spirit:fileSet>
+      <spirit:name>xilinx_verilogsynthesiswrapper_view_fileset</spirit:name>
+      <spirit:file>
+        <spirit:name>synth/test_design_mm_vmx_0_0.v</spirit:name>
+        <spirit:fileType>verilogSource</spirit:fileType>
+        <spirit:logicalName>xil_defaultlib</spirit:logicalName>
+      </spirit:file>
+    </spirit:fileSet>
+    <spirit:fileSet>
+      <spirit:name>xilinx_verilogbehavioralsimulation_view_fileset</spirit:name>
+      <spirit:file>
+        <spirit:name>../../ipshared/51bb/hdl/mm_vmx_v1_0_S_AXI.v</spirit:name>
+        <spirit:fileType>verilogSource</spirit:fileType>
+      </spirit:file>
+      <spirit:file>
+        <spirit:name>../../ipshared/51bb/hdl/mm_vmx_v1_0.v</spirit:name>
+        <spirit:fileType>verilogSource</spirit:fileType>
+      </spirit:file>
+    </spirit:fileSet>
+    <spirit:fileSet>
+      <spirit:name>xilinx_verilogsimulationwrapper_view_fileset</spirit:name>
+      <spirit:file>
+        <spirit:name>sim/test_design_mm_vmx_0_0.v</spirit:name>
+        <spirit:fileType>verilogSource</spirit:fileType>
+        <spirit:logicalName>xil_defaultlib</spirit:logicalName>
+      </spirit:file>
+    </spirit:fileSet>
+    <spirit:fileSet>
+      <spirit:name>xilinx_externalfiles_view_fileset</spirit:name>
+      <spirit:file>
+        <spirit:name>test_design_mm_vmx_0_0.dcp</spirit:name>
+        <spirit:userFileType>dcp</spirit:userFileType>
+        <spirit:userFileType>USED_IN_implementation</spirit:userFileType>
+        <spirit:userFileType>USED_IN_synthesis</spirit:userFileType>
+        <spirit:logicalName>xil_defaultlib</spirit:logicalName>
+      </spirit:file>
+      <spirit:file>
+        <spirit:name>test_design_mm_vmx_0_0_stub.v</spirit:name>
+        <spirit:fileType>verilogSource</spirit:fileType>
+        <spirit:userFileType>USED_IN_synth_blackbox_stub</spirit:userFileType>
+        <spirit:logicalName>xil_defaultlib</spirit:logicalName>
+      </spirit:file>
+      <spirit:file>
+        <spirit:name>test_design_mm_vmx_0_0_stub.vhdl</spirit:name>
+        <spirit:fileType>vhdlSource</spirit:fileType>
+        <spirit:userFileType>USED_IN_synth_blackbox_stub</spirit:userFileType>
+        <spirit:logicalName>xil_defaultlib</spirit:logicalName>
+      </spirit:file>
+      <spirit:file>
+        <spirit:name>test_design_mm_vmx_0_0_sim_netlist.v</spirit:name>
+        <spirit:fileType>verilogSource</spirit:fileType>
+        <spirit:userFileType>USED_IN_simulation</spirit:userFileType>
+        <spirit:userFileType>USED_IN_single_language</spirit:userFileType>
+        <spirit:logicalName>xil_defaultlib</spirit:logicalName>
+      </spirit:file>
+      <spirit:file>
+        <spirit:name>test_design_mm_vmx_0_0_sim_netlist.vhdl</spirit:name>
+        <spirit:fileType>vhdlSource</spirit:fileType>
+        <spirit:userFileType>USED_IN_simulation</spirit:userFileType>
+        <spirit:userFileType>USED_IN_single_language</spirit:userFileType>
+        <spirit:logicalName>xil_defaultlib</spirit:logicalName>
+      </spirit:file>
+    </spirit:fileSet>
+  </spirit:fileSets>
   <spirit:description>mm based VMX engine</spirit:description>
   <spirit:parameters>
     <spirit:parameter>
@@ -944,7 +1148,67 @@
   <spirit:vendorExtensions>
     <xilinx:coreExtensions>
       <xilinx:displayName>mm_vmx_v1.0</xilinx:displayName>
-      <xilinx:coreRevision>1</xilinx:coreRevision>
+      <xilinx:coreRevision>2</xilinx:coreRevision>
+      <xilinx:tags>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@20409d7e_ARCHIVE_LOCATION">d:/GradProject/A-Zynq-Based-Ai-Platform/hw/ip-repo/mm_vmx_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@728fb450_ARCHIVE_LOCATION">d:/GradProject/A-Zynq-Based-Ai-Platform/hw/ip-repo/mm_vmx_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@98ed566_ARCHIVE_LOCATION">d:/GradProject/A-Zynq-Based-Ai-Platform/hw/ip-repo/mm_vmx_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@48137175_ARCHIVE_LOCATION">d:/GradProject/A-Zynq-Based-Ai-Platform/hw/ip-repo/mm_vmx_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@420accca_ARCHIVE_LOCATION">d:/GradProject/A-Zynq-Based-Ai-Platform/hw/ip-repo/mm_vmx_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@41b98482_ARCHIVE_LOCATION">d:/GradProject/A-Zynq-Based-Ai-Platform/hw/ip-repo/mm_vmx_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@8680f1_ARCHIVE_LOCATION">d:/GradProject/A-Zynq-Based-Ai-Platform/hw/ip-repo/mm_vmx_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@c45ce8a_ARCHIVE_LOCATION">d:/GradProject/A-Zynq-Based-Ai-Platform/hw/ip-repo/mm_vmx_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@50752eb5_ARCHIVE_LOCATION">d:/GradProject/A-Zynq-Based-Ai-Platform/hw/ip-repo/mm_vmx_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@241c0dc0_ARCHIVE_LOCATION">d:/GradProject/A-Zynq-Based-Ai-Platform/hw/ip-repo/mm_vmx_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@7237beb8_ARCHIVE_LOCATION">d:/GradProject/A-Zynq-Based-Ai-Platform/hw/ip-repo/mm_vmx_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@77f4f986_ARCHIVE_LOCATION">d:/GradProject/A-Zynq-Based-Ai-Platform/hw/ip-repo/mm_vmx_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@27a66316_ARCHIVE_LOCATION">d:/GradProject/A-Zynq-Based-Ai-Platform/hw/ip-repo/mm_vmx_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@5b84b939_ARCHIVE_LOCATION">d:/GradProject/A-Zynq-Based-Ai-Platform/hw/ip-repo/mm_vmx_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@3fbd4219_ARCHIVE_LOCATION">d:/GradProject/A-Zynq-Based-Ai-Platform/hw/ip-repo/mm_vmx_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@16468122_ARCHIVE_LOCATION">d:/GradProject/A-Zynq-Based-Ai-Platform/hw/ip-repo/mm_vmx_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@445060a8_ARCHIVE_LOCATION">d:/GradProject/A-Zynq-Based-Ai-Platform/hw/ip-repo/mm_vmx_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@17c23c70_ARCHIVE_LOCATION">d:/GradProject/A-Zynq-Based-Ai-Platform/hw/ip-repo/mm_vmx_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@225fadfe_ARCHIVE_LOCATION">d:/GradProject/A-Zynq-Based-Ai-Platform/hw/ip-repo/mm_vmx_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@2c9e41be_ARCHIVE_LOCATION">d:/GradProject/A-Zynq-Based-Ai-Platform/hw/ip-repo/mm_vmx_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@13ca1ab5_ARCHIVE_LOCATION">d:/GradProject/A-Zynq-Based-Ai-Platform/hw/ip-repo/mm_vmx_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@4b20e98_ARCHIVE_LOCATION">d:/GradProject/A-Zynq-Based-Ai-Platform/hw/ip-repo/mm_vmx_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@57b17295_ARCHIVE_LOCATION">d:/GradProject/A-Zynq-Based-Ai-Platform/hw/ip-repo/mm_vmx_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@476a330c_ARCHIVE_LOCATION">d:/GradProject/A-Zynq-Based-Ai-Platform/hw/ip-repo/mm_vmx_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@70bcc72c_ARCHIVE_LOCATION">d:/GradProject/A-Zynq-Based-Ai-Platform/hw/ip-repo/mm_vmx_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@6cdcda6b_ARCHIVE_LOCATION">d:/GradProject/A-Zynq-Based-Ai-Platform/hw/ip-repo/mm_vmx_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@55f0a52f_ARCHIVE_LOCATION">d:/GradProject/A-Zynq-Based-Ai-Platform/hw/ip-repo/mm_vmx_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@38f4df39_ARCHIVE_LOCATION">d:/GradProject/A-Zynq-Based-Ai-Platform/hw/ip-repo/mm_vmx_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@5093d9c6_ARCHIVE_LOCATION">d:/GradProject/A-Zynq-Based-Ai-Platform/hw/ip-repo/mm_vmx_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@2afeffae_ARCHIVE_LOCATION">d:/GradProject/A-Zynq-Based-Ai-Platform/hw/ip-repo/mm_vmx_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@72479f15_ARCHIVE_LOCATION">d:/GradProject/A-Zynq-Based-Ai-Platform/hw/ip-repo/mm_vmx_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@b97b29_ARCHIVE_LOCATION">d:/GradProject/A-Zynq-Based-Ai-Platform/hw/ip-repo/mm_vmx_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@34ac7129_ARCHIVE_LOCATION">d:/GradProject/A-Zynq-Based-Ai-Platform/hw/ip-repo/mm_vmx_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@176dc922_ARCHIVE_LOCATION">d:/GradProject/A-Zynq-Based-Ai-Platform/hw/ip-repo/mm_vmx_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@5fd1f247_ARCHIVE_LOCATION">d:/GradProject/A-Zynq-Based-Ai-Platform/hw/ip-repo/mm_vmx_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@7a1ace21_ARCHIVE_LOCATION">d:/GradProject/A-Zynq-Based-Ai-Platform/hw/ip-repo/mm_vmx_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@3ad93170_ARCHIVE_LOCATION">d:/GradProject/A-Zynq-Based-Ai-Platform/hw/ip-repo/mm_vmx_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@37ebbb40_ARCHIVE_LOCATION">d:/GradProject/A-Zynq-Based-Ai-Platform/hw/ip-repo/mm_vmx_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@2caede2c_ARCHIVE_LOCATION">d:/GradProject/A-Zynq-Based-Ai-Platform/hw/ip-repo/mm_vmx_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@1e89041e_ARCHIVE_LOCATION">d:/GradProject/A-Zynq-Based-Ai-Platform/hw/ip-repo/mm_vmx_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@6fbe0ac7_ARCHIVE_LOCATION">d:/GradProject/A-Zynq-Based-Ai-Platform/hw/ip-repo/mm_vmx_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@40ab71f8_ARCHIVE_LOCATION">d:/GradProject/A-Zynq-Based-Ai-Platform/hw/ip-repo/mm_vmx_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@1069f837_ARCHIVE_LOCATION">d:/GradProject/A-Zynq-Based-Ai-Platform/hw/ip-repo/mm_vmx_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@359e5c8_ARCHIVE_LOCATION">d:/GradProject/A-Zynq-Based-Ai-Platform/hw/ip-repo/mm_vmx_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@2e7488a9_ARCHIVE_LOCATION">d:/GradProject/A-Zynq-Based-Ai-Platform/hw/ip-repo/mm_vmx_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@458a4366_ARCHIVE_LOCATION">d:/GradProject/A-Zynq-Based-Ai-Platform/hw/ip-repo/mm_vmx_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@229bd3ab_ARCHIVE_LOCATION">d:/GradProject/A-Zynq-Based-Ai-Platform/hw/ip-repo/mm_vmx_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@1befc956_ARCHIVE_LOCATION">d:/GradProject/A-Zynq-Based-Ai-Platform/hw/ip-repo/mm_vmx_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@67c8cc8c_ARCHIVE_LOCATION">d:/GradProject/A-Zynq-Based-Ai-Platform/hw/ip-repo/mm_vmx_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@13c4af5_ARCHIVE_LOCATION">d:/GradProject/A-Zynq-Based-Ai-Platform/hw/ip-repo/mm_vmx_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@719b49ed_ARCHIVE_LOCATION">d:/GradProject/A-Zynq-Based-Ai-Platform/hw/ip-repo/mm_vmx_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@6b674d7a_ARCHIVE_LOCATION">d:/GradProject/A-Zynq-Based-Ai-Platform/hw/ip-repo/mm_vmx_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@2ecead68_ARCHIVE_LOCATION">d:/GradProject/A-Zynq-Based-Ai-Platform/hw/ip-repo/mm_vmx_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@66e8f063_ARCHIVE_LOCATION">d:/GradProject/A-Zynq-Based-Ai-Platform/hw/ip-repo/mm_vmx_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@4b702083_ARCHIVE_LOCATION">d:/GradProject/A-Zynq-Based-Ai-Platform/hw/ip-repo/mm_vmx_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@5c7a05db_ARCHIVE_LOCATION">d:/GradProject/A-Zynq-Based-Ai-Platform/hw/ip-repo/mm_vmx_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@6023b7e2_ARCHIVE_LOCATION">d:/GradProject/A-Zynq-Based-Ai-Platform/hw/ip-repo/mm_vmx_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@6e329ea_ARCHIVE_LOCATION">d:/GradProject/A-Zynq-Based-Ai-Platform/hw/ip-repo/mm_vmx_1.0</xilinx:tag>
+      </xilinx:tags>
       <xilinx:configElementInfos>
         <xilinx:configElementInfo xilinx:referenceId="BUSIFPARAM_VALUE.S_AXI.ADDR_WIDTH" xilinx:valueSource="auto" xilinx:valuePermission="bd"/>
         <xilinx:configElementInfo xilinx:referenceId="BUSIFPARAM_VALUE.S_AXI.ARUSER_WIDTH" xilinx:valueSource="constant" xilinx:valuePermission="bd"/>
@@ -978,6 +1242,12 @@
     </xilinx:coreExtensions>
     <xilinx:packagingInfo>
       <xilinx:xilinxVersion>2019.1</xilinx:xilinxVersion>
+      <xilinx:checksum xilinx:scope="busInterfaces" xilinx:value="22be9552"/>
+      <xilinx:checksum xilinx:scope="memoryMaps" xilinx:value="c30980da"/>
+      <xilinx:checksum xilinx:scope="fileGroups" xilinx:value="fd6a4e42"/>
+      <xilinx:checksum xilinx:scope="ports" xilinx:value="d25dd916"/>
+      <xilinx:checksum xilinx:scope="hdlParameters" xilinx:value="6b91e5d6"/>
+      <xilinx:checksum xilinx:scope="parameters" xilinx:value="d7e883a9"/>
     </xilinx:packagingInfo>
   </spirit:vendorExtensions>
 </spirit:component>
