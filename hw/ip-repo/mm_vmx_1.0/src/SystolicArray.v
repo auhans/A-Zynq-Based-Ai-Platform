@@ -17,7 +17,7 @@
 /// input         clk  - clock
 /// input         _res - [NYI] asynchronous reset
 ///
-module SA(inst, WinL, XinL, BinL, SoutL, Sready, clk);
+module SystolicArray(inst, WinL, XinL, BinL, SoutL, Sready, clk);
 
 	parameter ARRAY_LENGTH = 4;
 	parameter ARRAY_WIDTH = 4;
