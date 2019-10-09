@@ -1,5 +1,5 @@
 ///
-/// Simple 4x4 Systolic Array design
+/// Simple nxm Systolic Array design
 /// parameter ARRAY_LENGTH
 /// parameter ARRAY_WIDTH
 ///
@@ -94,31 +94,35 @@ module SystolicArray(inst, WinL, XinL, BinL, SoutL, Sready, clk);
 			for(j=0; j<ARRAY_LENGTH; j=j+1)
 			begin: PE_i
 				if(i==0)
-					PE16_8 PE(
-						.mode(MC[i][j]),
-						.Win(Win[j]),
-						.Xin(Xunsign[i][j]),
-						.Xsign(Xsign[i][j]),
-						.Sin(32'b0),
-						.mpass(MC[i][j+1]),
-						.Xpass(Xunsign[i][j+1]),
-						.Xspass(Xsign[i][j+1]),
-						.Spass(Spass[i][j]),
-						.Wrecv(WC[i]),
-						.clk(clk) );
+					PE16 PE(
+						.clk(clk),
+						.enable(MC[i][j][1]),
+						//._res(_res),
+						.width(MC[i][j][0]),
+						.Weight_input(Win[j]),
+						.Matrix_input(Xunsign[i][j]),
+						.Matrix_sign(Xsign[i][j]),
+						.Sum_input(32'b0),
+						.mode_pass(MC[i][j+1]),
+						.Matrix_pass(Xunsign[i][j+1]),
+						.Matrix_sign_pass(Xsign[i][j+1]),
+						.Sum_pass(Spass[i][j]),
+						.Weight_enable(WC[i]));
 				else
-					PE16_8 PE(
-						.mode(MC[i][j]),
-						.Win(Win[j]),
-						.Xin(Xunsign[i][j]),
-						.Xsign(Xsign[i][j]),
-						.Sin(Spass[i-1][j]),
-						.mpass(MC[i][j+1]),
-						.Xpass(Xunsign[i][j+1]),
-						.Xspass(Xsign[i][j+1]),
-						.Spass(Spass[i][j]),
-						.Wrecv(WC[i]),
-						.clk(clk) );
+					PE16 PE(
+						.clk(clk),
+						.enable(MC[i][j][1]),
+						//._res(_res),
+						.width(MC[i][j][0]),
+						.Weight_input(Win[j]),
+						.Matrix_input(Xunsign[i][j]),
+						.Matrix_sign(Xsign[i][j]),
+						.Sum_input(Spass[i-1][j]),
+						.mode_pass(MC[i][j+1]),
+						.Matrix_pass(Xunsign[i][j+1]),
+						.Matrix_sign_pass(Xsign[i][j+1]),
+						.Sum_pass(Spass[i][j]),
+						.Weight_enable(WC[i]));
 			end
 		end
 	endgenerate
