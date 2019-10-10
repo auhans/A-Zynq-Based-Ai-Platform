@@ -3,14 +3,14 @@
 ///
 
 module MatMulUnit(
-	input      clk,
-	input      n_rst,
-	output reg [7:0]   din_addr,
-	input      [63:0]  data_in,
-	output reg [7:0]   dout_addr,
-	output     [127:0] data_out,
-	input      enable,
-	output reg bc
+		input      clk,
+		input      n_rst,
+		output reg [7:0]   din_addr,
+		input      [63:0]  data_in,
+		output reg [7:0]   dout_addr,
+		output     [127:0] data_out,
+		input      enable,
+		output reg bc
 	);
 	
 	reg [7:0] state_cnt;
@@ -87,13 +87,15 @@ module MatMulUnit(
 	
 	always @(negedge clk_array)
 	begin
-		case(state_cnt)
-		8'b00000???:
+		if (state_cnt < 8)
+		begin
 			din_addr <= din_addr + 2;
+		end
 		
-		8'd15, 8'd16, 8'd17, 8'd18:
+		if (15 <= state_cnt & state_cnt <= 18)
+		begin
 			dout_addr <= dout_addr + 4;
-		endcase
+		end
 		
 		X_buffer0 <= data_in;
 		X_buffer1 <= X_buffer0[63:16];
@@ -111,10 +113,10 @@ module MatMulUnit(
 	
 	assign data_out = S_buffer3;
 	
-	SA#(
+	SystolicArray #(
 		.ARRAY_LENGTH(4),
 		.ARRAY_WIDTH(4)
-	) array(
+	) myVMX (
 		.inst(inst_feed),
 		.WinL({data_in}),
 		.XinL({X_buffer3[15:0], X_buffer2[15:0], X_buffer1[15:0], X_buffer0[15:0]}),
@@ -122,6 +124,7 @@ module MatMulUnit(
 		.BinL(128'b0),
 		.SoutL(S_catch),
 		.Sready(S_ready),
-		.clk(clk_array));
+		.clk(clk_array)
+	);
 	
 endmodule

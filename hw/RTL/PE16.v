@@ -13,6 +13,7 @@
 /// output [31:0] Sum_pass      - accumulation pass
 /// input         Weight_enable - weight recieve
 ///
+
 module PE16 (
 		clk,
 		enable,
@@ -26,7 +27,8 @@ module PE16 (
 		Matrix_pass,
 		Matrix_sign_pass,
 		Sum_pass,
-		Weight_enable);
+		Weight_enable
+	);
 
 	input clk;
 	input enable

@@ -67,7 +67,6 @@ module vmx_mm_wrapper #
     end
 
     // data scheduler
-
     always @( posedge clk ) begin
         case ( curr_state )
             S_LOAD :  load_counter <= load_counter + 1;
