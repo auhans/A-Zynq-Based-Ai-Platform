@@ -1,7 +1,7 @@
 -- Copyright 1986-2019 Xilinx, Inc. All Rights Reserved.
 -- --------------------------------------------------------------------------------
 -- Tool Version: Vivado v.2019.1 (win64) Build 2552052 Fri May 24 14:49:42 MDT 2019
--- Date        : Fri Oct  4 11:21:10 2019
+-- Date        : Thu Oct 10 11:55:29 2019
 -- Host        : MAIN running 64-bit major release  (build 9200)
 -- Command     : write_vhdl -force -mode synth_stub
 --               D:/GradProject/A-Zynq-Based-Ai-Platform/hw/ipi-bd/test_design/ip/test_design_rst_ps7_0_200M_0/test_design_rst_ps7_0_200M_0_stub.vhdl

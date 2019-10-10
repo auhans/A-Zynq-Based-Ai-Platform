@@ -1,2 +1,2 @@
-./hw/xpr/*
-!./hw/xpr/*.xpr
+hw/xpr/**
+!hw/xpr/*.xpr
