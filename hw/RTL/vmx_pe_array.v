@@ -1,12 +1,12 @@
 module vmx_pe_array #(
     parameter SIZE = 4,
-    parameter VECTOR_BITLEN = 32,
+    parameter VECTOR_BITLEN = 16,
     parameter PRODCUT_BITLEN = VECTOR_WIDTH * 2
 )
 (
     input wire clk,
     input wire rst_n,
-    input wire is_weight,
+    input wire [7:0] is_weight,
     input wire simd_mode,
     input wire [VECTOR_BITLEN*SIZE-1:0] vector,
     output reg [PRODCUT_BITLEN*SIZE-1:0] product
@@ -14,7 +14,7 @@ module vmx_pe_array #(
 
     // remark: arr[row][col]
     wire simd_mode_path [0:SIZE][0:SIZE];
-    wire is_weight_path [0:SIZE][0:SIZE];
+    wire [7:0] is_weight_path [0:SIZE][0:SIZE];
     wire [VECTOR_BITLEN-1:0] vert_path [0:SIZE][0:SIZE];
     wire [PRODCUT_BITLEN-1:0] hori_path [0:SIZE][0:SIZE];
 
