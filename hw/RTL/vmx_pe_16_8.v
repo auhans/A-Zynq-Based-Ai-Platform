@@ -1,12 +1,14 @@
-module PE_16 (
+module vmx_pe_16_8 (
         // controls
 		input wire clk,
+        input wire rst_n,
         input wire simd_mode,
         input wire is_weight,
         // data
 		input wire [15:0] data,
 		input wire [31:0] sum_in,
         // output
+        output reg simd_mode_pass,
         output reg is_weight_pass,
 		output reg [15:0] data_pass,
 		output reg [31:0] sum_out

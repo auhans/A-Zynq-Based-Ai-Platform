@@ -31,7 +31,7 @@ module PE16 (
 	);
 
 	input clk;
-	input enable
+	input enable;
 	//input _res;
 	input width;
 	input [15:0] Weight_input;
