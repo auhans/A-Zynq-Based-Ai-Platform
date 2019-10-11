@@ -63,7 +63,7 @@ always @ (posedge clk) begin
         rd_ptr <= 0;
         dout <= 0;
     end
-    else if((rd_en) && (rd_ptr!=wr_ptr)) begin
+    else if(rd_en) begin
         dout  = data_ram[rd_ptr];
         rd_ptr = rd_ptr+1;
     end
