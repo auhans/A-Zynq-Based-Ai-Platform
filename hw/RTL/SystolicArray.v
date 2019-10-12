@@ -84,9 +84,8 @@ module SystolicArray(inst, WinL, XinL, BinL, SoutL, Sready, clk);
 	always @(negedge clk)
 	begin
 		SC_stall[0] <= SE_dump[ARRAY_LENGTH-1];
-		SC_stall[1] <= SC_stall[0];
 	end
-	assign SCE[0] = SC_stall[1];
+	assign SCE[0] = SC_stall[0];
 	
 	generate
 		for(i=0; i<ARRAY_WIDTH; i=i+1)
