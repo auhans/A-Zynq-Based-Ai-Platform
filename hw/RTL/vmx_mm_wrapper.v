@@ -62,7 +62,7 @@ module vmx_mm_wrapper #
                     else next_state = S_GETW;
             S_LOAD : if ( load_counter == PE_SIZE - 1 ) next_state = S_COMP;
                     else next_state = S_LOAD;
-            S_COMP : if ( comp_counter == PE_SIZE - 1 ) next_state = S_EXPO;
+            S_COMP : if ( comp_counter == PE_SIZE ) next_state = S_EXPO;
                     else next_state = S_COMP;
             S_EXPO : if ( expo_counter == PE_SIZE - 1 ) next_state = S_IDLE;
                     else next_state = S_EXPO;
