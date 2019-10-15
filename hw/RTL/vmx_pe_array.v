@@ -17,7 +17,7 @@ module vmx_pe_array #(
 
     // remark: arr[row][col]
     wire simd_mode_path [0:SIZE][0:SIZE];
-    wire [7:0] is_weight_path [0:SIZE][0:SIZE];
+    wire [7:0] is_weight_path [0:SIZE][0:SIZE-1];
     wire [VECTOR_BITLEN-1:0] vert_path [0:SIZE][0:SIZE-1];
     wire [PRODCUT_BITLEN-1:0] hori_path [0:SIZE-1][0:SIZE];
 
@@ -27,7 +27,7 @@ module vmx_pe_array #(
 
     for ( i = 0; i < SIZE; i = i + 1 ) begin
         for ( j = 0; j < SIZE; j = j + 1 ) begin
-            vmx_pe_16_8 PE(
+            vmx_pe_16_8_karatsuba PE(
                 .clk(clk),
                 .rst_n(rst_n),
                 // input (vertical)

@@ -43,15 +43,16 @@ module vmx_pe_16_8_karatsuba #(
         end
         else begin
             // data update
-            is_weight_pass <= {is_weight[7], is_weight[6:0] - 1};
             simd_mode_pass <= simd_mode;
             data_pass <= data;
             sum_out <= sum;
             // update selector
             if ( is_weight[6:0] == 0 && is_weight[7] == 1 ) begin
                 weight <= data;
+                is_weight_pass <= 8'h7F;
             end
             else begin
+                is_weight_pass <= is_weight - 1;
                 weight <= weight;
             end
         end
