@@ -199,7 +199,7 @@
         </spirit:parameter>
         <spirit:parameter>
           <spirit:name>FREQ_HZ</spirit:name>
-          <spirit:value spirit:format="long" spirit:resolve="generated" spirit:id="BUSIFPARAM_VALUE.S_AXI.FREQ_HZ">200000000</spirit:value>
+          <spirit:value spirit:format="long" spirit:resolve="generated" spirit:id="BUSIFPARAM_VALUE.S_AXI.FREQ_HZ">100000000</spirit:value>
           <spirit:vendorExtensions>
             <xilinx:parameterInfo>
               <xilinx:parameterUsage>none</xilinx:parameterUsage>
@@ -361,7 +361,7 @@
         </spirit:parameter>
         <spirit:parameter>
           <spirit:name>NUM_READ_OUTSTANDING</spirit:name>
-          <spirit:value spirit:format="long" spirit:resolve="generated" spirit:id="BUSIFPARAM_VALUE.S_AXI.NUM_READ_OUTSTANDING">8</spirit:value>
+          <spirit:value spirit:format="long" spirit:resolve="generated" spirit:id="BUSIFPARAM_VALUE.S_AXI.NUM_READ_OUTSTANDING">1</spirit:value>
           <spirit:vendorExtensions>
             <xilinx:parameterInfo>
               <xilinx:parameterUsage>none</xilinx:parameterUsage>
@@ -370,7 +370,7 @@
         </spirit:parameter>
         <spirit:parameter>
           <spirit:name>NUM_WRITE_OUTSTANDING</spirit:name>
-          <spirit:value spirit:format="long" spirit:resolve="generated" spirit:id="BUSIFPARAM_VALUE.S_AXI.NUM_WRITE_OUTSTANDING">8</spirit:value>
+          <spirit:value spirit:format="long" spirit:resolve="generated" spirit:id="BUSIFPARAM_VALUE.S_AXI.NUM_WRITE_OUTSTANDING">1</spirit:value>
           <spirit:vendorExtensions>
             <xilinx:parameterInfo>
               <xilinx:parameterUsage>none</xilinx:parameterUsage>
@@ -397,7 +397,7 @@
         </spirit:parameter>
         <spirit:parameter>
           <spirit:name>CLK_DOMAIN</spirit:name>
-          <spirit:value spirit:resolve="generated" spirit:id="BUSIFPARAM_VALUE.S_AXI.CLK_DOMAIN">test_design_processing_system7_0_0_FCLK_CLK0</spirit:value>
+          <spirit:value spirit:resolve="generated" spirit:id="BUSIFPARAM_VALUE.S_AXI.CLK_DOMAIN"/>
           <spirit:vendorExtensions>
             <xilinx:parameterInfo>
               <xilinx:parameterUsage>none</xilinx:parameterUsage>
@@ -406,7 +406,7 @@
         </spirit:parameter>
         <spirit:parameter>
           <spirit:name>NUM_READ_THREADS</spirit:name>
-          <spirit:value spirit:format="long" spirit:resolve="generated" spirit:id="BUSIFPARAM_VALUE.S_AXI.NUM_READ_THREADS">4</spirit:value>
+          <spirit:value spirit:format="long" spirit:resolve="generated" spirit:id="BUSIFPARAM_VALUE.S_AXI.NUM_READ_THREADS">1</spirit:value>
           <spirit:vendorExtensions>
             <xilinx:parameterInfo>
               <xilinx:parameterUsage>none</xilinx:parameterUsage>
@@ -415,7 +415,7 @@
         </spirit:parameter>
         <spirit:parameter>
           <spirit:name>NUM_WRITE_THREADS</spirit:name>
-          <spirit:value spirit:format="long" spirit:resolve="generated" spirit:id="BUSIFPARAM_VALUE.S_AXI.NUM_WRITE_THREADS">4</spirit:value>
+          <spirit:value spirit:format="long" spirit:resolve="generated" spirit:id="BUSIFPARAM_VALUE.S_AXI.NUM_WRITE_THREADS">1</spirit:value>
           <spirit:vendorExtensions>
             <xilinx:parameterInfo>
               <xilinx:parameterUsage>none</xilinx:parameterUsage>
@@ -469,7 +469,7 @@
       <spirit:parameters>
         <spirit:parameter>
           <spirit:name>POLARITY</spirit:name>
-          <spirit:value spirit:id="BUSIFPARAM_VALUE.S_AXI_RST.POLARITY">ACTIVE_LOW</spirit:value>
+          <spirit:value spirit:id="BUSIFPARAM_VALUE.S_AXI_RST.POLARITY" spirit:choiceRef="choice_list_9d8b0d81">ACTIVE_LOW</spirit:value>
         </spirit:parameter>
         <spirit:parameter>
           <spirit:name>INSERT_VIP</spirit:name>
@@ -508,7 +508,7 @@
         </spirit:parameter>
         <spirit:parameter>
           <spirit:name>FREQ_HZ</spirit:name>
-          <spirit:value spirit:format="long" spirit:resolve="generated" spirit:id="BUSIFPARAM_VALUE.S_AXI_CLK.FREQ_HZ">200000000</spirit:value>
+          <spirit:value spirit:format="long" spirit:resolve="generated" spirit:id="BUSIFPARAM_VALUE.S_AXI_CLK.FREQ_HZ">100000000</spirit:value>
           <spirit:vendorExtensions>
             <xilinx:parameterInfo>
               <xilinx:parameterUsage>none</xilinx:parameterUsage>
@@ -526,7 +526,7 @@
         </spirit:parameter>
         <spirit:parameter>
           <spirit:name>CLK_DOMAIN</spirit:name>
-          <spirit:value spirit:resolve="generated" spirit:id="BUSIFPARAM_VALUE.S_AXI_CLK.CLK_DOMAIN">test_design_processing_system7_0_0_FCLK_CLK0</spirit:value>
+          <spirit:value spirit:resolve="generated" spirit:id="BUSIFPARAM_VALUE.S_AXI_CLK.CLK_DOMAIN"/>
           <spirit:vendorExtensions>
             <xilinx:parameterInfo>
               <xilinx:parameterUsage>none</xilinx:parameterUsage>
@@ -568,127 +568,19 @@
     </spirit:memoryMap>
   </spirit:memoryMaps>
   <spirit:model>
-    <spirit:views>
-      <spirit:view>
-        <spirit:name>xilinx_verilogsynthesis</spirit:name>
-        <spirit:displayName>Verilog Synthesis</spirit:displayName>
-        <spirit:envIdentifier>verilogSource:vivado.xilinx.com:synthesis</spirit:envIdentifier>
-        <spirit:language>verilog</spirit:language>
-        <spirit:modelName>mm_vmx_v1_0</spirit:modelName>
-        <spirit:fileSetRef>
-          <spirit:localName>xilinx_verilogsynthesis_view_fileset</spirit:localName>
-        </spirit:fileSetRef>
-        <spirit:parameters>
-          <spirit:parameter>
-            <spirit:name>GENtimestamp</spirit:name>
-            <spirit:value>Thu Oct 10 03:54:35 UTC 2019</spirit:value>
-          </spirit:parameter>
-          <spirit:parameter>
-            <spirit:name>outputProductCRC</spirit:name>
-            <spirit:value>9:7f8a3521</spirit:value>
-          </spirit:parameter>
-        </spirit:parameters>
-      </spirit:view>
-      <spirit:view>
-        <spirit:name>xilinx_synthesisconstraints</spirit:name>
-        <spirit:displayName>Synthesis Constraints</spirit:displayName>
-        <spirit:envIdentifier>:vivado.xilinx.com:synthesis.constraints</spirit:envIdentifier>
-        <spirit:parameters>
-          <spirit:parameter>
-            <spirit:name>outputProductCRC</spirit:name>
-            <spirit:value>9:7f8a3521</spirit:value>
-          </spirit:parameter>
-        </spirit:parameters>
-      </spirit:view>
-      <spirit:view>
-        <spirit:name>xilinx_verilogsynthesiswrapper</spirit:name>
-        <spirit:displayName>Verilog Synthesis Wrapper</spirit:displayName>
-        <spirit:envIdentifier>verilogSource:vivado.xilinx.com:synthesis.wrapper</spirit:envIdentifier>
-        <spirit:language>verilog</spirit:language>
-        <spirit:modelName>test_design_mm_vmx_0_0</spirit:modelName>
-        <spirit:fileSetRef>
-          <spirit:localName>xilinx_verilogsynthesiswrapper_view_fileset</spirit:localName>
-        </spirit:fileSetRef>
-        <spirit:parameters>
-          <spirit:parameter>
-            <spirit:name>GENtimestamp</spirit:name>
-            <spirit:value>Thu Oct 10 03:54:35 UTC 2019</spirit:value>
-          </spirit:parameter>
-          <spirit:parameter>
-            <spirit:name>outputProductCRC</spirit:name>
-            <spirit:value>9:7f8a3521</spirit:value>
-          </spirit:parameter>
-        </spirit:parameters>
-      </spirit:view>
-      <spirit:view>
-        <spirit:name>xilinx_verilogbehavioralsimulation</spirit:name>
-        <spirit:displayName>Verilog Simulation</spirit:displayName>
-        <spirit:envIdentifier>verilogSource:vivado.xilinx.com:simulation</spirit:envIdentifier>
-        <spirit:language>verilog</spirit:language>
-        <spirit:modelName>mm_vmx_v1_0</spirit:modelName>
-        <spirit:fileSetRef>
-          <spirit:localName>xilinx_verilogbehavioralsimulation_view_fileset</spirit:localName>
-        </spirit:fileSetRef>
-        <spirit:parameters>
-          <spirit:parameter>
-            <spirit:name>GENtimestamp</spirit:name>
-            <spirit:value>Thu Oct 10 03:54:35 UTC 2019</spirit:value>
-          </spirit:parameter>
-          <spirit:parameter>
-            <spirit:name>outputProductCRC</spirit:name>
-            <spirit:value>9:5bc6899c</spirit:value>
-          </spirit:parameter>
-        </spirit:parameters>
-      </spirit:view>
-      <spirit:view>
-        <spirit:name>xilinx_verilogsimulationwrapper</spirit:name>
-        <spirit:displayName>Verilog Simulation Wrapper</spirit:displayName>
-        <spirit:envIdentifier>verilogSource:vivado.xilinx.com:simulation.wrapper</spirit:envIdentifier>
-        <spirit:language>verilog</spirit:language>
-        <spirit:modelName>test_design_mm_vmx_0_0</spirit:modelName>
-        <spirit:fileSetRef>
-          <spirit:localName>xilinx_verilogsimulationwrapper_view_fileset</spirit:localName>
-        </spirit:fileSetRef>
-        <spirit:parameters>
-          <spirit:parameter>
-            <spirit:name>GENtimestamp</spirit:name>
-            <spirit:value>Thu Oct 10 03:54:35 UTC 2019</spirit:value>
-          </spirit:parameter>
-          <spirit:parameter>
-            <spirit:name>outputProductCRC</spirit:name>
-            <spirit:value>9:5bc6899c</spirit:value>
-          </spirit:parameter>
-        </spirit:parameters>
-      </spirit:view>
-      <spirit:view>
-        <spirit:name>xilinx_externalfiles</spirit:name>
-        <spirit:displayName>External Files</spirit:displayName>
-        <spirit:envIdentifier>:vivado.xilinx.com:external.files</spirit:envIdentifier>
-        <spirit:fileSetRef>
-          <spirit:localName>xilinx_externalfiles_view_fileset</spirit:localName>
-        </spirit:fileSetRef>
-        <spirit:parameters>
-          <spirit:parameter>
-            <spirit:name>outputProductCRC</spirit:name>
-            <spirit:value>9:7f8a3521</spirit:value>
-          </spirit:parameter>
-        </spirit:parameters>
-      </spirit:view>
-    </spirit:views>
     <spirit:ports>
       <spirit:port>
         <spirit:name>s_axi_awaddr</spirit:name>
         <spirit:wire>
           <spirit:direction>in</spirit:direction>
           <spirit:vector>
-            <spirit:left spirit:format="long" spirit:resolve="dependent" spirit:dependency="(spirit:decode(id(&apos;MODELPARAM_VALUE.C_S_AXI_ADDR_WIDTH&apos;))-1)">7</spirit:left>
+            <spirit:left spirit:format="long" spirit:resolve="dependent" spirit:dependency="(spirit:decode(id(&apos;MODELPARAM_VALUE.C_S_AXI_ADDR_WIDTH&apos;)) - 1)">7</spirit:left>
             <spirit:right spirit:format="long">0</spirit:right>
           </spirit:vector>
           <spirit:wireTypeDefs>
             <spirit:wireTypeDef>
               <spirit:typeName>wire</spirit:typeName>
-              <spirit:viewNameRef>xilinx_verilogsynthesis</spirit:viewNameRef>
-              <spirit:viewNameRef>xilinx_verilogbehavioralsimulation</spirit:viewNameRef>
+              <spirit:viewNameRef>dummy_view</spirit:viewNameRef>
             </spirit:wireTypeDef>
           </spirit:wireTypeDefs>
         </spirit:wire>
@@ -704,8 +596,7 @@
           <spirit:wireTypeDefs>
             <spirit:wireTypeDef>
               <spirit:typeName>wire</spirit:typeName>
-              <spirit:viewNameRef>xilinx_verilogsynthesis</spirit:viewNameRef>
-              <spirit:viewNameRef>xilinx_verilogbehavioralsimulation</spirit:viewNameRef>
+              <spirit:viewNameRef>dummy_view</spirit:viewNameRef>
             </spirit:wireTypeDef>
           </spirit:wireTypeDefs>
         </spirit:wire>
@@ -717,8 +608,7 @@
           <spirit:wireTypeDefs>
             <spirit:wireTypeDef>
               <spirit:typeName>wire</spirit:typeName>
-              <spirit:viewNameRef>xilinx_verilogsynthesis</spirit:viewNameRef>
-              <spirit:viewNameRef>xilinx_verilogbehavioralsimulation</spirit:viewNameRef>
+              <spirit:viewNameRef>dummy_view</spirit:viewNameRef>
             </spirit:wireTypeDef>
           </spirit:wireTypeDefs>
         </spirit:wire>
@@ -730,8 +620,7 @@
           <spirit:wireTypeDefs>
             <spirit:wireTypeDef>
               <spirit:typeName>wire</spirit:typeName>
-              <spirit:viewNameRef>xilinx_verilogsynthesis</spirit:viewNameRef>
-              <spirit:viewNameRef>xilinx_verilogbehavioralsimulation</spirit:viewNameRef>
+              <spirit:viewNameRef>dummy_view</spirit:viewNameRef>
             </spirit:wireTypeDef>
           </spirit:wireTypeDefs>
         </spirit:wire>
@@ -741,14 +630,13 @@
         <spirit:wire>
           <spirit:direction>in</spirit:direction>
           <spirit:vector>
-            <spirit:left spirit:format="long" spirit:resolve="dependent" spirit:dependency="(spirit:decode(id(&apos;MODELPARAM_VALUE.C_S_AXI_DATA_WIDTH&apos;))-1)">31</spirit:left>
+            <spirit:left spirit:format="long" spirit:resolve="dependent" spirit:dependency="(spirit:decode(id(&apos;MODELPARAM_VALUE.C_S_AXI_DATA_WIDTH&apos;)) - 1)">31</spirit:left>
             <spirit:right spirit:format="long">0</spirit:right>
           </spirit:vector>
           <spirit:wireTypeDefs>
             <spirit:wireTypeDef>
               <spirit:typeName>wire</spirit:typeName>
-              <spirit:viewNameRef>xilinx_verilogsynthesis</spirit:viewNameRef>
-              <spirit:viewNameRef>xilinx_verilogbehavioralsimulation</spirit:viewNameRef>
+              <spirit:viewNameRef>dummy_view</spirit:viewNameRef>
             </spirit:wireTypeDef>
           </spirit:wireTypeDefs>
         </spirit:wire>
@@ -758,14 +646,13 @@
         <spirit:wire>
           <spirit:direction>in</spirit:direction>
           <spirit:vector>
-            <spirit:left spirit:format="long" spirit:resolve="dependent" spirit:dependency="((spirit:decode(id(&apos;MODELPARAM_VALUE.C_S_AXI_DATA_WIDTH&apos;))/8)-1)">3</spirit:left>
+            <spirit:left spirit:format="long" spirit:resolve="dependent" spirit:dependency="((spirit:decode(id(&apos;MODELPARAM_VALUE.C_S_AXI_DATA_WIDTH&apos;)) / 8) - 1)">3</spirit:left>
             <spirit:right spirit:format="long">0</spirit:right>
           </spirit:vector>
           <spirit:wireTypeDefs>
             <spirit:wireTypeDef>
               <spirit:typeName>wire</spirit:typeName>
-              <spirit:viewNameRef>xilinx_verilogsynthesis</spirit:viewNameRef>
-              <spirit:viewNameRef>xilinx_verilogbehavioralsimulation</spirit:viewNameRef>
+              <spirit:viewNameRef>dummy_view</spirit:viewNameRef>
             </spirit:wireTypeDef>
           </spirit:wireTypeDefs>
         </spirit:wire>
@@ -777,8 +664,7 @@
           <spirit:wireTypeDefs>
             <spirit:wireTypeDef>
               <spirit:typeName>wire</spirit:typeName>
-              <spirit:viewNameRef>xilinx_verilogsynthesis</spirit:viewNameRef>
-              <spirit:viewNameRef>xilinx_verilogbehavioralsimulation</spirit:viewNameRef>
+              <spirit:viewNameRef>dummy_view</spirit:viewNameRef>
             </spirit:wireTypeDef>
           </spirit:wireTypeDefs>
         </spirit:wire>
@@ -790,8 +676,7 @@
           <spirit:wireTypeDefs>
             <spirit:wireTypeDef>
               <spirit:typeName>wire</spirit:typeName>
-              <spirit:viewNameRef>xilinx_verilogsynthesis</spirit:viewNameRef>
-              <spirit:viewNameRef>xilinx_verilogbehavioralsimulation</spirit:viewNameRef>
+              <spirit:viewNameRef>dummy_view</spirit:viewNameRef>
             </spirit:wireTypeDef>
           </spirit:wireTypeDefs>
         </spirit:wire>
@@ -807,8 +692,7 @@
           <spirit:wireTypeDefs>
             <spirit:wireTypeDef>
               <spirit:typeName>wire</spirit:typeName>
-              <spirit:viewNameRef>xilinx_verilogsynthesis</spirit:viewNameRef>
-              <spirit:viewNameRef>xilinx_verilogbehavioralsimulation</spirit:viewNameRef>
+              <spirit:viewNameRef>dummy_view</spirit:viewNameRef>
             </spirit:wireTypeDef>
           </spirit:wireTypeDefs>
         </spirit:wire>
@@ -820,8 +704,7 @@
           <spirit:wireTypeDefs>
             <spirit:wireTypeDef>
               <spirit:typeName>wire</spirit:typeName>
-              <spirit:viewNameRef>xilinx_verilogsynthesis</spirit:viewNameRef>
-              <spirit:viewNameRef>xilinx_verilogbehavioralsimulation</spirit:viewNameRef>
+              <spirit:viewNameRef>dummy_view</spirit:viewNameRef>
             </spirit:wireTypeDef>
           </spirit:wireTypeDefs>
         </spirit:wire>
@@ -833,8 +716,7 @@
           <spirit:wireTypeDefs>
             <spirit:wireTypeDef>
               <spirit:typeName>wire</spirit:typeName>
-              <spirit:viewNameRef>xilinx_verilogsynthesis</spirit:viewNameRef>
-              <spirit:viewNameRef>xilinx_verilogbehavioralsimulation</spirit:viewNameRef>
+              <spirit:viewNameRef>dummy_view</spirit:viewNameRef>
             </spirit:wireTypeDef>
           </spirit:wireTypeDefs>
         </spirit:wire>
@@ -844,14 +726,13 @@
         <spirit:wire>
           <spirit:direction>in</spirit:direction>
           <spirit:vector>
-            <spirit:left spirit:format="long" spirit:resolve="dependent" spirit:dependency="(spirit:decode(id(&apos;MODELPARAM_VALUE.C_S_AXI_ADDR_WIDTH&apos;))-1)">7</spirit:left>
+            <spirit:left spirit:format="long" spirit:resolve="dependent" spirit:dependency="(spirit:decode(id(&apos;MODELPARAM_VALUE.C_S_AXI_ADDR_WIDTH&apos;)) - 1)">7</spirit:left>
             <spirit:right spirit:format="long">0</spirit:right>
           </spirit:vector>
           <spirit:wireTypeDefs>
             <spirit:wireTypeDef>
               <spirit:typeName>wire</spirit:typeName>
-              <spirit:viewNameRef>xilinx_verilogsynthesis</spirit:viewNameRef>
-              <spirit:viewNameRef>xilinx_verilogbehavioralsimulation</spirit:viewNameRef>
+              <spirit:viewNameRef>dummy_view</spirit:viewNameRef>
             </spirit:wireTypeDef>
           </spirit:wireTypeDefs>
         </spirit:wire>
@@ -867,8 +748,7 @@
           <spirit:wireTypeDefs>
             <spirit:wireTypeDef>
               <spirit:typeName>wire</spirit:typeName>
-              <spirit:viewNameRef>xilinx_verilogsynthesis</spirit:viewNameRef>
-              <spirit:viewNameRef>xilinx_verilogbehavioralsimulation</spirit:viewNameRef>
+              <spirit:viewNameRef>dummy_view</spirit:viewNameRef>
             </spirit:wireTypeDef>
           </spirit:wireTypeDefs>
         </spirit:wire>
@@ -880,8 +760,7 @@
           <spirit:wireTypeDefs>
             <spirit:wireTypeDef>
               <spirit:typeName>wire</spirit:typeName>
-              <spirit:viewNameRef>xilinx_verilogsynthesis</spirit:viewNameRef>
-              <spirit:viewNameRef>xilinx_verilogbehavioralsimulation</spirit:viewNameRef>
+              <spirit:viewNameRef>dummy_view</spirit:viewNameRef>
             </spirit:wireTypeDef>
           </spirit:wireTypeDefs>
         </spirit:wire>
@@ -893,8 +772,7 @@
           <spirit:wireTypeDefs>
             <spirit:wireTypeDef>
               <spirit:typeName>wire</spirit:typeName>
-              <spirit:viewNameRef>xilinx_verilogsynthesis</spirit:viewNameRef>
-              <spirit:viewNameRef>xilinx_verilogbehavioralsimulation</spirit:viewNameRef>
+              <spirit:viewNameRef>dummy_view</spirit:viewNameRef>
             </spirit:wireTypeDef>
           </spirit:wireTypeDefs>
         </spirit:wire>
@@ -904,14 +782,13 @@
         <spirit:wire>
           <spirit:direction>out</spirit:direction>
           <spirit:vector>
-            <spirit:left spirit:format="long" spirit:resolve="dependent" spirit:dependency="(spirit:decode(id(&apos;MODELPARAM_VALUE.C_S_AXI_DATA_WIDTH&apos;))-1)">31</spirit:left>
+            <spirit:left spirit:format="long" spirit:resolve="dependent" spirit:dependency="(spirit:decode(id(&apos;MODELPARAM_VALUE.C_S_AXI_DATA_WIDTH&apos;)) - 1)">31</spirit:left>
             <spirit:right spirit:format="long">0</spirit:right>
           </spirit:vector>
           <spirit:wireTypeDefs>
             <spirit:wireTypeDef>
               <spirit:typeName>wire</spirit:typeName>
-              <spirit:viewNameRef>xilinx_verilogsynthesis</spirit:viewNameRef>
-              <spirit:viewNameRef>xilinx_verilogbehavioralsimulation</spirit:viewNameRef>
+              <spirit:viewNameRef>dummy_view</spirit:viewNameRef>
             </spirit:wireTypeDef>
           </spirit:wireTypeDefs>
         </spirit:wire>
@@ -927,8 +804,7 @@
           <spirit:wireTypeDefs>
             <spirit:wireTypeDef>
               <spirit:typeName>wire</spirit:typeName>
-              <spirit:viewNameRef>xilinx_verilogsynthesis</spirit:viewNameRef>
-              <spirit:viewNameRef>xilinx_verilogbehavioralsimulation</spirit:viewNameRef>
+              <spirit:viewNameRef>dummy_view</spirit:viewNameRef>
             </spirit:wireTypeDef>
           </spirit:wireTypeDefs>
         </spirit:wire>
@@ -940,8 +816,7 @@
           <spirit:wireTypeDefs>
             <spirit:wireTypeDef>
               <spirit:typeName>wire</spirit:typeName>
-              <spirit:viewNameRef>xilinx_verilogsynthesis</spirit:viewNameRef>
-              <spirit:viewNameRef>xilinx_verilogbehavioralsimulation</spirit:viewNameRef>
+              <spirit:viewNameRef>dummy_view</spirit:viewNameRef>
             </spirit:wireTypeDef>
           </spirit:wireTypeDefs>
         </spirit:wire>
@@ -953,8 +828,7 @@
           <spirit:wireTypeDefs>
             <spirit:wireTypeDef>
               <spirit:typeName>wire</spirit:typeName>
-              <spirit:viewNameRef>xilinx_verilogsynthesis</spirit:viewNameRef>
-              <spirit:viewNameRef>xilinx_verilogbehavioralsimulation</spirit:viewNameRef>
+              <spirit:viewNameRef>dummy_view</spirit:viewNameRef>
             </spirit:wireTypeDef>
           </spirit:wireTypeDefs>
         </spirit:wire>
@@ -966,8 +840,7 @@
           <spirit:wireTypeDefs>
             <spirit:wireTypeDef>
               <spirit:typeName>wire</spirit:typeName>
-              <spirit:viewNameRef>xilinx_verilogsynthesis</spirit:viewNameRef>
-              <spirit:viewNameRef>xilinx_verilogbehavioralsimulation</spirit:viewNameRef>
+              <spirit:viewNameRef>dummy_view</spirit:viewNameRef>
             </spirit:wireTypeDef>
           </spirit:wireTypeDefs>
         </spirit:wire>
@@ -979,8 +852,7 @@
           <spirit:wireTypeDefs>
             <spirit:wireTypeDef>
               <spirit:typeName>wire</spirit:typeName>
-              <spirit:viewNameRef>xilinx_verilogsynthesis</spirit:viewNameRef>
-              <spirit:viewNameRef>xilinx_verilogbehavioralsimulation</spirit:viewNameRef>
+              <spirit:viewNameRef>dummy_view</spirit:viewNameRef>
             </spirit:wireTypeDef>
           </spirit:wireTypeDefs>
         </spirit:wire>
@@ -1007,95 +879,16 @@
       <spirit:enumeration>32</spirit:enumeration>
     </spirit:choice>
     <spirit:choice>
+      <spirit:name>choice_list_9d8b0d81</spirit:name>
+      <spirit:enumeration>ACTIVE_HIGH</spirit:enumeration>
+      <spirit:enumeration>ACTIVE_LOW</spirit:enumeration>
+    </spirit:choice>
+    <spirit:choice>
       <spirit:name>choice_pairs_ce1226b1</spirit:name>
       <spirit:enumeration spirit:text="true">1</spirit:enumeration>
       <spirit:enumeration spirit:text="false">0</spirit:enumeration>
     </spirit:choice>
   </spirit:choices>
-  <spirit:fileSets>
-    <spirit:fileSet>
-      <spirit:name>xilinx_verilogsynthesis_view_fileset</spirit:name>
-      <spirit:file>
-        <spirit:name>../../ipshared/bdbc/hdl/mm_vmx_v1_0_S_AXI.v</spirit:name>
-        <spirit:fileType>verilogSource</spirit:fileType>
-      </spirit:file>
-      <spirit:file>
-        <spirit:name>../../ipshared/bdbc/src/vmx_mm_wrapper.v</spirit:name>
-        <spirit:fileType>verilogSource</spirit:fileType>
-      </spirit:file>
-      <spirit:file>
-        <spirit:name>../../ipshared/bdbc/hdl/mm_vmx_v1_0.v</spirit:name>
-        <spirit:fileType>verilogSource</spirit:fileType>
-      </spirit:file>
-    </spirit:fileSet>
-    <spirit:fileSet>
-      <spirit:name>xilinx_verilogsynthesiswrapper_view_fileset</spirit:name>
-      <spirit:file>
-        <spirit:name>synth/test_design_mm_vmx_0_0.v</spirit:name>
-        <spirit:fileType>verilogSource</spirit:fileType>
-        <spirit:logicalName>xil_defaultlib</spirit:logicalName>
-      </spirit:file>
-    </spirit:fileSet>
-    <spirit:fileSet>
-      <spirit:name>xilinx_verilogbehavioralsimulation_view_fileset</spirit:name>
-      <spirit:file>
-        <spirit:name>../../ipshared/bdbc/hdl/mm_vmx_v1_0_S_AXI.v</spirit:name>
-        <spirit:fileType>verilogSource</spirit:fileType>
-      </spirit:file>
-      <spirit:file>
-        <spirit:name>../../ipshared/bdbc/src/vmx_mm_wrapper.v</spirit:name>
-        <spirit:fileType>verilogSource</spirit:fileType>
-      </spirit:file>
-      <spirit:file>
-        <spirit:name>../../ipshared/bdbc/hdl/mm_vmx_v1_0.v</spirit:name>
-        <spirit:fileType>verilogSource</spirit:fileType>
-      </spirit:file>
-    </spirit:fileSet>
-    <spirit:fileSet>
-      <spirit:name>xilinx_verilogsimulationwrapper_view_fileset</spirit:name>
-      <spirit:file>
-        <spirit:name>sim/test_design_mm_vmx_0_0.v</spirit:name>
-        <spirit:fileType>verilogSource</spirit:fileType>
-        <spirit:logicalName>xil_defaultlib</spirit:logicalName>
-      </spirit:file>
-    </spirit:fileSet>
-    <spirit:fileSet>
-      <spirit:name>xilinx_externalfiles_view_fileset</spirit:name>
-      <spirit:file>
-        <spirit:name>test_design_mm_vmx_0_0.dcp</spirit:name>
-        <spirit:userFileType>dcp</spirit:userFileType>
-        <spirit:userFileType>USED_IN_implementation</spirit:userFileType>
-        <spirit:userFileType>USED_IN_synthesis</spirit:userFileType>
-        <spirit:logicalName>xil_defaultlib</spirit:logicalName>
-      </spirit:file>
-      <spirit:file>
-        <spirit:name>test_design_mm_vmx_0_0_stub.v</spirit:name>
-        <spirit:fileType>verilogSource</spirit:fileType>
-        <spirit:userFileType>USED_IN_synth_blackbox_stub</spirit:userFileType>
-        <spirit:logicalName>xil_defaultlib</spirit:logicalName>
-      </spirit:file>
-      <spirit:file>
-        <spirit:name>test_design_mm_vmx_0_0_stub.vhdl</spirit:name>
-        <spirit:fileType>vhdlSource</spirit:fileType>
-        <spirit:userFileType>USED_IN_synth_blackbox_stub</spirit:userFileType>
-        <spirit:logicalName>xil_defaultlib</spirit:logicalName>
-      </spirit:file>
-      <spirit:file>
-        <spirit:name>test_design_mm_vmx_0_0_sim_netlist.v</spirit:name>
-        <spirit:fileType>verilogSource</spirit:fileType>
-        <spirit:userFileType>USED_IN_simulation</spirit:userFileType>
-        <spirit:userFileType>USED_IN_single_language</spirit:userFileType>
-        <spirit:logicalName>xil_defaultlib</spirit:logicalName>
-      </spirit:file>
-      <spirit:file>
-        <spirit:name>test_design_mm_vmx_0_0_sim_netlist.vhdl</spirit:name>
-        <spirit:fileType>vhdlSource</spirit:fileType>
-        <spirit:userFileType>USED_IN_simulation</spirit:userFileType>
-        <spirit:userFileType>USED_IN_single_language</spirit:userFileType>
-        <spirit:logicalName>xil_defaultlib</spirit:logicalName>
-      </spirit:file>
-    </spirit:fileSet>
-  </spirit:fileSets>
   <spirit:description>mm based VMX engine</spirit:description>
   <spirit:parameters>
     <spirit:parameter>
@@ -1156,7 +949,7 @@
   <spirit:vendorExtensions>
     <xilinx:coreExtensions>
       <xilinx:displayName>mm_vmx_v1.0</xilinx:displayName>
-      <xilinx:coreRevision>3</xilinx:coreRevision>
+      <xilinx:coreRevision>5</xilinx:coreRevision>
       <xilinx:tags>
         <xilinx:tag xilinx:name="ui.data.coregen.dd@20409d7e_ARCHIVE_LOCATION">d:/GradProject/A-Zynq-Based-Ai-Platform/hw/ip-repo/mm_vmx_1.0</xilinx:tag>
         <xilinx:tag xilinx:name="ui.data.coregen.dd@728fb450_ARCHIVE_LOCATION">d:/GradProject/A-Zynq-Based-Ai-Platform/hw/ip-repo/mm_vmx_1.0</xilinx:tag>
@@ -1272,15 +1065,260 @@
         <xilinx:tag xilinx:name="ui.data.coregen.dd@41e4e0aa_ARCHIVE_LOCATION">d:/GradProject/A-Zynq-Based-Ai-Platform/hw/ip-repo/mm_vmx_1.0</xilinx:tag>
         <xilinx:tag xilinx:name="ui.data.coregen.dd@1c498c8d_ARCHIVE_LOCATION">d:/GradProject/A-Zynq-Based-Ai-Platform/hw/ip-repo/mm_vmx_1.0</xilinx:tag>
         <xilinx:tag xilinx:name="ui.data.coregen.dd@5b273972_ARCHIVE_LOCATION">d:/GradProject/A-Zynq-Based-Ai-Platform/hw/ip-repo/mm_vmx_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@17b03fae_ARCHIVE_LOCATION">d:/GradProject/A-Zynq-Based-Ai-Platform/hw/ip-repo/mm_vmx_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@68280848_ARCHIVE_LOCATION">d:/GradProject/A-Zynq-Based-Ai-Platform/hw/ip-repo/mm_vmx_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@60f7fded_ARCHIVE_LOCATION">d:/GradProject/A-Zynq-Based-Ai-Platform/hw/ip-repo/mm_vmx_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@36b88339_ARCHIVE_LOCATION">d:/GradProject/A-Zynq-Based-Ai-Platform/hw/ip-repo/mm_vmx_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@3ff7f45_ARCHIVE_LOCATION">d:/GradProject/A-Zynq-Based-Ai-Platform/hw/ip-repo/mm_vmx_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@5293ec18_ARCHIVE_LOCATION">d:/GradProject/A-Zynq-Based-Ai-Platform/hw/ip-repo/mm_vmx_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@1d7735ff_ARCHIVE_LOCATION">d:/GradProject/A-Zynq-Based-Ai-Platform/hw/ip-repo/mm_vmx_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@6858d278_ARCHIVE_LOCATION">d:/GradProject/A-Zynq-Based-Ai-Platform/hw/ip-repo/mm_vmx_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@fae4a05_ARCHIVE_LOCATION">d:/GradProject/A-Zynq-Based-Ai-Platform/hw/ip-repo/mm_vmx_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@709ba161_ARCHIVE_LOCATION">d:/GradProject/A-Zynq-Based-Ai-Platform/hw/ip-repo/mm_vmx_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@321225f2_ARCHIVE_LOCATION">d:/GradProject/A-Zynq-Based-Ai-Platform/hw/ip-repo/mm_vmx_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@144b4ba5_ARCHIVE_LOCATION">d:/GradProject/A-Zynq-Based-Ai-Platform/hw/ip-repo/mm_vmx_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@2b172c88_ARCHIVE_LOCATION">d:/GradProject/A-Zynq-Based-Ai-Platform/hw/ip-repo/mm_vmx_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@5592d6ca_ARCHIVE_LOCATION">d:/GradProject/A-Zynq-Based-Ai-Platform/hw/ip-repo/mm_vmx_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@4f3754de_ARCHIVE_LOCATION">d:/GradProject/A-Zynq-Based-Ai-Platform/hw/ip-repo/mm_vmx_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@3d75d4c1_ARCHIVE_LOCATION">d:/GradProject/A-Zynq-Based-Ai-Platform/hw/ip-repo/mm_vmx_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@3db5e8b5_ARCHIVE_LOCATION">d:/GradProject/A-Zynq-Based-Ai-Platform/hw/ip-repo/mm_vmx_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@c39ddda_ARCHIVE_LOCATION">d:/GradProject/A-Zynq-Based-Ai-Platform/hw/ip-repo/mm_vmx_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@45913873_ARCHIVE_LOCATION">d:/GradProject/A-Zynq-Based-Ai-Platform/hw/ip-repo/mm_vmx_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@1398ba70_ARCHIVE_LOCATION">d:/GradProject/A-Zynq-Based-Ai-Platform/hw/ip-repo/mm_vmx_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@6a970eb1_ARCHIVE_LOCATION">d:/GradProject/A-Zynq-Based-Ai-Platform/hw/ip-repo/mm_vmx_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@42dc001c_ARCHIVE_LOCATION">d:/GradProject/A-Zynq-Based-Ai-Platform/hw/ip-repo/mm_vmx_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@3144d95c_ARCHIVE_LOCATION">d:/GradProject/A-Zynq-Based-Ai-Platform/hw/ip-repo/mm_vmx_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@4af1f351_ARCHIVE_LOCATION">d:/GradProject/A-Zynq-Based-Ai-Platform/hw/ip-repo/mm_vmx_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@1bfc76f2_ARCHIVE_LOCATION">d:/GradProject/A-Zynq-Based-Ai-Platform/hw/ip-repo/mm_vmx_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@f05b37b_ARCHIVE_LOCATION">d:/GradProject/A-Zynq-Based-Ai-Platform/hw/ip-repo/mm_vmx_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@75315193_ARCHIVE_LOCATION">d:/GradProject/A-Zynq-Based-Ai-Platform/hw/ip-repo/mm_vmx_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@51e20676_ARCHIVE_LOCATION">d:/GradProject/A-Zynq-Based-Ai-Platform/hw/ip-repo/mm_vmx_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@35593dce_ARCHIVE_LOCATION">d:/GradProject/A-Zynq-Based-Ai-Platform/hw/ip-repo/mm_vmx_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@169479b9_ARCHIVE_LOCATION">d:/GradProject/A-Zynq-Based-Ai-Platform/hw/ip-repo/mm_vmx_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@7a406e46_ARCHIVE_LOCATION">d:/GradProject/A-Zynq-Based-Ai-Platform/hw/ip-repo/mm_vmx_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@5b78ee3_ARCHIVE_LOCATION">d:/GradProject/A-Zynq-Based-Ai-Platform/hw/ip-repo/mm_vmx_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@3a91127_ARCHIVE_LOCATION">d:/GradProject/A-Zynq-Based-Ai-Platform/hw/ip-repo/mm_vmx_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@78f2f681_ARCHIVE_LOCATION">d:/GradProject/A-Zynq-Based-Ai-Platform/hw/ip-repo/mm_vmx_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@12c2deb8_ARCHIVE_LOCATION">d:/GradProject/A-Zynq-Based-Ai-Platform/hw/ip-repo/mm_vmx_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@252b3887_ARCHIVE_LOCATION">d:/GradProject/A-Zynq-Based-Ai-Platform/hw/ip-repo/mm_vmx_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@63a94eec_ARCHIVE_LOCATION">d:/GradProject/A-Zynq-Based-Ai-Platform/hw/ip-repo/mm_vmx_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@6b73859f_ARCHIVE_LOCATION">d:/GradProject/A-Zynq-Based-Ai-Platform/hw/ip-repo/mm_vmx_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@7d3e3de2_ARCHIVE_LOCATION">d:/GradProject/A-Zynq-Based-Ai-Platform/hw/ip-repo/mm_vmx_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@236135c9_ARCHIVE_LOCATION">d:/GradProject/A-Zynq-Based-Ai-Platform/hw/ip-repo/mm_vmx_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@1b082d9f_ARCHIVE_LOCATION">d:/GradProject/A-Zynq-Based-Ai-Platform/hw/ip-repo/mm_vmx_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@15d67c81_ARCHIVE_LOCATION">d:/GradProject/A-Zynq-Based-Ai-Platform/hw/ip-repo/mm_vmx_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@1cd1befa_ARCHIVE_LOCATION">d:/GradProject/A-Zynq-Based-Ai-Platform/hw/ip-repo/mm_vmx_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@749124fc_ARCHIVE_LOCATION">d:/GradProject/A-Zynq-Based-Ai-Platform/hw/ip-repo/mm_vmx_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@f383ef5_ARCHIVE_LOCATION">d:/GradProject/A-Zynq-Based-Ai-Platform/hw/ip-repo/mm_vmx_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@6fddb745_ARCHIVE_LOCATION">d:/GradProject/A-Zynq-Based-Ai-Platform/hw/ip-repo/mm_vmx_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@45dd39ba_ARCHIVE_LOCATION">d:/GradProject/A-Zynq-Based-Ai-Platform/hw/ip-repo/mm_vmx_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@463d122_ARCHIVE_LOCATION">d:/GradProject/A-Zynq-Based-Ai-Platform/hw/ip-repo/mm_vmx_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@5a4710e4_ARCHIVE_LOCATION">d:/GradProject/A-Zynq-Based-Ai-Platform/hw/ip-repo/mm_vmx_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@2eed81f3_ARCHIVE_LOCATION">d:/GradProject/A-Zynq-Based-Ai-Platform/hw/ip-repo/mm_vmx_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@5727f5e6_ARCHIVE_LOCATION">d:/GradProject/A-Zynq-Based-Ai-Platform/hw/ip-repo/mm_vmx_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@1278a0b1_ARCHIVE_LOCATION">d:/GradProject/A-Zynq-Based-Ai-Platform/hw/ip-repo/mm_vmx_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@68a89bdb_ARCHIVE_LOCATION">d:/GradProject/A-Zynq-Based-Ai-Platform/hw/ip-repo/mm_vmx_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@4d68f492_ARCHIVE_LOCATION">d:/GradProject/A-Zynq-Based-Ai-Platform/hw/ip-repo/mm_vmx_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@65ff1583_ARCHIVE_LOCATION">d:/GradProject/A-Zynq-Based-Ai-Platform/hw/ip-repo/mm_vmx_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@4df4f796_ARCHIVE_LOCATION">d:/GradProject/A-Zynq-Based-Ai-Platform/hw/ip-repo/mm_vmx_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@4c1f729e_ARCHIVE_LOCATION">d:/GradProject/A-Zynq-Based-Ai-Platform/hw/ip-repo/mm_vmx_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@51469fd2_ARCHIVE_LOCATION">d:/GradProject/A-Zynq-Based-Ai-Platform/hw/ip-repo/mm_vmx_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@205bc86f_ARCHIVE_LOCATION">d:/GradProject/A-Zynq-Based-Ai-Platform/hw/ip-repo/mm_vmx_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@47b66ca3_ARCHIVE_LOCATION">d:/GradProject/A-Zynq-Based-Ai-Platform/hw/ip-repo/mm_vmx_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@72c546b0_ARCHIVE_LOCATION">d:/GradProject/A-Zynq-Based-Ai-Platform/hw/ip-repo/mm_vmx_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@413e72a0_ARCHIVE_LOCATION">d:/GradProject/A-Zynq-Based-Ai-Platform/hw/ip-repo/mm_vmx_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@10b87b75_ARCHIVE_LOCATION">d:/GradProject/A-Zynq-Based-Ai-Platform/hw/ip-repo/mm_vmx_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@32ffd953_ARCHIVE_LOCATION">d:/GradProject/A-Zynq-Based-Ai-Platform/hw/ip-repo/mm_vmx_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@d264218_ARCHIVE_LOCATION">d:/GradProject/A-Zynq-Based-Ai-Platform/hw/ip-repo/mm_vmx_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@2baa1731_ARCHIVE_LOCATION">d:/GradProject/A-Zynq-Based-Ai-Platform/hw/ip-repo/mm_vmx_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@4636ebe1_ARCHIVE_LOCATION">d:/GradProject/A-Zynq-Based-Ai-Platform/hw/ip-repo/mm_vmx_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@205f7766_ARCHIVE_LOCATION">d:/GradProject/A-Zynq-Based-Ai-Platform/hw/ip-repo/mm_vmx_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@447c1bbd_ARCHIVE_LOCATION">d:/GradProject/A-Zynq-Based-Ai-Platform/hw/ip-repo/mm_vmx_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@596f06a2_ARCHIVE_LOCATION">d:/GradProject/A-Zynq-Based-Ai-Platform/hw/ip-repo/mm_vmx_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@5104d7fe_ARCHIVE_LOCATION">d:/GradProject/A-Zynq-Based-Ai-Platform/hw/ip-repo/mm_vmx_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@93eca54_ARCHIVE_LOCATION">d:/GradProject/A-Zynq-Based-Ai-Platform/hw/ip-repo/mm_vmx_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@4839c978_ARCHIVE_LOCATION">d:/GradProject/A-Zynq-Based-Ai-Platform/hw/ip-repo/mm_vmx_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@1da9efed_ARCHIVE_LOCATION">d:/GradProject/A-Zynq-Based-Ai-Platform/hw/ip-repo/mm_vmx_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@764afe28_ARCHIVE_LOCATION">d:/GradProject/A-Zynq-Based-Ai-Platform/hw/ip-repo/mm_vmx_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@5bad8844_ARCHIVE_LOCATION">d:/GradProject/A-Zynq-Based-Ai-Platform/hw/ip-repo/mm_vmx_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@6a557190_ARCHIVE_LOCATION">d:/GradProject/A-Zynq-Based-Ai-Platform/hw/ip-repo/mm_vmx_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@119dede8_ARCHIVE_LOCATION">d:/GradProject/A-Zynq-Based-Ai-Platform/hw/ip-repo/mm_vmx_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@5c6ef28e_ARCHIVE_LOCATION">d:/GradProject/A-Zynq-Based-Ai-Platform/hw/ip-repo/mm_vmx_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@3380d61_ARCHIVE_LOCATION">d:/GradProject/A-Zynq-Based-Ai-Platform/hw/ip-repo/mm_vmx_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@b6ee954_ARCHIVE_LOCATION">d:/GradProject/A-Zynq-Based-Ai-Platform/hw/ip-repo/mm_vmx_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@1a802e95_ARCHIVE_LOCATION">d:/GradProject/A-Zynq-Based-Ai-Platform/hw/ip-repo/mm_vmx_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@474d2701_ARCHIVE_LOCATION">d:/GradProject/A-Zynq-Based-Ai-Platform/hw/ip-repo/mm_vmx_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@3e546a12_ARCHIVE_LOCATION">d:/GradProject/A-Zynq-Based-Ai-Platform/hw/ip-repo/mm_vmx_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@5a293778_ARCHIVE_LOCATION">d:/GradProject/A-Zynq-Based-Ai-Platform/hw/ip-repo/mm_vmx_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@181ff9bc_ARCHIVE_LOCATION">d:/GradProject/A-Zynq-Based-Ai-Platform/hw/ip-repo/mm_vmx_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@42ab10b4_ARCHIVE_LOCATION">d:/GradProject/A-Zynq-Based-Ai-Platform/hw/ip-repo/mm_vmx_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@2182338e_ARCHIVE_LOCATION">d:/GradProject/A-Zynq-Based-Ai-Platform/hw/ip-repo/mm_vmx_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@1089e88c_ARCHIVE_LOCATION">d:/GradProject/A-Zynq-Based-Ai-Platform/hw/ip-repo/mm_vmx_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@1a79879c_ARCHIVE_LOCATION">d:/GradProject/A-Zynq-Based-Ai-Platform/hw/ip-repo/mm_vmx_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@716a8277_ARCHIVE_LOCATION">d:/GradProject/A-Zynq-Based-Ai-Platform/hw/ip-repo/mm_vmx_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@c2fa655_ARCHIVE_LOCATION">d:/GradProject/A-Zynq-Based-Ai-Platform/hw/ip-repo/mm_vmx_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@7586dcb6_ARCHIVE_LOCATION">d:/GradProject/A-Zynq-Based-Ai-Platform/hw/ip-repo/mm_vmx_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@725bf4c8_ARCHIVE_LOCATION">d:/GradProject/A-Zynq-Based-Ai-Platform/hw/ip-repo/mm_vmx_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@2c272824_ARCHIVE_LOCATION">d:/GradProject/A-Zynq-Based-Ai-Platform/hw/ip-repo/mm_vmx_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@28e8cae2_ARCHIVE_LOCATION">d:/GradProject/A-Zynq-Based-Ai-Platform/hw/ip-repo/mm_vmx_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@1deab267_ARCHIVE_LOCATION">d:/GradProject/A-Zynq-Based-Ai-Platform/hw/ip-repo/mm_vmx_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@1762cba5_ARCHIVE_LOCATION">d:/GradProject/A-Zynq-Based-Ai-Platform/hw/ip-repo/mm_vmx_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@62771aad_ARCHIVE_LOCATION">d:/GradProject/A-Zynq-Based-Ai-Platform/hw/ip-repo/mm_vmx_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@25d514cc_ARCHIVE_LOCATION">d:/GradProject/A-Zynq-Based-Ai-Platform/hw/ip-repo/mm_vmx_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@4bf415d4_ARCHIVE_LOCATION">d:/GradProject/A-Zynq-Based-Ai-Platform/hw/ip-repo/mm_vmx_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@646bd08f_ARCHIVE_LOCATION">d:/GradProject/A-Zynq-Based-Ai-Platform/hw/ip-repo/mm_vmx_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@68c83f38_ARCHIVE_LOCATION">d:/GradProject/A-Zynq-Based-Ai-Platform/hw/ip-repo/mm_vmx_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@75825be7_ARCHIVE_LOCATION">d:/GradProject/A-Zynq-Based-Ai-Platform/hw/ip-repo/mm_vmx_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@6217ed25_ARCHIVE_LOCATION">d:/GradProject/A-Zynq-Based-Ai-Platform/hw/ip-repo/mm_vmx_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@3a1f84be_ARCHIVE_LOCATION">d:/GradProject/A-Zynq-Based-Ai-Platform/hw/ip-repo/mm_vmx_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@e06e12a_ARCHIVE_LOCATION">d:/GradProject/A-Zynq-Based-Ai-Platform/hw/ip-repo/mm_vmx_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@68088bf6_ARCHIVE_LOCATION">d:/GradProject/A-Zynq-Based-Ai-Platform/hw/ip-repo/mm_vmx_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@4a443a2a_ARCHIVE_LOCATION">d:/GradProject/A-Zynq-Based-Ai-Platform/hw/ip-repo/mm_vmx_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@5d8aa3b0_ARCHIVE_LOCATION">d:/GradProject/A-Zynq-Based-Ai-Platform/hw/ip-repo/mm_vmx_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@2f2202db_ARCHIVE_LOCATION">d:/GradProject/A-Zynq-Based-Ai-Platform/hw/ip-repo/mm_vmx_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@2cef2bf6_ARCHIVE_LOCATION">d:/GradProject/A-Zynq-Based-Ai-Platform/hw/ip-repo/mm_vmx_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@13c2f753_ARCHIVE_LOCATION">d:/GradProject/A-Zynq-Based-Ai-Platform/hw/ip-repo/mm_vmx_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@3fcb1eb5_ARCHIVE_LOCATION">d:/GradProject/A-Zynq-Based-Ai-Platform/hw/ip-repo/mm_vmx_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@3dfe2a6a_ARCHIVE_LOCATION">d:/GradProject/A-Zynq-Based-Ai-Platform/hw/ip-repo/mm_vmx_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@5137e5e3_ARCHIVE_LOCATION">d:/GradProject/A-Zynq-Based-Ai-Platform/hw/ip-repo/mm_vmx_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@37e772d4_ARCHIVE_LOCATION">d:/GradProject/A-Zynq-Based-Ai-Platform/hw/ip-repo/mm_vmx_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@378ae1f3_ARCHIVE_LOCATION">d:/GradProject/A-Zynq-Based-Ai-Platform/hw/ip-repo/mm_vmx_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@7adf7125_ARCHIVE_LOCATION">d:/GradProject/A-Zynq-Based-Ai-Platform/hw/ip-repo/mm_vmx_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@6a9ad46d_ARCHIVE_LOCATION">d:/GradProject/A-Zynq-Based-Ai-Platform/hw/ip-repo/mm_vmx_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@3945db44_ARCHIVE_LOCATION">d:/GradProject/A-Zynq-Based-Ai-Platform/hw/ip-repo/mm_vmx_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@62f5e9b1_ARCHIVE_LOCATION">d:/GradProject/A-Zynq-Based-Ai-Platform/hw/ip-repo/mm_vmx_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@439fd020_ARCHIVE_LOCATION">d:/GradProject/A-Zynq-Based-Ai-Platform/hw/ip-repo/mm_vmx_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@a2f4e0e_ARCHIVE_LOCATION">d:/GradProject/A-Zynq-Based-Ai-Platform/hw/ip-repo/mm_vmx_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@e3cd82e_ARCHIVE_LOCATION">d:/GradProject/A-Zynq-Based-Ai-Platform/hw/ip-repo/mm_vmx_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@7dd404d_ARCHIVE_LOCATION">d:/GradProject/A-Zynq-Based-Ai-Platform/hw/ip-repo/mm_vmx_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@50d8632f_ARCHIVE_LOCATION">d:/GradProject/A-Zynq-Based-Ai-Platform/hw/ip-repo/mm_vmx_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@5a163283_ARCHIVE_LOCATION">d:/GradProject/A-Zynq-Based-Ai-Platform/hw/ip-repo/mm_vmx_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@2b54bf2b_ARCHIVE_LOCATION">d:/GradProject/A-Zynq-Based-Ai-Platform/hw/ip-repo/mm_vmx_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@55664ced_ARCHIVE_LOCATION">d:/GradProject/A-Zynq-Based-Ai-Platform/hw/ip-repo/mm_vmx_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@5b553d2f_ARCHIVE_LOCATION">d:/GradProject/A-Zynq-Based-Ai-Platform/hw/ip-repo/mm_vmx_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@1345eaa8_ARCHIVE_LOCATION">d:/GradProject/A-Zynq-Based-Ai-Platform/hw/ip-repo/mm_vmx_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@54609054_ARCHIVE_LOCATION">d:/GradProject/A-Zynq-Based-Ai-Platform/hw/ip-repo/mm_vmx_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@15210b38_ARCHIVE_LOCATION">d:/GradProject/A-Zynq-Based-Ai-Platform/hw/ip-repo/mm_vmx_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@14bf851d_ARCHIVE_LOCATION">d:/GradProject/A-Zynq-Based-Ai-Platform/hw/ip-repo/mm_vmx_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@7dafae0f_ARCHIVE_LOCATION">d:/GradProject/A-Zynq-Based-Ai-Platform/hw/ip-repo/mm_vmx_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@265adae5_ARCHIVE_LOCATION">d:/GradProject/A-Zynq-Based-Ai-Platform/hw/ip-repo/mm_vmx_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@14b78b52_ARCHIVE_LOCATION">d:/GradProject/A-Zynq-Based-Ai-Platform/hw/ip-repo/mm_vmx_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@6734d908_ARCHIVE_LOCATION">d:/GradProject/A-Zynq-Based-Ai-Platform/hw/ip-repo/mm_vmx_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@5e1877ba_ARCHIVE_LOCATION">d:/GradProject/A-Zynq-Based-Ai-Platform/hw/ip-repo/mm_vmx_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@c9b53d4_ARCHIVE_LOCATION">d:/GradProject/A-Zynq-Based-Ai-Platform/hw/ip-repo/mm_vmx_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@6a29afa4_ARCHIVE_LOCATION">d:/GradProject/A-Zynq-Based-Ai-Platform/hw/ip-repo/mm_vmx_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@7b5fe4df_ARCHIVE_LOCATION">d:/GradProject/A-Zynq-Based-Ai-Platform/hw/ip-repo/mm_vmx_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@559e8be3_ARCHIVE_LOCATION">d:/GradProject/A-Zynq-Based-Ai-Platform/hw/ip-repo/mm_vmx_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@1ff84b69_ARCHIVE_LOCATION">d:/GradProject/A-Zynq-Based-Ai-Platform/hw/ip-repo/mm_vmx_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@24088e34_ARCHIVE_LOCATION">d:/GradProject/A-Zynq-Based-Ai-Platform/hw/ip-repo/mm_vmx_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@245d045e_ARCHIVE_LOCATION">d:/GradProject/A-Zynq-Based-Ai-Platform/hw/ip-repo/mm_vmx_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@1212a1ec_ARCHIVE_LOCATION">d:/GradProject/A-Zynq-Based-Ai-Platform/hw/ip-repo/mm_vmx_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@242a76b5_ARCHIVE_LOCATION">d:/GradProject/A-Zynq-Based-Ai-Platform/hw/ip-repo/mm_vmx_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@3cf8f907_ARCHIVE_LOCATION">d:/GradProject/A-Zynq-Based-Ai-Platform/hw/ip-repo/mm_vmx_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@4ece6a55_ARCHIVE_LOCATION">d:/GradProject/A-Zynq-Based-Ai-Platform/hw/ip-repo/mm_vmx_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@a9469a4_ARCHIVE_LOCATION">d:/GradProject/A-Zynq-Based-Ai-Platform/hw/ip-repo/mm_vmx_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@353c0fdd_ARCHIVE_LOCATION">d:/GradProject/A-Zynq-Based-Ai-Platform/hw/ip-repo/mm_vmx_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@6cfe976d_ARCHIVE_LOCATION">d:/GradProject/A-Zynq-Based-Ai-Platform/hw/ip-repo/mm_vmx_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@b6da752_ARCHIVE_LOCATION">d:/GradProject/A-Zynq-Based-Ai-Platform/hw/ip-repo/mm_vmx_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@223bcbe6_ARCHIVE_LOCATION">d:/GradProject/A-Zynq-Based-Ai-Platform/hw/ip-repo/mm_vmx_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@7905b04d_ARCHIVE_LOCATION">d:/GradProject/A-Zynq-Based-Ai-Platform/hw/ip-repo/mm_vmx_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@2a102765_ARCHIVE_LOCATION">d:/GradProject/A-Zynq-Based-Ai-Platform/hw/ip-repo/mm_vmx_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@7fe3db0d_ARCHIVE_LOCATION">d:/GradProject/A-Zynq-Based-Ai-Platform/hw/ip-repo/mm_vmx_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@7f565a09_ARCHIVE_LOCATION">d:/GradProject/A-Zynq-Based-Ai-Platform/hw/ip-repo/mm_vmx_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@6a5cf035_ARCHIVE_LOCATION">d:/GradProject/A-Zynq-Based-Ai-Platform/hw/ip-repo/mm_vmx_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@77b7336a_ARCHIVE_LOCATION">d:/GradProject/A-Zynq-Based-Ai-Platform/hw/ip-repo/mm_vmx_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@7120f7a3_ARCHIVE_LOCATION">d:/GradProject/A-Zynq-Based-Ai-Platform/hw/ip-repo/mm_vmx_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@6e9e331b_ARCHIVE_LOCATION">d:/GradProject/A-Zynq-Based-Ai-Platform/hw/ip-repo/mm_vmx_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@416f7621_ARCHIVE_LOCATION">d:/GradProject/A-Zynq-Based-Ai-Platform/hw/ip-repo/mm_vmx_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@320b2d7e_ARCHIVE_LOCATION">d:/GradProject/A-Zynq-Based-Ai-Platform/hw/ip-repo/mm_vmx_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@25e2a30e_ARCHIVE_LOCATION">d:/GradProject/A-Zynq-Based-Ai-Platform/hw/ip-repo/mm_vmx_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@5cde1969_ARCHIVE_LOCATION">d:/GradProject/A-Zynq-Based-Ai-Platform/hw/ip-repo/mm_vmx_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@57e77083_ARCHIVE_LOCATION">d:/GradProject/A-Zynq-Based-Ai-Platform/hw/ip-repo/mm_vmx_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@71f5abf0_ARCHIVE_LOCATION">d:/GradProject/A-Zynq-Based-Ai-Platform/hw/ip-repo/mm_vmx_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@5a3ebcbe_ARCHIVE_LOCATION">d:/GradProject/A-Zynq-Based-Ai-Platform/hw/ip-repo/mm_vmx_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@229541f4_ARCHIVE_LOCATION">d:/GradProject/A-Zynq-Based-Ai-Platform/hw/ip-repo/mm_vmx_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@1c8fead0_ARCHIVE_LOCATION">d:/GradProject/A-Zynq-Based-Ai-Platform/hw/ip-repo/mm_vmx_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@45df1e28_ARCHIVE_LOCATION">d:/GradProject/A-Zynq-Based-Ai-Platform/hw/ip-repo/mm_vmx_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@54d526e4_ARCHIVE_LOCATION">d:/GradProject/A-Zynq-Based-Ai-Platform/hw/ip-repo/mm_vmx_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@491437c2_ARCHIVE_LOCATION">d:/GradProject/A-Zynq-Based-Ai-Platform/hw/ip-repo/mm_vmx_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@2f18379c_ARCHIVE_LOCATION">d:/GradProject/A-Zynq-Based-Ai-Platform/hw/ip-repo/mm_vmx_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@3387fe10_ARCHIVE_LOCATION">d:/GradProject/A-Zynq-Based-Ai-Platform/hw/ip-repo/mm_vmx_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@65da865e_ARCHIVE_LOCATION">d:/GradProject/A-Zynq-Based-Ai-Platform/hw/ip-repo/mm_vmx_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@75448f12_ARCHIVE_LOCATION">d:/GradProject/A-Zynq-Based-Ai-Platform/hw/ip-repo/mm_vmx_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@5425e0f1_ARCHIVE_LOCATION">d:/GradProject/A-Zynq-Based-Ai-Platform/hw/ip-repo/mm_vmx_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@65b8146a_ARCHIVE_LOCATION">d:/GradProject/A-Zynq-Based-Ai-Platform/hw/ip-repo/mm_vmx_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@1e3fc51f_ARCHIVE_LOCATION">d:/GradProject/A-Zynq-Based-Ai-Platform/hw/ip-repo/mm_vmx_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@2103cf8_ARCHIVE_LOCATION">d:/GradProject/A-Zynq-Based-Ai-Platform/hw/ip-repo/mm_vmx_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@13613992_ARCHIVE_LOCATION">d:/GradProject/A-Zynq-Based-Ai-Platform/hw/ip-repo/mm_vmx_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@40953aa4_ARCHIVE_LOCATION">d:/GradProject/A-Zynq-Based-Ai-Platform/hw/ip-repo/mm_vmx_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@2e9cc886_ARCHIVE_LOCATION">d:/GradProject/A-Zynq-Based-Ai-Platform/hw/ip-repo/mm_vmx_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@d0b66a_ARCHIVE_LOCATION">d:/GradProject/A-Zynq-Based-Ai-Platform/hw/ip-repo/mm_vmx_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@3105fecc_ARCHIVE_LOCATION">d:/GradProject/A-Zynq-Based-Ai-Platform/hw/ip-repo/mm_vmx_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@23d3bef6_ARCHIVE_LOCATION">d:/GradProject/A-Zynq-Based-Ai-Platform/hw/ip-repo/mm_vmx_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@738a5f75_ARCHIVE_LOCATION">d:/GradProject/A-Zynq-Based-Ai-Platform/hw/ip-repo/mm_vmx_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@428a5e1d_ARCHIVE_LOCATION">d:/GradProject/A-Zynq-Based-Ai-Platform/hw/ip-repo/mm_vmx_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@3d13c805_ARCHIVE_LOCATION">d:/GradProject/A-Zynq-Based-Ai-Platform/hw/ip-repo/mm_vmx_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@7451fc9_ARCHIVE_LOCATION">d:/GradProject/A-Zynq-Based-Ai-Platform/hw/ip-repo/mm_vmx_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@f1984a_ARCHIVE_LOCATION">d:/GradProject/A-Zynq-Based-Ai-Platform/hw/ip-repo/mm_vmx_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@6a65f8f6_ARCHIVE_LOCATION">d:/GradProject/A-Zynq-Based-Ai-Platform/hw/ip-repo/mm_vmx_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@2fb83c66_ARCHIVE_LOCATION">d:/GradProject/A-Zynq-Based-Ai-Platform/hw/ip-repo/mm_vmx_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@54ee6ae6_ARCHIVE_LOCATION">d:/GradProject/A-Zynq-Based-Ai-Platform/hw/ip-repo/mm_vmx_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@378886f5_ARCHIVE_LOCATION">d:/GradProject/A-Zynq-Based-Ai-Platform/hw/ip-repo/mm_vmx_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@8e4f6df_ARCHIVE_LOCATION">d:/GradProject/A-Zynq-Based-Ai-Platform/hw/ip-repo/mm_vmx_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@22bbb5a1_ARCHIVE_LOCATION">d:/GradProject/A-Zynq-Based-Ai-Platform/hw/ip-repo/mm_vmx_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@4d210caf_ARCHIVE_LOCATION">d:/GradProject/A-Zynq-Based-Ai-Platform/hw/ip-repo/mm_vmx_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@67f371a5_ARCHIVE_LOCATION">d:/GradProject/A-Zynq-Based-Ai-Platform/hw/ip-repo/mm_vmx_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@2252df04_ARCHIVE_LOCATION">d:/GradProject/A-Zynq-Based-Ai-Platform/hw/ip-repo/mm_vmx_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@767f0a68_ARCHIVE_LOCATION">d:/GradProject/A-Zynq-Based-Ai-Platform/hw/ip-repo/mm_vmx_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@4fec5741_ARCHIVE_LOCATION">d:/GradProject/A-Zynq-Based-Ai-Platform/hw/ip-repo/mm_vmx_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@5b5b1176_ARCHIVE_LOCATION">d:/GradProject/A-Zynq-Based-Ai-Platform/hw/ip-repo/mm_vmx_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@53cfd2a0_ARCHIVE_LOCATION">d:/GradProject/A-Zynq-Based-Ai-Platform/hw/ip-repo/mm_vmx_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@5f7d151a_ARCHIVE_LOCATION">d:/GradProject/A-Zynq-Based-Ai-Platform/hw/ip-repo/mm_vmx_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@529501a_ARCHIVE_LOCATION">d:/GradProject/A-Zynq-Based-Ai-Platform/hw/ip-repo/mm_vmx_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@7d03e097_ARCHIVE_LOCATION">d:/GradProject/A-Zynq-Based-Ai-Platform/hw/ip-repo/mm_vmx_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@346033ab_ARCHIVE_LOCATION">d:/GradProject/A-Zynq-Based-Ai-Platform/hw/ip-repo/mm_vmx_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@6faf7739_ARCHIVE_LOCATION">d:/GradProject/A-Zynq-Based-Ai-Platform/hw/ip-repo/mm_vmx_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@11461953_ARCHIVE_LOCATION">d:/GradProject/A-Zynq-Based-Ai-Platform/hw/ip-repo/mm_vmx_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@5b7f2aa8_ARCHIVE_LOCATION">d:/GradProject/A-Zynq-Based-Ai-Platform/hw/ip-repo/mm_vmx_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@7659172f_ARCHIVE_LOCATION">d:/GradProject/A-Zynq-Based-Ai-Platform/hw/ip-repo/mm_vmx_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@1ece2aa6_ARCHIVE_LOCATION">d:/GradProject/A-Zynq-Based-Ai-Platform/hw/ip-repo/mm_vmx_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@70629c2f_ARCHIVE_LOCATION">d:/GradProject/A-Zynq-Based-Ai-Platform/hw/ip-repo/mm_vmx_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@a60b020_ARCHIVE_LOCATION">d:/GradProject/A-Zynq-Based-Ai-Platform/hw/ip-repo/mm_vmx_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@501f1369_ARCHIVE_LOCATION">d:/GradProject/A-Zynq-Based-Ai-Platform/hw/ip-repo/mm_vmx_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@6fd9c98e_ARCHIVE_LOCATION">d:/GradProject/A-Zynq-Based-Ai-Platform/hw/ip-repo/mm_vmx_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@24f3b1c0_ARCHIVE_LOCATION">d:/GradProject/A-Zynq-Based-Ai-Platform/hw/ip-repo/mm_vmx_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@24851cca_ARCHIVE_LOCATION">d:/GradProject/A-Zynq-Based-Ai-Platform/hw/ip-repo/mm_vmx_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@43f5901_ARCHIVE_LOCATION">d:/GradProject/A-Zynq-Based-Ai-Platform/hw/ip-repo/mm_vmx_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@4248c634_ARCHIVE_LOCATION">d:/GradProject/A-Zynq-Based-Ai-Platform/hw/ip-repo/mm_vmx_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@69dfc360_ARCHIVE_LOCATION">d:/GradProject/A-Zynq-Based-Ai-Platform/hw/ip-repo/mm_vmx_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@694a34bc_ARCHIVE_LOCATION">d:/GradProject/A-Zynq-Based-Ai-Platform/hw/ip-repo/mm_vmx_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@7ab5355e_ARCHIVE_LOCATION">d:/GradProject/A-Zynq-Based-Ai-Platform/hw/ip-repo/mm_vmx_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@551cec75_ARCHIVE_LOCATION">d:/GradProject/A-Zynq-Based-Ai-Platform/hw/ip-repo/mm_vmx_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@4b630075_ARCHIVE_LOCATION">d:/GradProject/A-Zynq-Based-Ai-Platform/hw/ip-repo/mm_vmx_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@4680d9fc_ARCHIVE_LOCATION">d:/GradProject/A-Zynq-Based-Ai-Platform/hw/ip-repo/mm_vmx_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@41c4397_ARCHIVE_LOCATION">d:/GradProject/A-Zynq-Based-Ai-Platform/hw/ip-repo/mm_vmx_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@54078a3d_ARCHIVE_LOCATION">d:/GradProject/A-Zynq-Based-Ai-Platform/hw/ip-repo/mm_vmx_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@47b33894_ARCHIVE_LOCATION">d:/GradProject/A-Zynq-Based-Ai-Platform/hw/ip-repo/mm_vmx_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@9fb0662_ARCHIVE_LOCATION">d:/GradProject/A-Zynq-Based-Ai-Platform/hw/ip-repo/mm_vmx_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@500e330_ARCHIVE_LOCATION">d:/GradProject/A-Zynq-Based-Ai-Platform/hw/ip-repo/mm_vmx_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@4e093f48_ARCHIVE_LOCATION">d:/GradProject/A-Zynq-Based-Ai-Platform/hw/ip-repo/mm_vmx_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@74f3b25_ARCHIVE_LOCATION">d:/GradProject/A-Zynq-Based-Ai-Platform/hw/ip-repo/mm_vmx_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@87d29dd_ARCHIVE_LOCATION">d:/GradProject/A-Zynq-Based-Ai-Platform/hw/ip-repo/mm_vmx_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@2cdb082c_ARCHIVE_LOCATION">d:/GradProject/A-Zynq-Based-Ai-Platform/hw/ip-repo/mm_vmx_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@37c5dc91_ARCHIVE_LOCATION">d:/GradProject/A-Zynq-Based-Ai-Platform/hw/ip-repo/mm_vmx_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@5a5c0549_ARCHIVE_LOCATION">d:/GradProject/A-Zynq-Based-Ai-Platform/hw/ip-repo/mm_vmx_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@589ac37e_ARCHIVE_LOCATION">d:/GradProject/A-Zynq-Based-Ai-Platform/hw/ip-repo/mm_vmx_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@5b1db9e_ARCHIVE_LOCATION">d:/GradProject/A-Zynq-Based-Ai-Platform/hw/ip-repo/mm_vmx_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@41fe748e_ARCHIVE_LOCATION">d:/GradProject/A-Zynq-Based-Ai-Platform/hw/ip-repo/mm_vmx_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@72c15837_ARCHIVE_LOCATION">d:/GradProject/A-Zynq-Based-Ai-Platform/hw/ip-repo/mm_vmx_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@19961fba_ARCHIVE_LOCATION">d:/GradProject/A-Zynq-Based-Ai-Platform/hw/ip-repo/mm_vmx_1.0</xilinx:tag>
       </xilinx:tags>
       <xilinx:configElementInfos>
         <xilinx:configElementInfo xilinx:referenceId="BUSIFPARAM_VALUE.S_AXI.ADDR_WIDTH" xilinx:valueSource="auto" xilinx:valuePermission="bd"/>
         <xilinx:configElementInfo xilinx:referenceId="BUSIFPARAM_VALUE.S_AXI.ARUSER_WIDTH" xilinx:valueSource="constant" xilinx:valuePermission="bd"/>
         <xilinx:configElementInfo xilinx:referenceId="BUSIFPARAM_VALUE.S_AXI.AWUSER_WIDTH" xilinx:valueSource="constant" xilinx:valuePermission="bd"/>
         <xilinx:configElementInfo xilinx:referenceId="BUSIFPARAM_VALUE.S_AXI.BUSER_WIDTH" xilinx:valueSource="constant" xilinx:valuePermission="bd"/>
-        <xilinx:configElementInfo xilinx:referenceId="BUSIFPARAM_VALUE.S_AXI.CLK_DOMAIN" xilinx:valueSource="default_prop" xilinx:valuePermission="bd"/>
         <xilinx:configElementInfo xilinx:referenceId="BUSIFPARAM_VALUE.S_AXI.DATA_WIDTH" xilinx:valueSource="auto" xilinx:valuePermission="bd"/>
-        <xilinx:configElementInfo xilinx:referenceId="BUSIFPARAM_VALUE.S_AXI.FREQ_HZ" xilinx:valueSource="user_prop" xilinx:valuePermission="bd"/>
         <xilinx:configElementInfo xilinx:referenceId="BUSIFPARAM_VALUE.S_AXI.HAS_BRESP" xilinx:valueSource="constant" xilinx:valuePermission="bd"/>
         <xilinx:configElementInfo xilinx:referenceId="BUSIFPARAM_VALUE.S_AXI.HAS_BURST" xilinx:valueSource="constant" xilinx:valuePermission="bd"/>
         <xilinx:configElementInfo xilinx:referenceId="BUSIFPARAM_VALUE.S_AXI.HAS_CACHE" xilinx:valueSource="constant" xilinx:valuePermission="bd"/>
@@ -1291,24 +1329,20 @@
         <xilinx:configElementInfo xilinx:referenceId="BUSIFPARAM_VALUE.S_AXI.HAS_RRESP" xilinx:valueSource="constant" xilinx:valuePermission="bd"/>
         <xilinx:configElementInfo xilinx:referenceId="BUSIFPARAM_VALUE.S_AXI.HAS_WSTRB" xilinx:valueSource="constant" xilinx:valuePermission="bd"/>
         <xilinx:configElementInfo xilinx:referenceId="BUSIFPARAM_VALUE.S_AXI.ID_WIDTH" xilinx:valueSource="constant" xilinx:valuePermission="bd"/>
-        <xilinx:configElementInfo xilinx:referenceId="BUSIFPARAM_VALUE.S_AXI.MAX_BURST_LENGTH" xilinx:valueSource="ip_propagated" xilinx:valuePermission="bd"/>
-        <xilinx:configElementInfo xilinx:referenceId="BUSIFPARAM_VALUE.S_AXI.NUM_READ_OUTSTANDING" xilinx:valueSource="constant_prop" xilinx:valuePermission="bd"/>
-        <xilinx:configElementInfo xilinx:referenceId="BUSIFPARAM_VALUE.S_AXI.NUM_READ_THREADS" xilinx:valueSource="constant_prop" xilinx:valuePermission="bd"/>
-        <xilinx:configElementInfo xilinx:referenceId="BUSIFPARAM_VALUE.S_AXI.NUM_WRITE_OUTSTANDING" xilinx:valueSource="constant_prop" xilinx:valuePermission="bd"/>
-        <xilinx:configElementInfo xilinx:referenceId="BUSIFPARAM_VALUE.S_AXI.NUM_WRITE_THREADS" xilinx:valueSource="constant_prop" xilinx:valuePermission="bd"/>
+        <xilinx:configElementInfo xilinx:referenceId="BUSIFPARAM_VALUE.S_AXI.MAX_BURST_LENGTH" xilinx:valuePermission="bd"/>
+        <xilinx:configElementInfo xilinx:referenceId="BUSIFPARAM_VALUE.S_AXI.NUM_READ_OUTSTANDING" xilinx:valuePermission="bd"/>
+        <xilinx:configElementInfo xilinx:referenceId="BUSIFPARAM_VALUE.S_AXI.NUM_WRITE_OUTSTANDING" xilinx:valuePermission="bd"/>
         <xilinx:configElementInfo xilinx:referenceId="BUSIFPARAM_VALUE.S_AXI.PROTOCOL" xilinx:valueSource="constant" xilinx:valuePermission="bd"/>
         <xilinx:configElementInfo xilinx:referenceId="BUSIFPARAM_VALUE.S_AXI.READ_WRITE_MODE" xilinx:valueSource="constant" xilinx:valuePermission="bd"/>
         <xilinx:configElementInfo xilinx:referenceId="BUSIFPARAM_VALUE.S_AXI.RUSER_WIDTH" xilinx:valueSource="constant" xilinx:valuePermission="bd"/>
         <xilinx:configElementInfo xilinx:referenceId="BUSIFPARAM_VALUE.S_AXI.WUSER_WIDTH" xilinx:valueSource="constant" xilinx:valuePermission="bd"/>
-        <xilinx:configElementInfo xilinx:referenceId="BUSIFPARAM_VALUE.S_AXI_CLK.CLK_DOMAIN" xilinx:valueSource="default_prop" xilinx:valuePermission="bd"/>
-        <xilinx:configElementInfo xilinx:referenceId="BUSIFPARAM_VALUE.S_AXI_CLK.FREQ_HZ" xilinx:valueSource="user_prop" xilinx:valuePermission="bd"/>
       </xilinx:configElementInfos>
     </xilinx:coreExtensions>
     <xilinx:packagingInfo>
       <xilinx:xilinxVersion>2019.1</xilinx:xilinxVersion>
-      <xilinx:checksum xilinx:scope="busInterfaces" xilinx:value="22be9552"/>
+      <xilinx:checksum xilinx:scope="busInterfaces" xilinx:value="a3dc3416"/>
       <xilinx:checksum xilinx:scope="memoryMaps" xilinx:value="c30980da"/>
-      <xilinx:checksum xilinx:scope="fileGroups" xilinx:value="db44a8d2"/>
+      <xilinx:checksum xilinx:scope="fileGroups" xilinx:value="753dade5"/>
       <xilinx:checksum xilinx:scope="ports" xilinx:value="d25dd916"/>
       <xilinx:checksum xilinx:scope="hdlParameters" xilinx:value="6b91e5d6"/>
       <xilinx:checksum xilinx:scope="parameters" xilinx:value="d7e883a9"/>
