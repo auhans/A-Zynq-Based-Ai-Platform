@@ -31,7 +31,6 @@ module vmx_mm_wrapper #
     reg [ PORT_WIDTH * PE_SIZE * 2 - 1 : 0 ] export_shift_buffer [ 0 : PE_SIZE - 1 ];
 
     reg [ PORT_WIDTH * PE_SIZE - 1 : 0 ] input_data;
-    reg [ PORT_WIDTH * PE_SIZE * 2 - 1 : 0 ] output_result;
 
     reg [ 8 * PE_SIZE - 1 : 0 ] pe_is_weight;
     reg [ PORT_WIDTH * PE_SIZE - 1 : 0 ] pe_in;
@@ -58,13 +57,13 @@ module vmx_mm_wrapper #
         case ( curr_state )
             S_IDLE : if ( ctrl[1] == 1'b1 ) next_state = S_GETW;
                     else next_state = S_IDLE;
-            S_GETW : if ( getw_counter == PE_SIZE - 1 ) next_state = S_LOAD;
+            S_GETW : if ( getw_counter >= PE_SIZE - 1 ) next_state = S_LOAD;
                     else next_state = S_GETW;
-            S_LOAD : if ( load_counter == PE_SIZE - 1 ) next_state = S_COMP;
+            S_LOAD : if ( load_counter >= PE_SIZE - 1 ) next_state = S_COMP;
                     else next_state = S_LOAD;
-            S_COMP : if ( comp_counter == PE_SIZE ) next_state = S_EXPO;
+            S_COMP : if ( comp_counter >= PE_SIZE ) next_state = S_EXPO;
                     else next_state = S_COMP;
-            S_EXPO : if ( expo_counter == PE_SIZE - 1 ) next_state = S_IDLE;
+            S_EXPO : if ( expo_counter >= PE_SIZE - 1 ) next_state = S_IDLE;
                     else next_state = S_EXPO;
         endcase
     end
@@ -90,7 +89,7 @@ module vmx_mm_wrapper #
                     comp_counter <= comp_counter + 1;
                 end
                 S_EXPO : begin
-                    expo_counter <= expo_counter + 1;
+                    expo_counter <= expo_counter + 2;
                 end
                 default : begin
                     getw_counter <= 0;
@@ -123,7 +122,6 @@ module vmx_mm_wrapper #
     always @(*) begin
         flag = curr_state;
         input_data = d_i;
-        d_o = output_result;
         case ( curr_state )
             S_GETW : begin
                 addr = rbase_addr + getw_counter;
@@ -149,7 +147,7 @@ module vmx_mm_wrapper #
         for ( k = 0; k < PE_SIZE; k = k + 1 ) begin
             pe_is_weight[ k * 8 +: 8 ] = shift_is_weight[ k ][ 8 * PE_SIZE - 1 -: 8 ];
             pe_in[ k * PORT_WIDTH +: PORT_WIDTH ] = import_shift_buffer[ k ][ PORT_WIDTH * PE_SIZE - 1 -: PORT_WIDTH ];
-            output_result[ k * PORT_WIDTH * 2 +: PORT_WIDTH * 2 ] = ( curr_state == S_EXPO ) ? export_shift_buffer[ k ][ PORT_WIDTH * PE_SIZE * 2 - 1 -: PORT_WIDTH * 2 ] : 0;
+            d_o[ k * PORT_WIDTH * 2 +: PORT_WIDTH * 2 ] = ( curr_state == S_EXPO ) ? export_shift_buffer[ k ][ PORT_WIDTH * PE_SIZE * 2 - 1 -: PORT_WIDTH * 2 ] : 0;
         end
     end
 

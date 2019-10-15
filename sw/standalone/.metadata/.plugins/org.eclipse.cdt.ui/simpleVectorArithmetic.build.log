@@ -1,0 +1,33 @@
+21:22:42 **** Auto Build of configuration Debug for project simpleVectorArithmetic ****
+make pre-build main-build 
+a9-linaro-pre-build-step
+' '
+'Building file: ../src/helloworld.c'
+'Invoking: ARM v7 gcc compiler'
+arm-none-eabi-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/helloworld.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I../../simpleVectorArithmetic_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/helloworld.d" -MT"src/helloworld.o" -o "src/helloworld.o" "../src/helloworld.c"
+../src/helloworld.c: In function 'main':
+../src/helloworld.c:70:20: warning: initialization of 'int *' from 'int' makes pointer from integer without a cast [-Wint-conversion]
+     int *baseptr = 0x43C00000;
+                    ^~~~~~~~~~
+../src/helloworld.c:66:9: warning: unused variable 'myY' [-Wunused-variable]
+     int myY[4][4] = {
+         ^~~
+../src/helloworld.c:62:9: warning: unused variable 'myX' [-Wunused-variable]
+     int myX[4][4] = {
+         ^~~
+'Finished building: ../src/helloworld.c'
+' '
+'Building target: simpleVectorArithmetic.elf'
+'Invoking: ARM v7 gcc linker'
+arm-none-eabi-gcc -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -Wl,-build-id=none -specs=Xilinx.spec -Wl,-T -Wl,../src/lscript.ld -L../../simpleVectorArithmetic_bsp/ps7_cortexa9_0/lib -o "simpleVectorArithmetic.elf"  ./src/helloworld.o ./src/platform.o   -Wl,--start-group,-lxil,-lgcc,-lc,--end-group
+'Finished building target: simpleVectorArithmetic.elf'
+' '
+'Invoking: ARM v7 Print Size'
+arm-none-eabi-size simpleVectorArithmetic.elf  |tee "simpleVectorArithmetic.elf.size"
+   text	   data	    bss	    dec	    hex	filename
+  19912	   1144	  22568	  43624	   aa68	simpleVectorArithmetic.elf
+'Finished building: simpleVectorArithmetic.elf.size'
+' '
+
+21:22:43 Build Finished (took 1s.29ms)
+
