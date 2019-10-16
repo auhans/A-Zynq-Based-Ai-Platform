@@ -56,41 +56,59 @@ int main()
     init_platform();
 
     int myW[4][4] = {
-    	0
+    	1, 2, 3, 4,
+		5, 6, 7, 8,
+		4, 3, 2, 1,
+		8, 7, 6, 5
     };
 
     int myX[4][4] = {
-    	0
+        1, 2, 3, 4,
+    	5, 6, 7, 8,
+    	4, 3, 2, 1,
+    	8, 7, 6, 5
     };
 
-    int myY[4][4] = {
-    	0
-    };
+    int myY[4][4];
 
-    int *baseptr = 0x43C00000;
+    int *baseptr = (int*) 0x43C00000;
+    int *ctrlptr = (int*) 0x43C00000 + 132;
+    int *flagptr = (int*) 0x43C00000 + 136;
+
+    *ctrlptr = 0;
 
     for (int i = 0; i < 4; i++) {
     	for (int j = 0; j < 4; j += 2) {
-    		*(baseptr+(4*i)) = (myW[i][j] << 16) + myW[i][j+1];
-    		*(baseptr+(4*i+2)) = (myW[i][j] << 16) + myW[i][j+1];
+    		*baseptr = (myW[i][j] << 16) + myW[i][j+1];
+    		baseptr += 4;
     	}
     }
 
-    baseptr += 32;
-
     for (int i = 0; i < 4; i++) {
     	for (int j = 0; j < 4; j += 2) {
-    		*(baseptr+(4*i)) = (myW[i][j] << 16) + myW[i][j+1];
-    		*(baseptr+(4*i+2)) = (myW[i][j] << 16) + myW[i][j+1];
+    		*baseptr = (myX[i][j] << 16) + myX[i][j+1];
+    		baseptr += 4;
     	}
     }
 
-    baseptr += 32;
+    *ctrlptr = 2;
+
+    int tmp1 = *flagptr;
+    int tmp2 = *ctrlptr;
+
+    while(*flagptr != 4)
+    {
+    	printf("%d", *flagptr);
+    }
+    while(!*flagptr)
+    {
+    	printf("%d", *flagptr);
+    }
 
     for (int i = 0; i < 4; i++) {
     	for (int j = 0; j < 4; j += 2) {
-    		*(baseptr+(4*i)) = (myW[i][j] << 16) + myW[i][j+1];
-    		*(baseptr+(4*i+2)) = (myW[i][j] << 16) + myW[i][j+1];
+    		myY[i][j] = *baseptr;
+    		baseptr += 4;
     	}
     }
 
