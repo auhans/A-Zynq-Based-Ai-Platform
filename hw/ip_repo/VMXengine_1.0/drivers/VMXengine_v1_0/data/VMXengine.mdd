@@ -1,0 +1,10 @@
+
+
+OPTION psf_version = 2.1;
+
+BEGIN DRIVER VMXengine
+	OPTION supported_peripherals = (VMXengine);
+	OPTION copyfiles = all;
+	OPTION VERSION = 1.0;
+	OPTION NAME = VMXengine;
+END DRIVER

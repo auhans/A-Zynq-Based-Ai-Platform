@@ -75,7 +75,6 @@ module vmx_mm_wrapper #
             load_counter <= 0;
             expo_counter <= 0;
             comp_counter <= 0;
-            addr <= 0;
         end
         else begin
             case ( curr_state )
@@ -96,7 +95,6 @@ module vmx_mm_wrapper #
                     load_counter <= 0;
                     expo_counter <= 0;
                     comp_counter <= 0;
-                    addr <= 0;
                 end
             endcase
         end
