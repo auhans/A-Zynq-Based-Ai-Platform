@@ -17,7 +17,7 @@ module VMXengine_v1_0_M_AXI_DMA #
 (
     // Users to add ports here
 
-    input wire  [31:0] CMD_FIFO_DATA,
+    input wire  [40:0] CMD_FIFO_DATA,
     input wire  [31:0] WDATA_FIFO_DATA,
     output reg  [31:0] RDATA_FIFO_DATA,
 
@@ -108,9 +108,9 @@ module VMXengine_v1_0_M_AXI_DMA #
     always @(*) begin
         case (curr_state)
             S_IDLE : begin
-                if (!CMD_FIFO_EMPTY && CMD_FIFO_DATA[16] == 0)
+                if (!CMD_FIFO_EMPTY && CMD_FIFO_DATA[40] == 0)
                     next_state = S_WADDR;
-                else if (!CMD_FIFO_EMPTY && CMD_FIFO_DATA[16] == 1)
+                else if (!CMD_FIFO_EMPTY && CMD_FIFO_DATA[40] == 1)
                     next_state = S_RADDR;
                 else
                     next_state = S_IDLE;
@@ -154,8 +154,8 @@ module VMXengine_v1_0_M_AXI_DMA #
     always @(posedge M_AXI_ACLK) begin
         if (curr_state == S_WADDR) begin
             M_AXI_AWID    <= 0;
-            M_AXI_AWADDR  <= CMD_FIFO_DATA[15:0];
-            M_AXI_AWLEN   <= CMD_FIFO_DATA[15:0];
+            M_AXI_AWADDR  <= CMD_FIFO_DATA[31:0];
+            M_AXI_AWLEN   <= CMD_FIFO_DATA[39:32];
             M_AXI_AWSIZE  <= 3'b010;    // 4 Byte Transfer Size
             M_AXI_AWBURST <= 1'b01;     // INCR Burst Address Mode
             M_AXI_AWLOCK  <= 1'b0;      // Normal Access Mode
@@ -213,8 +213,8 @@ module VMXengine_v1_0_M_AXI_DMA #
     always @(posedge M_AXI_ACLK) begin
         if (curr_state == S_RADDR) begin
             M_AXI_ARID    <= 0;
-            M_AXI_ARADDR  <= CMD_FIFO_DATA[15:0];
-            M_AXI_ARLEN   <= CMD_FIFO_DATA[15:0];
+            M_AXI_ARADDR  <= CMD_FIFO_DATA[31:0];
+            M_AXI_ARLEN   <= CMD_FIFO_DATA[39:32];
             M_AXI_ARSIZE  <= 3'b010;
             M_AXI_ARBURST <= 1'b01;
             M_AXI_ARLOCK  <= 1'b0;
