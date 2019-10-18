@@ -21,7 +21,7 @@ module vmx_mm_wrapper #
     );
 
     parameter S_IDLE = 3'h0;
-    parameter S_GETW = 3'h1;
+    parameter S_SETW = 3'h1;
     parameter S_LOAD = 3'h2;
     parameter S_COMP = 3'h3;
     parameter S_EXPO = 3'h4;
@@ -53,10 +53,10 @@ module vmx_mm_wrapper #
     // Next state selector
     always @( * ) begin
         case ( curr_state )
-            S_IDLE : if ( ctrl[1] == 1'b1 ) next_state = S_GETW;
+            S_IDLE : if ( ctrl[1] == 1'b1 ) next_state = S_SETW;
                     else next_state = S_IDLE;
-            S_GETW : if ( getw_counter >= PE_SIZE - 1 ) next_state = S_LOAD;
-                    else next_state = S_GETW;
+            S_SETW : if ( getw_counter >= PE_SIZE - 1 ) next_state = S_LOAD;
+                    else next_state = S_SETW;
             S_LOAD : if ( load_counter >= PE_SIZE - 1 ) next_state = S_COMP;
                     else next_state = S_LOAD;
             S_COMP : if ( comp_counter >= PE_SIZE ) next_state = S_EXPO;
@@ -77,7 +77,7 @@ module vmx_mm_wrapper #
         end
         else begin
             case ( curr_state )
-                S_GETW : begin
+                S_SETW : begin
                     getw_counter <= getw_counter + 1;
                 end
                 S_LOAD : begin
@@ -105,7 +105,7 @@ module vmx_mm_wrapper #
         shift_in[ 0 ] <= d_i;
         shift_out[ 0 ] <= pe_out;
         for (i = 0; i < PE_SIZE; i = i + 1) begin
-            shift_wctrl[ 0 ][ i * 8 +: 8 ] <= {(next_state == S_GETW | curr_state == S_GETW), getw_counter };
+            shift_wctrl[ 0 ][ i * 8 +: 8 ] <= {(next_state == S_SETW | curr_state == S_SETW), getw_counter };
         end
         for ( i = 0; i < PE_SIZE; i = i + 1 ) begin
             shift_wctrl[ i + 1 ] <= shift_wctrl[ i ] << 8;
@@ -120,7 +120,7 @@ module vmx_mm_wrapper #
     always @(*) begin
         flag = {29'b0, curr_state};
         case ( curr_state )
-            S_GETW : begin
+            S_SETW : begin
                 addr = rbase_addr + getw_counter;
                 wr_en = 0;
             end
@@ -155,7 +155,7 @@ module vmx_mm_wrapper #
         .clk(clk),
         .rst_n(~(~rst_n | ctrl[0])),
         .load_ctrl(pe_wctrl),
-        .simd_mode(1'b0),
+        .simd_mode(0),
         .vector(pe_in),
         .product(pe_out)
     );
