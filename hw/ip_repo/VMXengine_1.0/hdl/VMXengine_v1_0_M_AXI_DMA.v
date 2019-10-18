@@ -182,7 +182,7 @@ module VMXengine_v1_0_M_AXI_DMA #
 
     // AXI Write Data Channel
     always @(posedge M_AXI_ACLK) begin
-        if (curr_state == S_WDATA) begin
+        if (curr_state == S_WDATA && !WDATA_FIFO_EMPTY) begin
             M_AXI_WDATA  <= WDATA_FIFO_DATA;
             M_AXI_WSTRB  <= 4'b1111;    // Ready Strobes
             M_AXI_WVALID <= 1'b1;       // Handshake Signal
@@ -239,7 +239,7 @@ module VMXengine_v1_0_M_AXI_DMA #
 
     // AXI Read Data Channel
     always @(posedge M_AXI_ACLK) begin
-        if (curr_state == S_RDATA && M_AXI_RVALID == 1'b1) begin
+        if (curr_state == S_RDATA && M_AXI_RVALID == 1'b1 && !RDATA_FIFO_EMPTY) begin
             M_AXI_RREADY <= 1'b1;
             if (M_AXI_RRESP == 2'b00)
                 RDATA_FIFO_DATA <= M_AXI_RDATA;
