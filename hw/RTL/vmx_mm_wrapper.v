@@ -26,13 +26,11 @@ module vmx_mm_wrapper #
     parameter S_COMP = 3'h3;
     parameter S_EXPO = 3'h4;
 
-    reg [ 8 * PE_SIZE - 1 : 0 ] shift_is_weight [ 0 : PE_SIZE - 1 ];
-    reg [ PORT_WIDTH * PE_SIZE - 1 : 0 ] import_shift_buffer [ 0 : PE_SIZE - 1 ];
-    reg [ PORT_WIDTH * PE_SIZE * 2 - 1 : 0 ] export_shift_buffer [ 0 : PE_SIZE - 1 ];
+    reg [ 8 * PE_SIZE - 1 : 0 ] shift_wctrl [ 0 : PE_SIZE - 1 ];
+    reg [ PORT_WIDTH * PE_SIZE - 1 : 0 ] shift_in [ 0 : PE_SIZE - 1 ];
+    reg [ PORT_WIDTH * PE_SIZE * 2 - 1 : 0 ] shift_out [ 0 : PE_SIZE - 1 ];
 
-    reg [ PORT_WIDTH * PE_SIZE - 1 : 0 ] input_data;
-
-    reg [ 8 * PE_SIZE - 1 : 0 ] pe_is_weight;
+    reg [ 8 * PE_SIZE - 1 : 0 ] pe_wctrl;
     reg [ PORT_WIDTH * PE_SIZE - 1 : 0 ] pe_in;
     wire [ PORT_WIDTH * PE_SIZE * 2 - 1 : 0 ] pe_out;
 
@@ -63,7 +61,7 @@ module vmx_mm_wrapper #
                     else next_state = S_LOAD;
             S_COMP : if ( comp_counter >= PE_SIZE ) next_state = S_EXPO;
                     else next_state = S_COMP;
-            S_EXPO : if ( expo_counter >= PE_SIZE - 1 ) next_state = S_IDLE;
+            S_EXPO : if ( expo_counter >= PE_SIZE + 1 ) next_state = S_IDLE;
                     else next_state = S_EXPO;
         endcase
     end
@@ -102,17 +100,17 @@ module vmx_mm_wrapper #
         end
     end
 
+    // always shifting io
     always @( posedge clk ) begin
-        // stateless import / export
+        shift_in[ 0 ] <= d_i;
+        shift_out[ 0 ] <= pe_out;
         for (i = 0; i < PE_SIZE; i = i + 1) begin
-            shift_is_weight[ 0 ][ i * 8 +: 8 ] <= {(next_state == S_GETW | curr_state == S_GETW), getw_counter };
+            shift_wctrl[ 0 ][ i * 8 +: 8 ] <= {(next_state == S_GETW | curr_state == S_GETW), getw_counter };
         end
-        import_shift_buffer[ 0 ] <= input_data;
-        export_shift_buffer[ 0 ] <= pe_out;
         for ( i = 0; i < PE_SIZE; i = i + 1 ) begin
-            shift_is_weight[ i + 1 ] <= shift_is_weight[ i ] << 8;
-            import_shift_buffer[ i + 1 ] <= import_shift_buffer[ i ] << ( PORT_WIDTH );
-            export_shift_buffer[ i + 1 ] <= export_shift_buffer[ i ] << ( PORT_WIDTH * 2 );
+            shift_wctrl[ i + 1 ] <= shift_wctrl[ i ] << 8;
+            shift_in[ i + 1 ] <= shift_in[ i ] << ( PORT_WIDTH );
+            shift_out[ i + 1 ] <= shift_out[ i ] << ( PORT_WIDTH * 2 );
         end
     end
 
@@ -120,8 +118,7 @@ module vmx_mm_wrapper #
 
     // some output logics
     always @(*) begin
-        flag = curr_state;
-        input_data = d_i;
+        flag = {29'b0, curr_state};
         case ( curr_state )
             S_GETW : begin
                 addr = rbase_addr + getw_counter;
@@ -145,19 +142,22 @@ module vmx_mm_wrapper #
             end
         endcase
         for ( k = 0; k < PE_SIZE; k = k + 1 ) begin
-            pe_is_weight[ k * 8 +: 8 ] = shift_is_weight[ k ][ 8 * PE_SIZE - 1 -: 8 ];
-            pe_in[ k * PORT_WIDTH +: PORT_WIDTH ] = import_shift_buffer[ k ][ PORT_WIDTH * PE_SIZE - 1 -: PORT_WIDTH ];
-            d_o[ k * PORT_WIDTH * 2 +: PORT_WIDTH * 2 ] = ( curr_state == S_EXPO ) ? export_shift_buffer[ k ][ PORT_WIDTH * PE_SIZE * 2 - 1 -: PORT_WIDTH * 2 ] : 0;
+            pe_wctrl[ k * 8 +: 8 ] = shift_wctrl[ k ][ 8 * PE_SIZE - 1 -: 8 ];
+            pe_in[ k * PORT_WIDTH +: PORT_WIDTH ] = shift_in[ k ][ PORT_WIDTH * PE_SIZE - 1 -: PORT_WIDTH ];
+            if ( curr_state == S_EXPO )
+                d_o[ k * PORT_WIDTH * 2 +: PORT_WIDTH * 2 ] = shift_out[ k ][ PORT_WIDTH * PE_SIZE * 2 - 1 -: PORT_WIDTH * 2 ];
+            else
+                d_o[ k * PORT_WIDTH * 2 +: PORT_WIDTH * 2 ] = 0;
         end
     end
 
     vmx_pe_array myVMX(
         .clk(clk),
         .rst_n(~(~rst_n | ctrl[0])),
-        .is_weight(pe_is_weight),
+        .load_ctrl(pe_wctrl),
         .simd_mode(1'b0),
         .vector(pe_in),
         .product(pe_out)
     );
 
-    endmodule // wrap the systolic array
+    endmodule

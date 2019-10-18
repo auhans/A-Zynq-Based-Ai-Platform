@@ -46,18 +46,18 @@ initial begin
     rst_n = 0;
     #5
     rst_n = 1;
-    clk = ~clk;
     #10
     ctrl[1] = 1;
-    clk = ~clk;
     #10
     ctrl[1] = 0;
-    clk = ~clk;
-    for (i = 0; i < 50; i = i + 1) begin
-        #10
-        clk = ~clk;
-    end
+    #400
+    ctrl[1] = 1;
+    #10
+    ctrl[1] = 0;
 end
+
+always
+    #10 clk = ~clk;
 
 always @(*) begin
     d_i = memory[addr];

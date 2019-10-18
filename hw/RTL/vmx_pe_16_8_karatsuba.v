@@ -9,13 +9,13 @@ module vmx_pe_16_8_karatsuba #(
     input wire clk,
     input wire rst_n,
     input wire simd_mode,
-    input wire [7:0] is_weight,
+    input wire [7:0] load_ctrl,
     // data
     input wire [VECTOR_BITLEN-1:0] data,
     input wire [PRODCUT_BITLEN-1:0] sum_in,
     // output
     output reg simd_mode_pass,
-    output reg [7:0] is_weight_pass,
+    output reg [7:0] load_ctrl_pass,
     output reg [VECTOR_BITLEN-1:0] data_pass,
     output reg [PRODCUT_BITLEN-1:0] sum_out
 );
@@ -35,7 +35,7 @@ module vmx_pe_16_8_karatsuba #(
         if ( ~rst_n ) begin
             // reset values
             simd_mode_pass <= 0;
-            is_weight_pass <= 0;
+            load_ctrl_pass <= 0;
             data_pass <= 0;
             sum_out <= 0;
             weight <= 0;
@@ -46,12 +46,12 @@ module vmx_pe_16_8_karatsuba #(
             data_pass <= data;
             sum_out <= sum;
             // update selector
-            if ( is_weight[6:0] == 0 && is_weight[7] == 1 ) begin
+            if ( load_ctrl[6:0] == 0 && load_ctrl[7] == 1 ) begin
                 weight <= data;
-                is_weight_pass <= 8'h7F;
+                load_ctrl_pass <= 8'h7F;
             end
             else begin
-                is_weight_pass <= is_weight - 1;
+                load_ctrl_pass <= load_ctrl - 1;
                 weight <= weight;
             end
         end
