@@ -22,7 +22,8 @@
 
 module util_FIFO#(
     parameter BITLEN = 64,
-              BUFFER_SIZE = 8)
+              BUFFER_SIZE = 8,
+              BUFFER_BIT = 3)
 (
     input clk,
     input rst_n,
@@ -37,19 +38,19 @@ module util_FIFO#(
     );
 
 
-reg [BUFFER_SIZE-1:0]    wr_ptr;
-reg [BUFFER_SIZE-1:0]    rd_ptr;
-reg [BITLEN-1:0]    data_out;
+reg [BUFFER_BIT-1:0]    wr_ptr = 0;
+reg [BUFFER_BIT-1:0]    rd_ptr = 0;
+reg [BITLEN-1:0]    data_out = 0;
 reg [BITLEN-1:0]    data_ram [0:BUFFER_SIZE-1];
 
 assign empty = (rd_ptr == wr_ptr);
-assign full = (rd_ptr == (wr_ptr-1));
+assign full = (wr_ptr == (rd_ptr-1)) || (wr_ptr == (BUFFER_SIZE-1) && rd_ptr == 0);
 
 always @ (posedge clk) begin
     if(rst_n) begin
         wr_ptr <= 0;
     end
-    else if(wr_en) begin
+    else if(wr_en && ~full) begin
         data_ram[wr_ptr] = din;
         wr_ptr = wr_ptr+1;
     end
@@ -63,7 +64,7 @@ always @ (posedge clk) begin
         rd_ptr <= 0;
         dout <= 0;
     end
-    else if(rd_en) begin
+    else if(rd_en && ~empty) begin
         dout  = data_ram[rd_ptr];
         rd_ptr = rd_ptr+1;
     end
@@ -72,4 +73,4 @@ always @ (posedge clk) begin
     end
 end
 
-endmodule
+endmodule 
