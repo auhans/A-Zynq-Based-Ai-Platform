@@ -214,25 +214,39 @@ always @(posedge clk) begin
     end
 end
 
-
-// handle the processing ISA
 always @(posedge clk) begin
     if(rst_n) begin
         processing_ISA <= 0;
+        command_counter <= 0;
     end
     else if(processing_flag) begin
         case (processing_ISA)
             // read (32bit/per)
             2'b01: begin
                 DMA_burst <= 8;
+                command_counter <= 8;
             end
             //write
             2'b10: begin
                 DMA_burst <= 16;
+                command_counter <= 16;
             end
         endcase
-        processing_ISA = 0;
+        //processing_ISA = 0;
     end
 end
+
+
+always @(posedge clk) begin
+    if(command_counter) begin
+        command_counter <= command_counter-1;
+        HI = 3;
+        if(command_counter == 1) begin
+            HI = 2;
+            processing_ISA = 0;
+        end
+    end
+end
+
 
 endmodule
