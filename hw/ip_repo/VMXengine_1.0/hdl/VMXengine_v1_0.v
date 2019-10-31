@@ -23,6 +23,9 @@
 		parameter integer C_M_AXI_DMA_BUSER_WIDTH	= 0
 	)
 	(
+		input CLK,
+		input RST_N,
+
 		// Ports of Axi Slave Bus Interface S_AXI_CTRL
 		input wire  s_axi_ctrl_aclk,
 		input wire  s_axi_ctrl_aresetn,
@@ -159,6 +162,15 @@
 		.C_M_AXI_RUSER_WIDTH(C_M_AXI_DMA_RUSER_WIDTH),
 		.C_M_AXI_BUSER_WIDTH(C_M_AXI_DMA_BUSER_WIDTH)
 	) VMXengine_v1_0_M_AXI_DMA_inst (
+		.CMD_FIFO_DATA(dma_ctrl_dout),
+		.WDATA_FIFO_DATA(eaq_dout),
+		.RDATA_FIFO_DATA(aeq_din),
+		.CMD_FIFO_EMPTY(dma_ctrl_empty),
+		.RDATA_FIFO_FULL(aeq_full),
+		.WDATA_FIFO_EMPTY(eaq_empty),
+		.CMD_FIFO_RDEN(dma_ctrl_rena),
+		.RDATA_FIFO_WREN(aeq_wena),
+		.WDATA_FIFO_RDEN(eaq_rena),
 		// .INIT_AXI_TXN(m_axi_dma_init_axi_txn),
 		// .TXN_DONE(m_axi_dma_txn_done),
 		// .ERROR(m_axi_dma_error),
@@ -205,13 +217,119 @@
 
 	// Add user logic here
 
-	vmx_access_processor AccessProcessor(
+    wire dma_ctrl_wena;
+    wire dma_ctrl_rena;
+    wire dma_ctrl_empty;
+    wire dma_ctrl_full;
+    wire dma_ctrl_dout;
+    wire dma_ctrl_din;
 
-	);
+    wire aeq_wena;
+    wire aeq_rena;
+    wire aeq_empty;
+    wire aeq_full;
+    wire aeq_dout;
+    wire aeq_din;
 
-	vmx_execute_processor ExecuteProcessor(
+    wire eaq_wena;
+    wire eaq_rena;
+    wire eaq_empty;
+    wire eaq_full;
+    wire eaq_dout;
+    wire eaq_din;
 
-	);
+    /**
+        LITTLE TOPOLOGY
+         ________________            ________________
+        |                |__________|                |
+        |                |___AEQ____|                |
+        |   DMA ENGINE   |__________|   EXP ENGINE   |
+        |                |___EAQ____|                |
+        |________________|          |________________|
+          |     | |    |
+          | DMA | | WD |
+         _|_____|_|____|_ 
+        |                |
+        |   ACP ENGINE   |
+        |________________|
+        |                |
+        |   ISA <- AXI   |
+        |________________|
+    
+    **/
+
+    util_FIFO DMA_CTRL_QUEUE(
+        .clk(CLK),
+        .rst_n(RST_N),
+        .wr_en(dma_ctrl_wena),
+        .rd_en(dma_ctrl_rena),
+        .din(dma_ctrl_din),
+        .full(dma_ctrl_full),
+        .empty(dma_ctrl_empty),
+        .dout(dma_ctrl_dout)
+    );
+
+    util_FIFO AEQ(
+        .clk(CLK),
+        .rst_n(RST_N),
+        .wr_en(aeq_wena),
+        .rd_en(aeq_rena),
+        .din(aeq_din),
+        .full(aeq_full),
+        .empty(aeq_empty),
+        .dout(aeq_dout)
+    );
+
+    util_FIFO EAQ(
+        .clk(CLK),
+        .rst_n(RST_N),
+        .wr_en(eaq_wena),
+        .rd_en(eaq_rena),
+        .din(eaq_din),
+        .full(eaq_full),
+        .empty(eaq_empty),
+        .dout(eaq_dout)
+    );
+
+    util_FIFO ISA(
+        .clk(CLK),
+        .rst_n(RST_N),
+        .wr_en(isa_wena),
+        .rd_en(isa_rena),
+        .din(isa_din),
+        .full(isa_full),
+        .empty(isa_empty),
+        .dout(isa_dout)
+    );
+
+    vmx_execute_processor EXE_PROC(
+        .clk(CLK),
+        .halt(),
+        .rst_n(),
+        .sw_rst(),
+        .ISA_FIFO_DATA(isa_dout),
+        .ISA_FIFO_EMPTY(isa_empty),
+        .ISA_FIFO_RENA(isa_rena),
+        .AEQ_FIFO_DATA(aeq_dout),
+        .AEQ_FIFO_EMPTY(aeq_empty),
+        .AEQ_FIFO_RENA(aeq_rena),
+        .EAQ_FIFO_DATA(eaq_din),
+        .EAQ_FIFO_FULL(eaq_full),
+        .EAQ_FIFO_WENA(eaq_wena)
+    );
+
+    vmx_access_processor ACC_PROC(
+        .CLK(CLK),
+        .RST_N(RST_N),
+        .DMA_FLAG(),
+        .DMA_CTRL(),
+        .DMA_FIFO_DATA(dma_ctrl_din),
+        .DMA_FIFO_EMPTY(dma_ctrl_full),
+        .DMA_FIFO_RDEN(dma_ctrl_wena),
+        .ISA_FIFO_DATA(isa_dout),
+        .ISA_FIFO_EMPTY(isa_empty),
+        .ISA_FIFO_RENA(isa_rena)
+    );
 
 	// User logic ends
 

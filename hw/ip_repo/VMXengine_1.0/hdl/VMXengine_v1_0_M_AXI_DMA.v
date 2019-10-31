@@ -22,12 +22,12 @@ module VMXengine_v1_0_M_AXI_DMA #
     output reg  [31:0] RDATA_FIFO_DATA,
 
     input wire  CMD_FIFO_EMPTY,
-    input wire  RDATA_FIFO_EMPTY,
+    input wire  RDATA_FIFO_FULL,
     input wire  WDATA_FIFO_EMPTY,
 
     output wire CMD_FIFO_RDEN,
-    output wire RDATA_FIFO_RDEN,
-    output wire WDATA_FIFO_WREN,
+    output wire RDATA_FIFO_WREN,
+    output wire WDATA_FIFO_RDEN,
 
     // User ports ends
     // Do not modify the ports beyond this line
@@ -94,8 +94,8 @@ module VMXengine_v1_0_M_AXI_DMA #
     reg curr_state;
     reg next_state;
 
-    assign RDATA_FIFO_RDEN = M_AXI_RVALID & M_AXI_RREADY;
-    assign WDATA_FIFO_WREN = M_AXI_WVALID & M_AXI_WREADY;
+    assign RDATA_FIFO_WREN = M_AXI_RVALID & M_AXI_RREADY;
+    assign WDATA_FIFO_RDEN = M_AXI_WVALID & M_AXI_WREADY;
     assign CMD_FIFO_RDEN = (next_state == S_IDLE);
 
     always @(posedge M_AXI_ACLK) begin
@@ -239,7 +239,7 @@ module VMXengine_v1_0_M_AXI_DMA #
 
     // AXI Read Data Channel
     always @(posedge M_AXI_ACLK) begin
-        if (curr_state == S_RDATA && M_AXI_RVALID == 1'b1 && !RDATA_FIFO_EMPTY) begin
+        if (curr_state == S_RDATA && M_AXI_RVALID == 1'b1 && !RDATA_FIFO_FULL) begin
             M_AXI_RREADY <= 1'b1;
             if (M_AXI_RRESP == 2'b00)
                 RDATA_FIFO_DATA <= M_AXI_RDATA;
