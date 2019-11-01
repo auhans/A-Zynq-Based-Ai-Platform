@@ -69,6 +69,7 @@ always @ (posedge clk) begin
         rd_ptr = rd_ptr+1;
     end
     else begin
+        dout  <= data_ram[rd_ptr];
         rd_ptr <= rd_ptr;
     end
 end
