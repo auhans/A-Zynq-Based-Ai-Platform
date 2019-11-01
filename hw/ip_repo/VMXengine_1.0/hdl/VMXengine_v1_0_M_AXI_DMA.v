@@ -18,7 +18,7 @@ module VMXengine_v1_0_M_AXI_DMA #
     // Users to add ports here
 
     input wire  [40:0] CMD_FIFO_DATA,
-    input wire  [31:0] WDATA_FIFO_DATA,
+    input wire  [63:0] WDATA_FIFO_DATA,
     output reg  [31:0] RDATA_FIFO_DATA,
 
     input wire  CMD_FIFO_EMPTY,
@@ -86,13 +86,20 @@ module VMXengine_v1_0_M_AXI_DMA #
 
     parameter S_IDLE  = 4'h0;
     parameter S_WADDR = 4'h1;
-    parameter S_WDATA = 4'h2;
-    parameter S_WRESP = 4'h3;
-    parameter S_RADDR = 4'h4;
-    parameter S_RDATA = 4'h5;
+    parameter S_WACLR = 4'h2;
+    parameter S_WDATA = 4'h3;
+    parameter S_WNEXT = 4'h4;
+    parameter S_WRESP = 4'h5;
+    parameter S_RADDR = 4'h6;
+    parameter S_RACLR = 4'h7;
+    parameter S_RDATA = 4'h8;
+    parameter S_RNEXT = 4'h9;
 
-    reg curr_state;
-    reg next_state;
+    reg [3:0] curr_state;
+    reg [3:0] next_state;
+
+    reg [7:0] wburst;
+    reg [7:0] rburst;
 
     assign RDATA_FIFO_WREN = M_AXI_RVALID & M_AXI_RREADY;
     assign WDATA_FIFO_RDEN = M_AXI_WVALID & M_AXI_WREADY;
@@ -117,15 +124,29 @@ module VMXengine_v1_0_M_AXI_DMA #
             end
             S_WADDR : begin
                 if (M_AXI_AWVALID == 1 && M_AXI_AWREADY == 1)
-                    next_state = S_WDATA;
+                    next_state = S_WACLR;
                 else
                     next_state = S_WADDR;
             end
+            S_WACLR : begin
+                if (M_AXI_AWREADY == 0)
+                    next_state = S_WDATA;
+                else
+                    next_state = S_WACLR;
+            end
             S_WDATA : begin
-                if (M_AXI_WVALID == 1 && M_AXI_WREADY == 1 && M_AXI_WLAST == 1)
-                    next_state = S_WRESP;
+                if (M_AXI_WVALID == 1 && M_AXI_WREADY == 1)
+                    next_state = S_WNEXT;
                 else
                     next_state = S_WDATA;
+            end
+            S_WNEXT : begin
+                if (wburst >= 1 && M_AXI_WREADY == 0)
+                    next_state = S_WDATA;
+                else if (wburst == 0 && M_AXI_WREADY == 0)
+                    next_state = S_WRESP;
+                else
+                    next_state = S_WNEXT;
             end
             S_WRESP : begin
                 if (M_AXI_BVALID == 1 && M_AXI_BREADY == 1)
@@ -135,12 +156,18 @@ module VMXengine_v1_0_M_AXI_DMA #
             end
             S_RADDR : begin
                 if (M_AXI_ARVALID == 1 && M_AXI_ARREADY == 1)
-                    next_state = S_RDATA;
+                    next_state = S_RACLR;
                 else
                     next_state = S_RADDR;
             end
+            S_RACLR : begin
+                if (M_AXI_ARREADY == 0)
+                    next_state = S_RDATA;
+                else
+                    next_state = S_RACLR;
+            end
             S_RDATA : begin
-                if (M_AXI_RVALID == 1 && M_AXI_RREADY == 1)
+                if (M_AXI_RVALID == 1 && M_AXI_RREADY == 1 && M_AXI_RLAST == 1)
                     next_state = S_IDLE;
                 else
                     next_state = S_RDATA;
@@ -152,10 +179,10 @@ module VMXengine_v1_0_M_AXI_DMA #
 
     // AXI Write Address Channel
     always @(posedge M_AXI_ACLK) begin
-        if (curr_state == S_WADDR) begin
+        if (next_state == S_WADDR) begin
             M_AXI_AWID    <= 0;
             M_AXI_AWADDR  <= CMD_FIFO_DATA[31:0];
-            M_AXI_AWLEN   <= CMD_FIFO_DATA[39:32];
+            M_AXI_AWLEN   <= CMD_FIFO_DATA[39:32] << 1;
             M_AXI_AWSIZE  <= 3'b010;    // 4 Byte Transfer Size
             M_AXI_AWBURST <= 1'b01;     // INCR Burst Address Mode
             M_AXI_AWLOCK  <= 1'b0;      // Normal Access Mode
@@ -178,20 +205,33 @@ module VMXengine_v1_0_M_AXI_DMA #
         end
     end
 
-    reg wburst;
-
     // AXI Write Data Channel
     always @(posedge M_AXI_ACLK) begin
-        if (curr_state == S_WDATA && !WDATA_FIFO_EMPTY) begin
-            M_AXI_WDATA  <= WDATA_FIFO_DATA;
+        if (next_state == S_WACLR) begin
+            wburst <= CMD_FIFO_DATA[39:32] << 1;
+        end
+        else if (next_state == S_WNEXT) begin
+            if (curr_state == S_WDATA)
+                wburst <= wburst - 1;
+            M_AXI_WDATA  <= 0;
+            M_AXI_WSTRB  <= 4'b0000;
+            M_AXI_WVALID <= 1'b0;
+            M_AXI_WLAST  <= 1'b0;
+        end
+        else if (next_state == S_WDATA && !WDATA_FIFO_EMPTY) begin
+            if (wburst[0])
+                M_AXI_WDATA  <= WDATA_FIFO_DATA[31:0];
+            else
+                M_AXI_WDATA  <= WDATA_FIFO_DATA[63:32];
             M_AXI_WSTRB  <= 4'b1111;    // Ready Strobes
             M_AXI_WVALID <= 1'b1;       // Handshake Signal
             if (wburst == 1)
-                M_AXI_WLAST <= 1'b1;    // Last Data Flag
+                M_AXI_WLAST  <= 1'b1;
             else
-                M_AXI_WLAST <= 1'b0;
+                M_AXI_WLAST  <= 1'b0;
         end
         else begin
+            wburst <= 0;
             M_AXI_WDATA  <= 0;
             M_AXI_WSTRB  <= 4'b0000;
             M_AXI_WVALID <= 1'b0;
@@ -201,7 +241,7 @@ module VMXengine_v1_0_M_AXI_DMA #
 
     // AXI Write Response Channel
     always @(posedge M_AXI_ACLK) begin
-        if (curr_state == S_WRESP && M_AXI_BVALID == 1'b1) begin
+        if (next_state == S_WRESP && M_AXI_BVALID == 1'b1) begin
             M_AXI_BREADY <= 1'b1;
         end
         else begin
@@ -211,7 +251,7 @@ module VMXengine_v1_0_M_AXI_DMA #
 
     // AXI Read Address Channel
     always @(posedge M_AXI_ACLK) begin
-        if (curr_state == S_RADDR) begin
+        if (next_state == S_RADDR) begin
             M_AXI_ARID    <= 0;
             M_AXI_ARADDR  <= CMD_FIFO_DATA[31:0];
             M_AXI_ARLEN   <= CMD_FIFO_DATA[39:32];
@@ -233,13 +273,15 @@ module VMXengine_v1_0_M_AXI_DMA #
             M_AXI_ARCACHE <= 4'b0011;
             M_AXI_ARPROT  <= 3'b000;
             M_AXI_ARQOS   <= 4'b0000;
-            M_AXI_ARVALID <= 1'b1;
+            M_AXI_ARVALID <= 1'b0;
         end
     end
 
     // AXI Read Data Channel
     always @(posedge M_AXI_ACLK) begin
-        if (curr_state == S_RDATA && M_AXI_RVALID == 1'b1 && !RDATA_FIFO_FULL) begin
+        if (M_AXI_RVALID == 1'b1 && M_AXI_RREADY == 1'b1)
+            M_AXI_RREADY <= 1'b0;
+        else if (curr_state == S_RDATA && M_AXI_RVALID == 1'b1 && !RDATA_FIFO_FULL) begin
             M_AXI_RREADY <= 1'b1;
             if (M_AXI_RRESP == 2'b00)
                 RDATA_FIFO_DATA <= M_AXI_RDATA;
