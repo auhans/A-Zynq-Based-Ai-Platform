@@ -155,7 +155,7 @@ reg aw_en;
 // my PL readout signals
 wire [3:0] waddr, raddr;
 wire [32-1:0] flag;
-wire [64-1:0] d_i;
+reg [64-1:0] d_i;
 wire [128-1:0] d_o;
 reg wr_en;
 
@@ -604,10 +604,10 @@ always @( posedge S_AXI_ACLK ) begin
         // singal updated from FPGA
         if ( wr_en ) begin
             case ( waddr )
-                4'h00 : {slv_reg19, slv_reg18, slv_reg17, slv_reg16} <= y_out;
-                4'h01 : {slv_reg23, slv_reg22, slv_reg21, slv_reg20} <= y_out;
-                4'h02 : {slv_reg27, slv_reg26, slv_reg25, slv_reg24} <= y_out;
-                4'h03 : {slv_reg31, slv_reg30, slv_reg29, slv_reg28} <= y_out;
+                4'h00 : {slv_reg19, slv_reg18, slv_reg17, slv_reg16} <= d_o;
+                4'h01 : {slv_reg23, slv_reg22, slv_reg21, slv_reg20} <= d_o;
+                4'h02 : {slv_reg27, slv_reg26, slv_reg25, slv_reg24} <= d_o;
+                4'h03 : {slv_reg31, slv_reg30, slv_reg29, slv_reg28} <= d_o;
                 default : begin
                     slv_reg16 <= slv_reg16;
                     slv_reg17 <= slv_reg17;

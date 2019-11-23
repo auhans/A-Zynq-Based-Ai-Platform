@@ -1,7 +1,7 @@
 // Copyright 1986-2019 Xilinx, Inc. All Rights Reserved.
 // --------------------------------------------------------------------------------
-// Tool Version: Vivado v.2019.1 (win64) Build 2552052 Fri May 24 14:49:42 MDT 2019
-// Date        : Tue Oct 15 20:56:20 2019
+// Tool Version: Vivado v.2019.2 (win64) Build 2708876 Wed Nov  6 21:40:23 MST 2019
+// Date        : Thu Nov 21 22:41:29 2019
 // Host        : MAIN running 64-bit major release  (build 9200)
 // Command     : write_verilog -force -mode funcsim
 //               D:/GradProject/A-Zynq-Based-Ai-Platform/hw/ipi-bd/test_design/ip/test_design_rst_ps7_0_200M_0/test_design_rst_ps7_0_200M_0_sim_netlist.v
@@ -12,7 +12,7 @@
 // --------------------------------------------------------------------------------
 `timescale 1 ps / 1 ps
 
-(* CHECK_LICENSE_TYPE = "test_design_rst_ps7_0_200M_0,proc_sys_reset,{}" *) (* downgradeipidentifiedwarnings = "yes" *) (* x_core_info = "proc_sys_reset,Vivado 2019.1" *) 
+(* CHECK_LICENSE_TYPE = "test_design_rst_ps7_0_200M_0,proc_sys_reset,{}" *) (* downgradeipidentifiedwarnings = "yes" *) (* x_core_info = "proc_sys_reset,Vivado 2019.2" *) 
 (* NotValidForBitStream *)
 module test_design_rst_ps7_0_200M_0
    (slowest_sync_clk,
@@ -166,24 +166,30 @@ module test_design_rst_ps7_0_200M_0_cdc_sync_0
    (lpf_exr_reg,
     scndry_out,
     lpf_exr,
-    p_3_out,
+    p_1_in4_in,
+    p_2_in3_in,
+    exr_lpf,
     mb_debug_sys_rst,
     ext_reset_in,
     slowest_sync_clk);
   output lpf_exr_reg;
   output scndry_out;
   input lpf_exr;
-  input [2:0]p_3_out;
+  input p_1_in4_in;
+  input p_2_in3_in;
+  input [0:0]exr_lpf;
   input mb_debug_sys_rst;
   input ext_reset_in;
   input slowest_sync_clk;
 
   wire exr_d1;
+  wire [0:0]exr_lpf;
   wire ext_reset_in;
   wire lpf_exr;
   wire lpf_exr_reg;
   wire mb_debug_sys_rst;
-  wire [2:0]p_3_out;
+  wire p_1_in4_in;
+  wire p_2_in3_in;
   wire s_level_out_d1_cdc_to;
   wire s_level_out_d2;
   wire s_level_out_d3;
@@ -244,10 +250,10 @@ module test_design_rst_ps7_0_200M_0_cdc_sync_0
     .INIT(32'hEAAAAAA8)) 
     lpf_exr_i_1
        (.I0(lpf_exr),
-        .I1(p_3_out[1]),
-        .I2(p_3_out[2]),
+        .I1(p_1_in4_in),
+        .I2(p_2_in3_in),
         .I3(scndry_out),
-        .I4(p_3_out[0]),
+        .I4(exr_lpf),
         .O(lpf_exr_reg));
 endmodule
 
@@ -272,6 +278,7 @@ module test_design_rst_ps7_0_200M_0_lpf
   wire [0:0]asr_lpf;
   wire aux_reset_in;
   wire dcm_locked;
+  wire [0:0]exr_lpf;
   wire ext_reset_in;
   wire lpf_asr;
   wire lpf_exr;
@@ -279,9 +286,11 @@ module test_design_rst_ps7_0_200M_0_lpf
   wire lpf_int0__0;
   wire mb_debug_sys_rst;
   wire p_1_in;
+  wire p_1_in4_in;
   wire p_2_in;
+  wire p_2_in3_in;
   wire p_3_in1_in;
-  wire [3:0]p_3_out;
+  wire p_3_in6_in;
   wire slowest_sync_clk;
 
   test_design_rst_ps7_0_200M_0_cdc_sync \ACTIVE_LOW_AUX.ACT_LO_AUX 
@@ -294,12 +303,14 @@ module test_design_rst_ps7_0_200M_0_lpf
         .scndry_out(p_3_in1_in),
         .slowest_sync_clk(slowest_sync_clk));
   test_design_rst_ps7_0_200M_0_cdc_sync_0 \ACTIVE_LOW_EXT.ACT_LO_EXT 
-       (.ext_reset_in(ext_reset_in),
+       (.exr_lpf(exr_lpf),
+        .ext_reset_in(ext_reset_in),
         .lpf_exr(lpf_exr),
         .lpf_exr_reg(\ACTIVE_LOW_EXT.ACT_LO_EXT_n_0 ),
         .mb_debug_sys_rst(mb_debug_sys_rst),
-        .p_3_out(p_3_out[2:0]),
-        .scndry_out(p_3_out[3]),
+        .p_1_in4_in(p_1_in4_in),
+        .p_2_in3_in(p_2_in3_in),
+        .scndry_out(p_3_in6_in),
         .slowest_sync_clk(slowest_sync_clk));
   FDRE #(
     .INIT(1'b0)) 
@@ -330,24 +341,24 @@ module test_design_rst_ps7_0_200M_0_lpf
     \EXT_LPF[1].exr_lpf_reg[1] 
        (.C(slowest_sync_clk),
         .CE(1'b1),
-        .D(p_3_out[3]),
-        .Q(p_3_out[2]),
+        .D(p_3_in6_in),
+        .Q(p_2_in3_in),
         .R(1'b0));
   FDRE #(
     .INIT(1'b0)) 
     \EXT_LPF[2].exr_lpf_reg[2] 
        (.C(slowest_sync_clk),
         .CE(1'b1),
-        .D(p_3_out[2]),
-        .Q(p_3_out[1]),
+        .D(p_2_in3_in),
+        .Q(p_1_in4_in),
         .R(1'b0));
   FDRE #(
     .INIT(1'b0)) 
     \EXT_LPF[3].exr_lpf_reg[3] 
        (.C(slowest_sync_clk),
         .CE(1'b1),
-        .D(p_3_out[1]),
-        .Q(p_3_out[0]),
+        .D(p_1_in4_in),
+        .Q(exr_lpf),
         .R(1'b0));
   (* XILINX_LEGACY_PRIM = "SRL16" *) 
   (* box_type = "PRIMITIVE" *) 

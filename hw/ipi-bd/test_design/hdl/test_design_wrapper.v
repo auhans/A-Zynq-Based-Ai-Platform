@@ -1,7 +1,7 @@
 //Copyright 1986-2019 Xilinx, Inc. All Rights Reserved.
 //--------------------------------------------------------------------------------
-//Tool Version: Vivado v.2019.1 (win64) Build 2552052 Fri May 24 14:49:42 MDT 2019
-//Date        : Tue Oct 15 20:54:10 2019
+//Tool Version: Vivado v.2019.2 (win64) Build 2708876 Wed Nov  6 21:40:23 MST 2019
+//Date        : Thu Nov 21 22:40:08 2019
 //Host        : MAIN running 64-bit major release  (build 9200)
 //Command     : generate_target test_design_wrapper.bd
 //Design      : test_design_wrapper

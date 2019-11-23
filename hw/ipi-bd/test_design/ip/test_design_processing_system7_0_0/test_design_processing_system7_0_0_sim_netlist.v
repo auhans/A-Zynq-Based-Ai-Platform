@@ -1,7 +1,7 @@
 // Copyright 1986-2019 Xilinx, Inc. All Rights Reserved.
 // --------------------------------------------------------------------------------
-// Tool Version: Vivado v.2019.1 (win64) Build 2552052 Fri May 24 14:49:42 MDT 2019
-// Date        : Tue Oct 15 20:56:22 2019
+// Tool Version: Vivado v.2019.2 (win64) Build 2708876 Wed Nov  6 21:40:23 MST 2019
+// Date        : Thu Nov 21 22:41:33 2019
 // Host        : MAIN running 64-bit major release  (build 9200)
 // Command     : write_verilog -force -mode funcsim
 //               D:/GradProject/A-Zynq-Based-Ai-Platform/hw/ipi-bd/test_design/ip/test_design_processing_system7_0_0/test_design_processing_system7_0_0_sim_netlist.v
@@ -12,7 +12,7 @@
 // --------------------------------------------------------------------------------
 `timescale 1 ps / 1 ps
 
-(* CHECK_LICENSE_TYPE = "test_design_processing_system7_0_0,processing_system7_v5_5_processing_system7,{}" *) (* DowngradeIPIdentifiedWarnings = "yes" *) (* X_CORE_INFO = "processing_system7_v5_5_processing_system7,Vivado 2019.1" *) 
+(* CHECK_LICENSE_TYPE = "test_design_processing_system7_0_0,processing_system7_v5_5_processing_system7,{}" *) (* DowngradeIPIdentifiedWarnings = "yes" *) (* X_CORE_INFO = "processing_system7_v5_5_processing_system7,Vivado 2019.2" *) 
 (* NotValidForBitStream *)
 module test_design_processing_system7_0_0
    (TTC0_WAVE0_OUT,

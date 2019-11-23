@@ -1,7 +1,7 @@
 -- Copyright 1986-2019 Xilinx, Inc. All Rights Reserved.
 -- --------------------------------------------------------------------------------
--- Tool Version: Vivado v.2019.1 (win64) Build 2552052 Fri May 24 14:49:42 MDT 2019
--- Date        : Tue Oct 15 20:56:20 2019
+-- Tool Version: Vivado v.2019.2 (win64) Build 2708876 Wed Nov  6 21:40:23 MST 2019
+-- Date        : Thu Nov 21 22:41:29 2019
 -- Host        : MAIN running 64-bit major release  (build 9200)
 -- Command     : write_vhdl -force -mode funcsim
 --               D:/GradProject/A-Zynq-Based-Ai-Platform/hw/ipi-bd/test_design/ip/test_design_rst_ps7_0_200M_0/test_design_rst_ps7_0_200M_0_sim_netlist.vhdl
@@ -126,7 +126,9 @@ entity test_design_rst_ps7_0_200M_0_cdc_sync_0 is
     lpf_exr_reg : out STD_LOGIC;
     scndry_out : out STD_LOGIC;
     lpf_exr : in STD_LOGIC;
-    p_3_out : in STD_LOGIC_VECTOR ( 2 downto 0 );
+    p_1_in4_in : in STD_LOGIC;
+    p_2_in3_in : in STD_LOGIC;
+    exr_lpf : in STD_LOGIC_VECTOR ( 0 to 0 );
     mb_debug_sys_rst : in STD_LOGIC;
     ext_reset_in : in STD_LOGIC;
     slowest_sync_clk : in STD_LOGIC
@@ -217,10 +219,10 @@ lpf_exr_i_1: unisim.vcomponents.LUT5
     )
         port map (
       I0 => lpf_exr,
-      I1 => p_3_out(1),
-      I2 => p_3_out(2),
+      I1 => p_1_in4_in,
+      I2 => p_2_in3_in,
       I3 => \^scndry_out\,
-      I4 => p_3_out(0),
+      I4 => exr_lpf(0),
       O => lpf_exr_reg
     );
 end STRUCTURE;
@@ -410,13 +412,16 @@ architecture STRUCTURE of test_design_rst_ps7_0_200M_0_lpf is
   signal \ACTIVE_LOW_EXT.ACT_LO_EXT_n_0\ : STD_LOGIC;
   signal Q : STD_LOGIC;
   signal asr_lpf : STD_LOGIC_VECTOR ( 0 to 0 );
+  signal exr_lpf : STD_LOGIC_VECTOR ( 0 to 0 );
   signal lpf_asr : STD_LOGIC;
   signal lpf_exr : STD_LOGIC;
   signal \lpf_int0__0\ : STD_LOGIC;
   signal p_1_in : STD_LOGIC;
+  signal p_1_in4_in : STD_LOGIC;
   signal p_2_in : STD_LOGIC;
+  signal p_2_in3_in : STD_LOGIC;
   signal p_3_in1_in : STD_LOGIC;
-  signal p_3_out : STD_LOGIC_VECTOR ( 3 downto 0 );
+  signal p_3_in6_in : STD_LOGIC;
   attribute XILINX_LEGACY_PRIM : string;
   attribute XILINX_LEGACY_PRIM of POR_SRL_I : label is "SRL16";
   attribute box_type : string;
@@ -437,12 +442,14 @@ begin
     );
 \ACTIVE_LOW_EXT.ACT_LO_EXT\: entity work.test_design_rst_ps7_0_200M_0_cdc_sync_0
      port map (
+      exr_lpf(0) => exr_lpf(0),
       ext_reset_in => ext_reset_in,
       lpf_exr => lpf_exr,
       lpf_exr_reg => \ACTIVE_LOW_EXT.ACT_LO_EXT_n_0\,
       mb_debug_sys_rst => mb_debug_sys_rst,
-      p_3_out(2 downto 0) => p_3_out(2 downto 0),
-      scndry_out => p_3_out(3),
+      p_1_in4_in => p_1_in4_in,
+      p_2_in3_in => p_2_in3_in,
+      scndry_out => p_3_in6_in,
       slowest_sync_clk => slowest_sync_clk
     );
 \AUX_LPF[1].asr_lpf_reg[1]\: unisim.vcomponents.FDRE
@@ -485,8 +492,8 @@ begin
         port map (
       C => slowest_sync_clk,
       CE => '1',
-      D => p_3_out(3),
-      Q => p_3_out(2),
+      D => p_3_in6_in,
+      Q => p_2_in3_in,
       R => '0'
     );
 \EXT_LPF[2].exr_lpf_reg[2]\: unisim.vcomponents.FDRE
@@ -496,8 +503,8 @@ begin
         port map (
       C => slowest_sync_clk,
       CE => '1',
-      D => p_3_out(2),
-      Q => p_3_out(1),
+      D => p_2_in3_in,
+      Q => p_1_in4_in,
       R => '0'
     );
 \EXT_LPF[3].exr_lpf_reg[3]\: unisim.vcomponents.FDRE
@@ -507,8 +514,8 @@ begin
         port map (
       C => slowest_sync_clk,
       CE => '1',
-      D => p_3_out(1),
-      Q => p_3_out(0),
+      D => p_1_in4_in,
+      Q => exr_lpf(0),
       R => '0'
     );
 POR_SRL_I: unisim.vcomponents.SRL16E
@@ -1056,7 +1063,7 @@ entity test_design_rst_ps7_0_200M_0 is
   attribute downgradeipidentifiedwarnings : string;
   attribute downgradeipidentifiedwarnings of test_design_rst_ps7_0_200M_0 : entity is "yes";
   attribute x_core_info : string;
-  attribute x_core_info of test_design_rst_ps7_0_200M_0 : entity is "proc_sys_reset,Vivado 2019.1";
+  attribute x_core_info of test_design_rst_ps7_0_200M_0 : entity is "proc_sys_reset,Vivado 2019.2";
 end test_design_rst_ps7_0_200M_0;
 
 architecture STRUCTURE of test_design_rst_ps7_0_200M_0 is
