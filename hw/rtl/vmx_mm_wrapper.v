@@ -27,13 +27,16 @@ module vmx_mm_wrapper #
 
     reg [2:0] state = S_IDLE;
 
-    reg  [8*PE_SIZE-1:0] shift_is_w [0:PE_SIZE-1];
+    reg  [8*PE_SIZE-1:0] shift_ctrl [0:PE_SIZE-1];
     reg  [DIN_WIDTH-1:0] shift_i [0:PE_SIZE-1];
     reg  [DOU_WIDTH-1:0] shift_o [0:PE_SIZE-1];
 
-    wire [8*PE_SIZE-1:0] pe_is_w;
+    wire [8*PE_SIZE-1:0] pe_ctrl;
     wire [DIN_WIDTH-1:0] pe_i;
     wire [DOU_WIDTH-1:0] pe_o;
+    wire simd;
+
+    assign simd = ctrl[1];
 
     integer i;
 
@@ -130,10 +133,10 @@ module vmx_mm_wrapper #
         shift_i[0] <= d_i;
         shift_o[0] <= pe_o;
         for (i = 0; i < PE_SIZE; i = i + 1) begin
-            shift_is_w[0][i*8+:8] <= {(state == S_SETW), getw_counter};
+            shift_ctrl[0][i*8+:8] <= {(state == S_SETW), getw_counter};
         end
         for (i = 0; i < PE_SIZE; i = i + 1) begin
-            shift_is_w[i+1] <= shift_is_w[i] << 8;
+            shift_ctrl[i+1] <= shift_ctrl[i] << 8;
             shift_i[i+1] <= shift_i[i] << (PORT_WIDTH);
             shift_o[i+1] <= shift_o[i] << (PORT_WIDTH * 2);
         end
@@ -145,7 +148,7 @@ module vmx_mm_wrapper #
 
     generate
         for (k = 0; k < PE_SIZE; k = k + 1) begin
-            assign pe_is_w[k*8+:8] = shift_is_w[k][8*PE_SIZE-1-:8];
+            assign pe_ctrl[k*8+:8] = shift_ctrl[k][8*PE_SIZE-1-:8];
             assign pe_i[k*PORT_WIDTH+:PORT_WIDTH] = shift_i[k][DIN_WIDTH-1-:PORT_WIDTH];
             assign d_o[k*PORT_WIDTH*2+:PORT_WIDTH*2] = shift_o[k][DIN_WIDTH*2-1-:PORT_WIDTH*2];
         end
@@ -153,11 +156,14 @@ module vmx_mm_wrapper #
 
     assign flag = state;
 
-    vmx_pe_array myVMX(
+    vmx_pe_array #(
+        .ARRAY_SIZE(PE_SIZE),
+        .VECTORS_BITLEN(PORT_WIDTH)
+    )myVMX(
         .clk(clk),
         .rst_n(rst_n),
-        .load_ctrl(pe_is_w),
-        .simd_mode(0),
+        .load_ctrl(pe_ctrl),
+        .simd_mode(4{simd}),
         .vector(pe_i),
         .product(pe_o)
     );
