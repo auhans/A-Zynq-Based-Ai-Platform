@@ -34,6 +34,7 @@ module vmx_mm_wrapper #
     wire [8*PE_SIZE-1:0] pe_ctrl;
     wire [DIN_WIDTH-1:0] pe_i;
     wire [DOU_WIDTH-1:0] pe_o;
+    wire loop_mode;
     wire simd;
 
     assign simd = ctrl[1];
@@ -155,6 +156,7 @@ module vmx_mm_wrapper #
     endgenerate
 
     assign flag = state;
+    assign loop_mode = 0;
 
     vmx_pe_array #(
         .ARRAY_SIZE(PE_SIZE),

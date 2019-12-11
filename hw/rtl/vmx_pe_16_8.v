@@ -24,12 +24,12 @@ module vmx_pe_16_8 #(
     reg signed [VECTOR_BITLEN-1:0] weight;
     reg signed [PRODCUT_BITLEN-1:0] sum;
 
-    wire signed data_up [7:0];
-    wire signed data_dw [7:0];
-    wire signed weight_up [7:0];
-    wire signed weight_dw [7:0];
-    wire signed sum_in_up [15:0];
-    wire signed sum_in_dw [15:0];
+    wire signed [7:0] data_up;
+    wire signed [7:0] data_dw;
+    wire signed [7:0] weight_up;
+    wire signed [7:0] weight_dw;
+    wire signed [15:0] sum_in_up;
+    wire signed [15:0] sum_in_dw;
 
     assign data_up = data[8+:8];
     assign data_dw = data[0+:8];

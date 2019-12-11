@@ -16,22 +16,22 @@ reg [63:0] d_i;
 reg [63:0] memory [0:15];
 
 initial begin
-    memory[16'h0] = {16'd1, 16'd2, 16'd3, 16'd4};
-    memory[16'h1] = {16'd5, 16'd6, 16'd7, 16'd8};
-    memory[16'h2] = {16'd4, 16'd3, 16'd2, 16'd1};
-    memory[16'h3] = {16'd8, 16'd7, 16'd6, 16'd5};
-    memory[16'h4] = {16'd1, 16'd2, 16'd3, 16'd4};
-    memory[16'h5] = {16'd5, 16'd6, 16'd7, 16'd8};
-    memory[16'h6] = {16'd4, 16'd3, 16'd2, 16'd1};
-    memory[16'h7] = {16'd8, 16'd7, 16'd6, 16'd5};
-    memory[16'h8] = {16'd0, 16'd0, 16'd0, 16'd0};
-    memory[16'h9] = {16'd0, 16'd0, 16'd0, 16'd0};
-    memory[16'hA] = {16'd0, 16'd0, 16'd0, 16'd0};
-    memory[16'hB] = {16'd0, 16'd0, 16'd0, 16'd0};
-    memory[16'hC] = {16'd0, 16'd0, 16'd0, 16'd0};
-    memory[16'hD] = {16'd0, 16'd0, 16'd0, 16'd0};
-    memory[16'hE] = {16'd0, 16'd0, 16'd0, 16'd0};
-    memory[16'hF] = {16'd0, 16'd0, 16'd0, 16'd0};
+    memory[16'h0] = {16'h0001, 16'h0000, 16'h0000, 16'h0000};
+    memory[16'h1] = {16'h0000, 16'h0001, 16'h0000, 16'h0000};
+    memory[16'h2] = {16'h0000, 16'h0000, 16'hFFFF, 16'h0000};
+    memory[16'h3] = {16'h0000, 16'h0000, 16'h0000, 16'hFFFF};
+    memory[16'h4] = {16'h0001, 16'h0000, 16'h0000, 16'h0000};
+    memory[16'h5] = {16'h0000, 16'hFFFF, 16'h0000, 16'h0000};
+    memory[16'h6] = {16'h0000, 16'h0000, 16'h0001, 16'h0000};
+    memory[16'h7] = {16'h0000, 16'h0000, 16'h0000, 16'hFFFF};
+    memory[16'h8] = {16'h0000, 16'h0000, 16'h0000, 16'h0000};
+    memory[16'h9] = {16'h0000, 16'h0000, 16'h0000, 16'h0000};
+    memory[16'hA] = {16'h0000, 16'h0000, 16'h0000, 16'h0000};
+    memory[16'hB] = {16'h0000, 16'h0000, 16'h0000, 16'h0000};
+    memory[16'hC] = {16'h0000, 16'h0000, 16'h0000, 16'h0000};
+    memory[16'hD] = {16'h0000, 16'h0000, 16'h0000, 16'h0000};
+    memory[16'hE] = {16'h0000, 16'h0000, 16'h0000, 16'h0000};
+    memory[16'hF] = {16'h0000, 16'h0000, 16'h0000, 16'h0000};
     clk = 0;
     rst_n = 1;
     d_i = 0;
@@ -60,8 +60,8 @@ always @(*) begin
 end
 
 always @( posedge clk ) begin
-    memory[addr] = (wr_en) ? d_o[0+:64] : memory[addr];
-    memory[addr+1] = (wr_en) ? d_o[64+:64] : memory[addr+1];
+    memory[addr] = (wr_en) ? d_o[64+:64] : memory[addr];
+    memory[addr+1] = (wr_en) ? d_o[0+:64] : memory[addr+1];
 end
 
 vmx_mm_wrapper myVMX_wrapper(
