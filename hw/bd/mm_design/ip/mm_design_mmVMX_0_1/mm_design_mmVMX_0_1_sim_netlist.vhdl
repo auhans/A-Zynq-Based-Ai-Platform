@@ -1,7 +1,7 @@
 -- Copyright 1986-2019 Xilinx, Inc. All Rights Reserved.
 -- --------------------------------------------------------------------------------
 -- Tool Version: Vivado v.2019.2 (win64) Build 2708876 Wed Nov  6 21:40:23 MST 2019
--- Date        : Wed Dec 11 10:09:16 2019
+-- Date        : Wed Dec 11 21:30:49 2019
 -- Host        : MAIN running 64-bit major release  (build 9200)
 -- Command     : write_vhdl -force -mode funcsim
 --               D:/GradProject/A-Zynq-Based-Ai-Platform/hw/bd/mm_design/ip/mm_design_mmVMX_0_1/mm_design_mmVMX_0_1_sim_netlist.vhdl
@@ -30551,7 +30551,7 @@ architecture STRUCTURE of mm_design_mmVMX_0_1 is
   attribute X_INTERFACE_INFO : string;
   attribute X_INTERFACE_INFO of s0_mmctrl_aclk : signal is "xilinx.com:signal:clock:1.0 S0_MMCTRL_CLK CLK";
   attribute X_INTERFACE_PARAMETER : string;
-  attribute X_INTERFACE_PARAMETER of s0_mmctrl_aclk : signal is "XIL_INTERFACENAME S0_MMCTRL_CLK, ASSOCIATED_BUSIF S0_MMCTRL, ASSOCIATED_RESET s0_mmctrl_aresetn, FREQ_HZ 50000000, PHASE 0.000, CLK_DOMAIN mm_design_processing_system7_0_0_FCLK_CLK0, INSERT_VIP 0";
+  attribute X_INTERFACE_PARAMETER of s0_mmctrl_aclk : signal is "XIL_INTERFACENAME S0_MMCTRL_CLK, ASSOCIATED_BUSIF S0_MMCTRL, ASSOCIATED_RESET s0_mmctrl_aresetn, FREQ_HZ 100000000, PHASE 0.000, CLK_DOMAIN mm_design_processing_system7_0_0_FCLK_CLK0, INSERT_VIP 0";
   attribute X_INTERFACE_INFO of s0_mmctrl_aresetn : signal is "xilinx.com:signal:reset:1.0 S0_MMCTRL_RST RST";
   attribute X_INTERFACE_PARAMETER of s0_mmctrl_aresetn : signal is "XIL_INTERFACENAME S0_MMCTRL_RST, POLARITY ACTIVE_LOW, INSERT_VIP 0";
   attribute X_INTERFACE_INFO of s0_mmctrl_arready : signal is "xilinx.com:interface:aximm:1.0 S0_MMCTRL ARREADY";
@@ -30561,7 +30561,7 @@ architecture STRUCTURE of mm_design_mmVMX_0_1 is
   attribute X_INTERFACE_INFO of s0_mmctrl_bready : signal is "xilinx.com:interface:aximm:1.0 S0_MMCTRL BREADY";
   attribute X_INTERFACE_INFO of s0_mmctrl_bvalid : signal is "xilinx.com:interface:aximm:1.0 S0_MMCTRL BVALID";
   attribute X_INTERFACE_INFO of s0_mmctrl_rready : signal is "xilinx.com:interface:aximm:1.0 S0_MMCTRL RREADY";
-  attribute X_INTERFACE_PARAMETER of s0_mmctrl_rready : signal is "XIL_INTERFACENAME S0_MMCTRL, WIZ_DATA_WIDTH 32, WIZ_NUM_REG 34, SUPPORTS_NARROW_BURST 0, DATA_WIDTH 32, PROTOCOL AXI4LITE, FREQ_HZ 50000000, ID_WIDTH 0, ADDR_WIDTH 8, AWUSER_WIDTH 0, ARUSER_WIDTH 0, WUSER_WIDTH 0, RUSER_WIDTH 0, BUSER_WIDTH 0, READ_WRITE_MODE READ_WRITE, HAS_BURST 0, HAS_LOCK 0, HAS_PROT 1, HAS_CACHE 0, HAS_QOS 0, HAS_REGION 0, HAS_WSTRB 1, HAS_BRESP 1, HAS_RRESP 1, NUM_READ_OUTSTANDING 8, NUM_WRITE_OUTSTANDING 8, MAX_BURST_LENGTH 1, PHASE 0.000, CLK_DOMAIN mm_design_processing_system7_0_0_FCLK_CLK0, NUM_READ_THREADS 4, NUM_WRITE_THREADS 4, RUSER_BITS_PER_BYTE 0, WUSER_BITS_PER_BYTE 0, INSERT_VIP 0";
+  attribute X_INTERFACE_PARAMETER of s0_mmctrl_rready : signal is "XIL_INTERFACENAME S0_MMCTRL, WIZ_DATA_WIDTH 32, WIZ_NUM_REG 34, SUPPORTS_NARROW_BURST 0, DATA_WIDTH 32, PROTOCOL AXI4LITE, FREQ_HZ 100000000, ID_WIDTH 0, ADDR_WIDTH 8, AWUSER_WIDTH 0, ARUSER_WIDTH 0, WUSER_WIDTH 0, RUSER_WIDTH 0, BUSER_WIDTH 0, READ_WRITE_MODE READ_WRITE, HAS_BURST 0, HAS_LOCK 0, HAS_PROT 1, HAS_CACHE 0, HAS_QOS 0, HAS_REGION 0, HAS_WSTRB 1, HAS_BRESP 1, HAS_RRESP 1, NUM_READ_OUTSTANDING 8, NUM_WRITE_OUTSTANDING 8, MAX_BURST_LENGTH 1, PHASE 0.000, CLK_DOMAIN mm_design_processing_system7_0_0_FCLK_CLK0, NUM_READ_THREADS 4, NUM_WRITE_THREADS 4, RUSER_BITS_PER_BYTE 0, WUSER_BITS_PER_BYTE 0, INSERT_VIP 0";
   attribute X_INTERFACE_INFO of s0_mmctrl_rvalid : signal is "xilinx.com:interface:aximm:1.0 S0_MMCTRL RVALID";
   attribute X_INTERFACE_INFO of s0_mmctrl_wready : signal is "xilinx.com:interface:aximm:1.0 S0_MMCTRL WREADY";
   attribute X_INTERFACE_INFO of s0_mmctrl_wvalid : signal is "xilinx.com:interface:aximm:1.0 S0_MMCTRL WVALID";

@@ -1,7 +1,7 @@
 // Copyright 1986-2019 Xilinx, Inc. All Rights Reserved.
 // --------------------------------------------------------------------------------
 // Tool Version: Vivado v.2019.2 (win64) Build 2708876 Wed Nov  6 21:40:23 MST 2019
-// Date        : Wed Dec 11 10:09:16 2019
+// Date        : Wed Dec 11 21:30:49 2019
 // Host        : MAIN running 64-bit major release  (build 9200)
 // Command     : write_verilog -force -mode funcsim
 //               D:/GradProject/A-Zynq-Based-Ai-Platform/hw/bd/mm_design/ip/mm_design_mmVMX_0_1/mm_design_mmVMX_0_1_sim_netlist.v
@@ -36,7 +36,7 @@ module mm_design_mmVMX_0_1
     s0_mmctrl_rresp,
     s0_mmctrl_rvalid,
     s0_mmctrl_rready);
-  (* X_INTERFACE_INFO = "xilinx.com:signal:clock:1.0 S0_MMCTRL_CLK CLK" *) (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME S0_MMCTRL_CLK, ASSOCIATED_BUSIF S0_MMCTRL, ASSOCIATED_RESET s0_mmctrl_aresetn, FREQ_HZ 50000000, PHASE 0.000, CLK_DOMAIN mm_design_processing_system7_0_0_FCLK_CLK0, INSERT_VIP 0" *) input s0_mmctrl_aclk;
+  (* X_INTERFACE_INFO = "xilinx.com:signal:clock:1.0 S0_MMCTRL_CLK CLK" *) (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME S0_MMCTRL_CLK, ASSOCIATED_BUSIF S0_MMCTRL, ASSOCIATED_RESET s0_mmctrl_aresetn, FREQ_HZ 100000000, PHASE 0.000, CLK_DOMAIN mm_design_processing_system7_0_0_FCLK_CLK0, INSERT_VIP 0" *) input s0_mmctrl_aclk;
   (* X_INTERFACE_INFO = "xilinx.com:signal:reset:1.0 S0_MMCTRL_RST RST" *) (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME S0_MMCTRL_RST, POLARITY ACTIVE_LOW, INSERT_VIP 0" *) input s0_mmctrl_aresetn;
   (* X_INTERFACE_INFO = "xilinx.com:interface:aximm:1.0 S0_MMCTRL AWADDR" *) input [7:0]s0_mmctrl_awaddr;
   (* X_INTERFACE_INFO = "xilinx.com:interface:aximm:1.0 S0_MMCTRL AWPROT" *) input [2:0]s0_mmctrl_awprot;
@@ -56,7 +56,7 @@ module mm_design_mmVMX_0_1
   (* X_INTERFACE_INFO = "xilinx.com:interface:aximm:1.0 S0_MMCTRL RDATA" *) output [31:0]s0_mmctrl_rdata;
   (* X_INTERFACE_INFO = "xilinx.com:interface:aximm:1.0 S0_MMCTRL RRESP" *) output [1:0]s0_mmctrl_rresp;
   (* X_INTERFACE_INFO = "xilinx.com:interface:aximm:1.0 S0_MMCTRL RVALID" *) output s0_mmctrl_rvalid;
-  (* X_INTERFACE_INFO = "xilinx.com:interface:aximm:1.0 S0_MMCTRL RREADY" *) (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME S0_MMCTRL, WIZ_DATA_WIDTH 32, WIZ_NUM_REG 34, SUPPORTS_NARROW_BURST 0, DATA_WIDTH 32, PROTOCOL AXI4LITE, FREQ_HZ 50000000, ID_WIDTH 0, ADDR_WIDTH 8, AWUSER_WIDTH 0, ARUSER_WIDTH 0, WUSER_WIDTH 0, RUSER_WIDTH 0, BUSER_WIDTH 0, READ_WRITE_MODE READ_WRITE, HAS_BURST 0, HAS_LOCK 0, HAS_PROT 1, HAS_CACHE 0, HAS_QOS 0, HAS_REGION 0, HAS_WSTRB 1, HAS_BRESP 1, HAS_RRESP 1, NUM_READ_OUTSTANDING 8, NUM_WRITE_OUTSTANDING 8, MAX_BURST_LENGTH 1, PHASE 0.000, CLK_DOMAIN mm_design_processing_system7_0_0_FCLK_CLK0, NUM_READ_THREADS 4, NUM_WRITE_THREADS 4, RUSER_BITS_PER_BYTE 0, WUSER_BITS_PER_BYTE 0, INSERT_VIP 0" *) input s0_mmctrl_rready;
+  (* X_INTERFACE_INFO = "xilinx.com:interface:aximm:1.0 S0_MMCTRL RREADY" *) (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME S0_MMCTRL, WIZ_DATA_WIDTH 32, WIZ_NUM_REG 34, SUPPORTS_NARROW_BURST 0, DATA_WIDTH 32, PROTOCOL AXI4LITE, FREQ_HZ 100000000, ID_WIDTH 0, ADDR_WIDTH 8, AWUSER_WIDTH 0, ARUSER_WIDTH 0, WUSER_WIDTH 0, RUSER_WIDTH 0, BUSER_WIDTH 0, READ_WRITE_MODE READ_WRITE, HAS_BURST 0, HAS_LOCK 0, HAS_PROT 1, HAS_CACHE 0, HAS_QOS 0, HAS_REGION 0, HAS_WSTRB 1, HAS_BRESP 1, HAS_RRESP 1, NUM_READ_OUTSTANDING 8, NUM_WRITE_OUTSTANDING 8, MAX_BURST_LENGTH 1, PHASE 0.000, CLK_DOMAIN mm_design_processing_system7_0_0_FCLK_CLK0, NUM_READ_THREADS 4, NUM_WRITE_THREADS 4, RUSER_BITS_PER_BYTE 0, WUSER_BITS_PER_BYTE 0, INSERT_VIP 0" *) input s0_mmctrl_rready;
 
   wire \<const0> ;
   wire s0_mmctrl_aclk;
