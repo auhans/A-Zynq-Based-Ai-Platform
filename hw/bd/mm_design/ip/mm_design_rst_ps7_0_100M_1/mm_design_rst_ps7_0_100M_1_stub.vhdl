@@ -1,10 +1,10 @@
 -- Copyright 1986-2019 Xilinx, Inc. All Rights Reserved.
 -- --------------------------------------------------------------------------------
 -- Tool Version: Vivado v.2019.2 (win64) Build 2708876 Wed Nov  6 21:40:23 MST 2019
--- Date        : Sun Nov 24 21:13:42 2019
+-- Date        : Sun Nov 24 21:04:58 2019
 -- Host        : MAIN running 64-bit major release  (build 9200)
--- Command     : write_vhdl -force -mode synth_stub
---               d:/GradProject/A-Zynq-Based-Ai-Platform/hw/bd/mm_design/ip/mm_design_rst_ps7_0_100M_1/mm_design_rst_ps7_0_100M_1_stub.vhdl
+-- Command     : write_vhdl -force -mode synth_stub -rename_top mm_design_rst_ps7_0_100M_1 -prefix
+--               mm_design_rst_ps7_0_100M_1_ mm_design_rst_ps7_0_100M_1_stub.vhdl
 -- Design      : mm_design_rst_ps7_0_100M_1
 -- Purpose     : Stub declaration of top-level module interface
 -- Device      : xc7z020clg484-1

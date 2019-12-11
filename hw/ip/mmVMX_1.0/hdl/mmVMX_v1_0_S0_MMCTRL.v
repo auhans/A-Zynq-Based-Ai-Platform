@@ -641,7 +641,7 @@
 	vmx_mm_wrapper myVMX_wrapper(
         // ports
         .clk(S_AXI_ACLK),		// main CLK
-        .rst_n(S_AXI_ARESETN),	// negative rst
+        .rst_n(1),				// negative rst
         .addr(address_line),	// selected write address
         .wr_en(write_en),		// write enable
         .d_o(data_out),			// data out 128bit

@@ -11,8 +11,8 @@ module vmx_pe_16_8 #(
     input wire simd_mode,
     input wire [7:0] load_ctrl,
     // data
-    input wire [VECTOR_BITLEN-1:0] data,
-    input wire [PRODCUT_BITLEN-1:0] sum_in,
+    input wire signed [VECTOR_BITLEN-1:0] data,
+    input wire signed [PRODCUT_BITLEN-1:0] sum_in,
     // output
     output reg simd_mode_pass,
     output reg [7:0] load_ctrl_pass,
@@ -21,11 +21,25 @@ module vmx_pe_16_8 #(
 );
 
     // declaration
-    reg [VECTOR_BITLEN-1:0] weight;
-    reg [PRODCUT_BITLEN-1:0] sum;
+    reg signed [VECTOR_BITLEN-1:0] weight;
+    reg signed [PRODCUT_BITLEN-1:0] sum;
+
+    wire signed data_up [7:0];
+    wire signed data_dw [7:0];
+    wire signed weight_up [7:0];
+    wire signed weight_dw [7:0];
+    wire signed sum_in_up [15:0];
+    wire signed sum_in_dw [15:0];
+
+    assign data_up = data[8+:8];
+    assign data_dw = data[0+:8];
+    assign weight_up = weight[8+:8];
+    assign weight_dw = weight[0+:8];
+    assign sum_in_up = sum_in[16+:8];
+    assign sum_in_dw = sum_in[00+:8];
 
     // sequenctial state logic
-    always @( posedge clk or negedge rst_n ) begin
+    always @( posedge clk ) begin
         if ( ~rst_n ) begin
             // reset values
             simd_mode_pass <= 0;
@@ -54,8 +68,8 @@ module vmx_pe_16_8 #(
     // combinational logics output
     always @(*) begin
         if ( simd_mode == 1 ) begin // 8bit mode
-            sum[15: 8] = data[ 7:0] * weight[ 7:0] + sum_in[15: 0];
-            sum[31:16] = data[15:8] * weight[15:8] + sum_in[31:16];
+            sum[31:16] = data_up * weight_up + sum_in_up;
+            sum[15: 0] = data_dw * weight_dw + sum_in_dw;
         end
         else begin // 16bit mode
             sum = data * weight + sum_in;

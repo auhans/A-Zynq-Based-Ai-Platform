@@ -26,7 +26,7 @@ module vmx_pe_array #(
 
     for ( i = 0; i < ARRAY_SIZE; i = i + 1 ) begin
         for ( j = 0; j < ARRAY_SIZE; j = j + 1 ) begin
-            vmx_pe_16_8_karatsuba PE(
+            vmx_pe_16_8 PE(
                 .clk(clk),
                 .rst_n(rst_n),
                 // input (vertical)

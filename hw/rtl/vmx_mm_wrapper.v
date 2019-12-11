@@ -48,7 +48,7 @@ module vmx_mm_wrapper #
     reg [COUNTER_WIDTH-1:0] expo_counter = {COUNTER_WIDTH{1'b0}};
 
 
-    always @(posedge clk or negedge rst_n) begin
+    always @(posedge clk) begin
         if (~rst_n) begin
             state <= S_IDLE;
         end
@@ -162,8 +162,9 @@ module vmx_mm_wrapper #
     )myVMX(
         .clk(clk),
         .rst_n(rst_n),
+        .loop_mode(loop_mode),
         .load_ctrl(pe_ctrl),
-        .simd_mode(4{simd}),
+        .simd_mode({4{simd}}),
         .vector(pe_i),
         .product(pe_o)
     );

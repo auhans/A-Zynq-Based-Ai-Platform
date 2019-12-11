@@ -8,6 +8,7 @@ module vmx_pe_array #(
 (
     input wire  clk,
     input wire  rst_n,
+    input wire  loop_mode,
     input wire  [8*ARRAY_SIZE-1:0] load_ctrl,
     input wire  [1*ARRAY_SIZE-1:0] simd_mode,
     input wire  [VECTORS_BITLEN*ARRAY_SIZE-1:0] vector,
@@ -26,7 +27,7 @@ module vmx_pe_array #(
 
     for ( i = 0; i < ARRAY_SIZE; i = i + 1 ) begin
         for ( j = 0; j < ARRAY_SIZE; j = j + 1 ) begin
-            vmx_pe_16_8_karatsuba PE(
+            vmx_pe_16_8 PE(
                 .clk(clk),
                 .rst_n(rst_n),
                 // input (vertical)
@@ -44,7 +45,7 @@ module vmx_pe_array #(
             );
         end
         // assign first col PE sum <- 0
-        assign hori_bus[i][0] = 0;
+        assign hori_bus[i][0] = (loop_mode) ? hori_bus[i][ARRAY_SIZE] : 0;
         // assign first row PE vertical input <- vector
         assign vert_bus[0][i] = vector[i*VECTORS_BITLEN+:VECTORS_BITLEN];
         // assign first row PE simd_mode <- simd_mode
