@@ -22,7 +22,7 @@ module vmx_pe_16_8 #(
 
     // declaration
     reg signed [VECTOR_BITLEN-1:0] weight;
-    reg signed [PRODCUT_BITLEN-1:0] sum;
+    reg [PRODCUT_BITLEN-1:0] sum;
 
     wire signed [7:0] data_up;
     wire signed [7:0] data_dw;

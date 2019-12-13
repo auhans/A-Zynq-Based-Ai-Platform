@@ -3,43 +3,39 @@
 module vmx_mm_wrapper #
 (
     // parameters
-    parameter PE_SIZE = 4,
-    parameter PORT_WIDTH = 16,
-    parameter DIN_WIDTH = PE_SIZE * PORT_WIDTH,
-    parameter DOU_WIDTH = DIN_WIDTH * 2
+    parameter  PE_SIZE = 4,
+    parameter  PORT_WIDTH = 16,
+    localparam DIN_WIDTH = PE_SIZE * PORT_WIDTH,
+    localparam DOU_WIDTH = DIN_WIDTH * 2
 ) (
     // ports
-    input          clk,
-    input          rst_n,
-    output [  7:0] addr,
-    output         wr_en,
-    output [127:0] d_o,
-    input  [ 63:0] d_i,
-    input  [ 31:0] ctrl,
-    output [ 31:0] flag
+    input  clk,
+    input  rst_n,
+    output wr_en,
+    input  [DIN_WIDTH-1:0] d_i,
+    output [DOU_WIDTH-1:0] d_o,
+    input  [31:0] ctrl,
+    output [31:0] flag,
+    output [7:0] addr
 );
 
-    parameter S_IDLE = 3'b000;
-    parameter S_SETW = 3'b001;
-    parameter S_LOAD = 3'b010;
-    parameter S_COMP = 3'b011;
-    parameter S_EXPO = 3'b100;
+    localparam S_IDLE = 3'b000;
+    localparam S_SETW = 3'b001;
+    localparam S_LOAD = 3'b010;
+    localparam S_COMP = 3'b011;
+    localparam S_EXPO = 3'b100;
 
-    reg [2:0] state = S_IDLE;
+    reg  [2:0] state = S_IDLE;
 
-    reg  [8*PE_SIZE-1:0] shift_ctrl [0:PE_SIZE-1];
-    reg  [DIN_WIDTH-1:0] shift_i [0:PE_SIZE-1];
-    reg  [DOU_WIDTH-1:0] shift_o [0:PE_SIZE-1];
-
+    wire [8*PE_SIZE-1:0] packed_ctrl;
     wire [8*PE_SIZE-1:0] pe_ctrl;
     wire [DIN_WIDTH-1:0] pe_i;
     wire [DOU_WIDTH-1:0] pe_o;
+
     wire loop_mode;
-    wire simd;
+    wire simd_mode;
 
-    assign simd = ctrl[1];
-
-    integer i;
+    assign simd_mode = ctrl[1];
 
     parameter COUNTER_WIDTH = 8;
 
@@ -48,6 +44,12 @@ module vmx_mm_wrapper #
     reg [COUNTER_WIDTH-1:0] comp_counter = {COUNTER_WIDTH{1'b0}};
     reg [COUNTER_WIDTH-1:0] expo_counter = {COUNTER_WIDTH{1'b0}};
 
+    assign wr_en = (state == S_EXPO) ? 1 : 0;
+    assign addr = getw_counter + load_counter + expo_counter;
+    assign flag = state;
+    assign loop_mode = 0;
+
+    // state machine
 
     always @(posedge clk) begin
         if (~rst_n) begin
@@ -56,7 +58,7 @@ module vmx_mm_wrapper #
         else begin
             case (state)
                 S_IDLE : begin
-                    if (ctrl > 0)
+                    if (ctrl[0] == 1)
                         state <= S_SETW;
                     else
                         state <= S_IDLE;
@@ -92,10 +94,7 @@ module vmx_mm_wrapper #
         end
     end
 
-    assign wr_en = (state == S_EXPO) ? 1 : 0;
-    assign addr = getw_counter + load_counter + expo_counter;
-
-    // data scheduler
+    // scheduling counters
 
     always @(posedge clk) begin
         if (~rst_n) begin
@@ -128,35 +127,50 @@ module vmx_mm_wrapper #
         end
     end
 
-    // always shifting io
+    // gernerate control signal
 
-    always @(posedge clk) begin
-        shift_i[0] <= d_i;
-        shift_o[0] <= pe_o;
-        for (i = 0; i < PE_SIZE; i = i + 1) begin
-            shift_ctrl[0][i*8+:8] <= {(state == S_SETW), getw_counter};
-        end
-        for (i = 0; i < PE_SIZE; i = i + 1) begin
-            shift_ctrl[i+1] <= shift_ctrl[i] << 8;
-            shift_i[i+1] <= shift_i[i] << (PORT_WIDTH);
-            shift_o[i+1] <= shift_o[i] << (PORT_WIDTH * 2);
-        end
-    end
-
-    // assign output
-    
-    genvar k;
+    genvar i;
 
     generate
-        for (k = 0; k < PE_SIZE; k = k + 1) begin
-            assign pe_ctrl[k*8+:8] = shift_ctrl[k][8*PE_SIZE-1-:8];
-            assign pe_i[k*PORT_WIDTH+:PORT_WIDTH] = shift_i[k][DIN_WIDTH-1-:PORT_WIDTH];
-            assign d_o[k*PORT_WIDTH*2+:PORT_WIDTH*2] = shift_o[k][DIN_WIDTH*2-1-:PORT_WIDTH*2];
+        for (i = 0; i < PE_SIZE; i = i + 1) begin
+           assign packed_ctrl[i*8+:8] = {(state == S_SETW), getw_counter};
         end
     endgenerate
 
-    assign flag = state;
-    assign loop_mode = 0;
+    // shift control signal
+
+    util_shift_loader #(
+        .ELEMENT_WIDTH(8),
+        .ELEMENT_COUNT(PE_SIZE)
+    ) ctrl_loader (
+        .clk(clk),
+        .packed_in(packed_ctrl),
+        .packed_out(pe_ctrl)
+    );
+
+    // shift input data
+
+    util_shift_loader #(
+        .ELEMENT_WIDTH(PORT_WIDTH),
+        .ELEMENT_COUNT(PE_SIZE)
+    ) i_data_loader (
+        .clk(clk),
+        .packed_in(d_i),
+        .packed_out(pe_i)
+    );
+
+    // shift output data
+
+    util_shift_loader #(
+        .ELEMENT_WIDTH(PORT_WIDTH*2),
+        .ELEMENT_COUNT(PE_SIZE)
+    ) o_data_loader (
+        .clk(clk),
+        .packed_in(pe_o),
+        .packed_out(d_o)
+    );
+
+    // systolic array instance
 
     vmx_pe_array #(
         .ARRAY_SIZE(PE_SIZE),
@@ -166,7 +180,7 @@ module vmx_mm_wrapper #
         .rst_n(rst_n),
         .loop_mode(loop_mode),
         .load_ctrl(pe_ctrl),
-        .simd_mode({4{simd}}),
+        .simd_mode({4{simd_mode}}),
         .vector(pe_i),
         .product(pe_o)
     );

@@ -41,13 +41,13 @@ initial begin
     #5
     rst_n = 1;
     #10
-    ctrl[1] = 1;
-    #10
-    ctrl[1] = 0;
+    ctrl[0] = 1;
+    #20
+    ctrl[0] = 0;
     #400
-    ctrl[1] = 1;
-    #10
-    ctrl[1] = 0;
+    ctrl[0] = 1;
+    #20
+    ctrl[0] = 0;
 end
 
 always
