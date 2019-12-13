@@ -48,11 +48,11 @@
 
 
 // IP VLNV: xilinx.com:user:mmVMX:1.0
-// IP Revision: 12
+// IP Revision: 13
 
 (* X_CORE_INFO = "mmVMX_v1_0,Vivado 2019.2" *)
 (* CHECK_LICENSE_TYPE = "mm_design_mmVMX_0_1,mmVMX_v1_0,{}" *)
-(* CORE_GENERATION_INFO = "mm_design_mmVMX_0_1,mmVMX_v1_0,{x_ipProduct=Vivado 2019.2,x_ipVendor=xilinx.com,x_ipLibrary=user,x_ipName=mmVMX,x_ipVersion=1.0,x_ipCoreRevision=12,x_ipLanguage=VERILOG,x_ipSimLanguage=MIXED,C_S0_MMCTRL_DATA_WIDTH=32,C_S0_MMCTRL_ADDR_WIDTH=8}" *)
+(* CORE_GENERATION_INFO = "mm_design_mmVMX_0_1,mmVMX_v1_0,{x_ipProduct=Vivado 2019.2,x_ipVendor=xilinx.com,x_ipLibrary=user,x_ipName=mmVMX,x_ipVersion=1.0,x_ipCoreRevision=13,x_ipLanguage=VERILOG,x_ipSimLanguage=MIXED,C_S0_MMCTRL_DATA_WIDTH=32,C_S0_MMCTRL_ADDR_WIDTH=8}" *)
 (* DowngradeIPIdentifiedWarnings = "yes" *)
 module mm_design_mmVMX_0_1 (
   s0_mmctrl_aclk,
