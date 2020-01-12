@@ -25,7 +25,8 @@ I/O Explain:
 
 */
 
-module util_fifo_stepdw (
+module util_fifo_stepdw
+(
     clk,
     rst_n,
     din,

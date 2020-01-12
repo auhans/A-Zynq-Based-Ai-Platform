@@ -19,7 +19,8 @@ I/O Explain:
 
 */
 
-module util_fifo_stack (
+module util_fifo_stack
+(
     clk,
     rst_n,
     din,
