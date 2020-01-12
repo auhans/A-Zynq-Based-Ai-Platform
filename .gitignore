@@ -1,2 +1,3 @@
+hw/rtl/old/**
 hw/xpr/**
 !hw/xpr/*.xpr

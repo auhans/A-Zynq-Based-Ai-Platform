@@ -2,7 +2,7 @@
 
 Function:
 
-    Simple basic FIFO
+    FIFO that automatically repeat a data N times
 
 I/O Explain:
 
@@ -19,10 +19,11 @@ I/O Explain:
 
 */
 
-module util_fifo (
+module util_fifo_stack (
     clk,
     rst_n,
     din,
+    dnum,
     dout,
     dcnt,
     full,
@@ -32,6 +33,7 @@ module util_fifo (
 );
 
     parameter INPUT_WIDTH = 32;
+    parameter COUNT_WIDTH = 8;
     parameter DEPTH = 128;
 
     input  clk;
@@ -51,6 +53,7 @@ module util_fifo (
     wire [$clog2(DEPTH)-1:0] r_ptr;
 
     reg [INPUT_WIDTH-1:0] data [DEPTH-1:0];
+    reg [COUNT_WIDTH-1:0] cnts [DEPTH-1:0];
 
     assign dout = data[r_ptr];
     assign dcnt = w_cnt - r_cnt;
@@ -67,10 +70,14 @@ module util_fifo (
         else begin
             if(wren & ~full)begin
                 data[w_ptr] <= din;
+                cnts[w_ptr] <= dnum;
                 w_cnt <= w_cnt + 1;
             end
             if(rden & ~empty)begin
-                r_cnt <= r_cnt + 1;
+                if (cnts[r_ptr] > 1)
+                    cnts[r_ptr] <= cnts[r_ptr] - 1;
+                else
+                    r_cnt <= r_cnt + 1;
             end
         end
     end

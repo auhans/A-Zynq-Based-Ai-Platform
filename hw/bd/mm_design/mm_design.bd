@@ -1131,16 +1131,16 @@
           "PS/DDR"
         ]
       },
-      "processing_system7_0_FIXED_IO": {
-        "interface_ports": [
-          "FIXED_IO",
-          "PS/FIXED_IO"
-        ]
-      },
       "ps7_0_axi_periph_M00_AXI": {
         "interface_ports": [
           "AXI_INTER/M00_AXI",
           "myVMX/S0_MMCTRL"
+        ]
+      },
+      "processing_system7_0_FIXED_IO": {
+        "interface_ports": [
+          "FIXED_IO",
+          "PS/FIXED_IO"
         ]
       },
       "processing_system7_0_M_AXI_GP0": {

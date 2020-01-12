@@ -1,6 +1,6 @@
 `timescale 1 ns / 1 ps
 
-module vmx_pe_16_8 #(
+module vmx_pe_16_8_signed#(
     parameter VECTOR_BITLEN = 16,
     parameter PRODCUT_BITLEN = VECTOR_BITLEN * 2
 )
@@ -23,6 +23,22 @@ module vmx_pe_16_8 #(
     // declaration
     reg  signed [VECTOR_BITLEN-1:0] weight;
     wire signed [PRODCUT_BITLEN-1:0] sum;
+    wire signed [PRODCUT_BITLEN/2-1:0] sum_up;
+    wire signed [PRODCUT_BITLEN/2-1:0] sum_dw;
+
+    wire signed [7:0] data_up;
+    wire signed [7:0] data_dw;
+    wire signed [7:0] weight_up;
+    wire signed [7:0] weight_dw;
+    wire signed [15:0] sum_in_up;
+    wire signed [15:0] sum_in_dw;
+
+    assign data_up = data[8+:8];
+    assign data_dw = data[0+:8];
+    assign weight_up = weight[8+:8];
+    assign weight_dw = weight[0+:8];
+    assign sum_in_up = sum_in[16+:8];
+    assign sum_in_dw = sum_in[00+:8];
 
     // sequenctial state logic
     always @( posedge clk ) begin
@@ -38,7 +54,12 @@ module vmx_pe_16_8 #(
             // data update
             simd_mode_pass <= simd_mode;
             data_pass <= data;
-            sum_out <= sum;
+            if ( simd_mode == 1 ) begin
+                sum_out <= {sum_up, sum_dw};
+            end
+            else begin
+                sum_out <= sum;
+            end
             // update selector
             if ( load_ctrl[6:0] == 0 && load_ctrl[7] == 1 ) begin
                 weight <= data;
@@ -50,7 +71,9 @@ module vmx_pe_16_8 #(
             end
         end
     end
-    
+
+    assign sum_up = data_up * weight_up + sum_in_up;
+    assign sum_dw = data_dw * weight_dw + sum_in_dw;
     assign sum = data * weight + sum_in;
 
 endmodule

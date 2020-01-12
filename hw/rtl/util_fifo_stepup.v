@@ -2,14 +2,20 @@
 
 Function:
 
-    Simple basic FIFO
+    FIFO that collectes input data into larger pieces
+
+Defualt:
+
+    Collects 2 x 32bits data to form a 1 x 64bit data
+
+    INPUT_WIDTH = 32
+    OUTPUT_SCALE = 2
 
 I/O Explain:
 
     clk     - clock
     rst_n   - negative reset signal
     din     - data in
-    dnum    - number of replicas
     dout    - data out
     dcnt    - buffer count
     full    - full signal
@@ -19,7 +25,7 @@ I/O Explain:
 
 */
 
-module util_fifo (
+module util_fifo_stepup (
     clk,
     rst_n,
     din,
@@ -32,32 +38,43 @@ module util_fifo (
 );
 
     parameter INPUT_WIDTH = 32;
+    parameter OUTPUT_SCALE = 2;
     parameter DEPTH = 128;
+
+    localparam PHYSICAL_DEPTH = DEPTH * OUTPUT_SCALE;
+    localparam OUTPUT_WIDTH = INPUT_WIDTH * OUTPUT_SCALE;
 
     input  clk;
     input  rst_n;
     input  wren;
     input  rden;
     input  [INPUT_WIDTH-1:0] din;
-    output [INPUT_WIDTH-1:0] dout;
-    output [$clog2(DEPTH):0] dcnt;
+    output [OUTPUT_WIDTH-1:0] dout;
+    output [$clog2(PHYSICAL_DEPTH):0] dcnt;
     output full;
     output empty;
 
-    reg [$clog2(DEPTH):0] w_cnt = 0;
-    reg [$clog2(DEPTH):0] r_cnt = 0;
+    reg [$clog2(PHYSICAL_DEPTH):0] w_cnt = 0;
+    reg [$clog2(PHYSICAL_DEPTH):0] r_cnt = 0;
 
-    wire [$clog2(DEPTH)-1:0] w_ptr;
-    wire [$clog2(DEPTH)-1:0] r_ptr;
+    wire [$clog2(PHYSICAL_DEPTH)-1:0] w_ptr;
+    wire [$clog2(PHYSICAL_DEPTH)-1:0] r_ptr;
 
-    reg [INPUT_WIDTH-1:0] data [DEPTH-1:0];
+    reg [INPUT_WIDTH-1:0] data [PHYSICAL_DEPTH-1:0];
 
-    assign dout = data[r_ptr];
     assign dcnt = w_cnt - r_cnt;
-    assign full = dcnt[$clog2(DEPTH)];
-    assign empty = (dcnt == 0);
+    assign full = dcnt[$clog2(PHYSICAL_DEPTH)];
+    assign empty = (dcnt < OUTPUT_SCALE);
     assign w_ptr = w_cnt;
     assign r_ptr = r_cnt;
+
+    genvar i;
+
+    generate
+        for (i = 0; i < OUTPUT_SCALE; i = i + 1) begin
+            assign dout[i*INPUT_WIDTH+:INPUT_WIDTH] = data[r_ptr+i];
+        end
+    endgenerate
 
     always  @(posedge clk) begin
         if (~rst_n) begin
@@ -70,7 +87,7 @@ module util_fifo (
                 w_cnt <= w_cnt + 1;
             end
             if(rden & ~empty)begin
-                r_cnt <= r_cnt + 1;
+                r_cnt <= r_cnt + OUTPUT_SCALE;
             end
         end
     end
